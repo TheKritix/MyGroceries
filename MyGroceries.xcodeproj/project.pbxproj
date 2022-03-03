@@ -14,6 +14,9 @@
 		23562F35CF4E7814C3E249D3 /* MyGroceriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356230C725DDC63D232E341 /* MyGroceriesUITestsLaunchTests.swift */; };
 		23562F9DF0107F3DC9E2C7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235626C7FB5338F05AF8EDDC /* Preview Assets.xcassets */; };
 		23562FF98E7712D0AB36451C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356235722E840B7448F32CA /* ContentView.swift */; };
+		3AD3C31127D0E5AC00B75DB2 /* Fridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31027D0E5AC00B75DB2 /* Fridge.swift */; };
+		3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */; };
+		3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		2356297E67FA1F80932564C5 /* MyGroceriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562A0F0F0739C27B09BF16 /* MyGroceriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562DD73278A6D2D4EC018C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AD3C31027D0E5AC00B75DB2 /* Fridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fridge.swift; sourceTree = "<group>"; };
+		3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
+		3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,9 @@
 		23562DE94C22D15E498B2FAE /* MyGroceries */ = {
 			isa = PBXGroup;
 			children = (
+				3AD3C30F27D0E4A400B75DB2 /* Viewmodels */,
+				3AD3C30C27D0E45800B75DB2 /* Views */,
+				3AD3C30B27D0E44900B75DB2 /* Models */,
 				23562DD73278A6D2D4EC018C /* Assets.xcassets */,
 				23562F7E9EE47A4C867AF5DD /* Preview Content */,
 				235628F3F5281F1E68813773 /* MyGroceriesApp.swift */,
@@ -125,6 +134,30 @@
 				235626C7FB5338F05AF8EDDC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3AD3C30B27D0E44900B75DB2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3AD3C31027D0E5AC00B75DB2 /* Fridge.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3AD3C30C27D0E45800B75DB2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3AD3C30F27D0E4A400B75DB2 /* Viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+				3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */,
+			);
+			path = Viewmodels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +221,14 @@
 /* Begin PBXProject section */
 		235621D13555AF662896F9AA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 23562B0AA59227048D3571A5 /* Build configuration list for PBXProject "MyGroceries" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 235620D11931877D46B5B5C4;
@@ -255,8 +291,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AD3C31127D0E5AC00B75DB2 /* Fridge.swift in Sources */,
 				23562E2243ACFD4B941F4F6C /* MyGroceriesApp.swift in Sources */,
 				23562FF98E7712D0AB36451C /* ContentView.swift in Sources */,
+				3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */,
+				3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,8 +479,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -512,6 +550,7 @@
 				23562893B862ED68B578BE1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2356222E6749DD8B57251AD5 /* Build configuration list for PBXNativeTarget "MyGroceries" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +559,7 @@
 				2356240C23F9812BD70CF108 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		235627CF09D6D09238AAE183 /* Build configuration list for PBXNativeTarget "MyGroceriesTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +568,7 @@
 				23562C9CD66373A857BFC83F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		23562B0AA59227048D3571A5 /* Build configuration list for PBXProject "MyGroceries" */ = {
 			isa = XCConfigurationList;
