@@ -13,7 +13,6 @@
 		23562ED4EF22F1314118E441 /* MyGroceriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235625CDC06ABE6BE4B5F7E2 /* MyGroceriesUITests.swift */; };
 		23562F35CF4E7814C3E249D3 /* MyGroceriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356230C725DDC63D232E341 /* MyGroceriesUITestsLaunchTests.swift */; };
 		23562F9DF0107F3DC9E2C7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235626C7FB5338F05AF8EDDC /* Preview Assets.xcassets */; };
-		23562FF98E7712D0AB36451C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356235722E840B7448F32CA /* ContentView.swift */; };
 		3AD3C31127D0E5AC00B75DB2 /* Fridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31027D0E5AC00B75DB2 /* Fridge.swift */; };
 		3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */; };
 		3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */; };
@@ -38,7 +37,6 @@
 
 /* Begin PBXFileReference section */
 		2356230C725DDC63D232E341 /* MyGroceriesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroceriesUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2356235722E840B7448F32CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		235625CDC06ABE6BE4B5F7E2 /* MyGroceriesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroceriesUITests.swift; sourceTree = "<group>"; };
 		235626BB74D2F208022C9034 /* MyGroceriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroceriesTests.swift; sourceTree = "<group>"; };
 		235626C7FB5338F05AF8EDDC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				23562DD73278A6D2D4EC018C /* Assets.xcassets */,
 				23562F7E9EE47A4C867AF5DD /* Preview Content */,
 				235628F3F5281F1E68813773 /* MyGroceriesApp.swift */,
-				2356235722E840B7448F32CA /* ContentView.swift */,
 			);
 			path = MyGroceries;
 			sourceTree = "<group>";
@@ -294,7 +291,6 @@
 			files = (
 				3AD3C31127D0E5AC00B75DB2 /* Fridge.swift in Sources */,
 				23562E2243ACFD4B941F4F6C /* MyGroceriesApp.swift in Sources */,
-				23562FF98E7712D0AB36451C /* ContentView.swift in Sources */,
 				3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */,
 				3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */,
 			);

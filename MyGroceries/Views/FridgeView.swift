@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FridgeView : View {
     var body : some View {
-        Text("hello")
+        Text("hello test")
     }
 }
 
