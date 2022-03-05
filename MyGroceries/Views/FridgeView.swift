@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct FridgeView : View {
+    
+    let 🏈 = "bold"
+    
     var body : some View {
-        Text("hello test")
+        Text(🏈)
     }
 }
 
