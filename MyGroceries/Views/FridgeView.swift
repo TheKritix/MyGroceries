@@ -13,6 +13,7 @@ struct FridgeView : View {
     
     var body : some View {
         Text(🏈)
+            .padding()
     }
 }
 
