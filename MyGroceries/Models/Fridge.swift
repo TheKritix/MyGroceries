@@ -5,6 +5,8 @@
 //  Created by mia dong & Kristoffer Pedersen on 03/03/2022.
 //
 
+//MARK: 06-03-2022 KTP created simple test data for Fridge, so we can test both UI components and backend firebase setup if needed this early. 
+
 import Foundation
 
 struct Fridge {
