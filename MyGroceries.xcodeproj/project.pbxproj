@@ -223,6 +223,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					235626E307235037C688F53C = {
+						DevelopmentTeam = RC5Y6UVVJ4;
+					};
+				};
 			};
 			buildConfigurationList = 23562B0AA59227048D3571A5 /* Build configuration list for PBXProject "MyGroceries" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -338,6 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyGroceries/Preview Content\"";
+				DEVELOPMENT_TEAM = RC5Y6UVVJ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -526,6 +532,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyGroceries/Preview Content\"";
+				DEVELOPMENT_TEAM = RC5Y6UVVJ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -12,7 +12,19 @@ import SwiftUI
 struct MyGroceriesApp: App {
     var body: some Scene {
         WindowGroup {
-            FridgeView()
+            TabView {
+                FridgeView()
+                    .tabItem {
+                        Image(systemName: "1.magnifyingglass")
+                        Text("Fridge")
+                    }
+                Text("Add more items to your grocery list here.")
+                    .tabItem {
+                        Image(systemName: "plus")
+                        Text("Add item")
+                    }
+            }
+            
         }
     }
 }
