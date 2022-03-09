@@ -24,29 +24,37 @@ struct FridgeGridView : View {
     var body : some View {
         VStack {
             ZStack {
-                RoundedRectangle(cornerRadius: 20.0)
+                RoundedRectangle(cornerRadius: 50)
                     .fill(.gray)
+                    .brightness(0.35)
                 VStack {
                     HStack {
                         Text("My fridge")
+                            .padding(5)
+                            .background(.white)
+                            .cornerRadius(15)
                     }
-                    .padding()
+                    .padding(10)
                     ZStack {
-                        RoundedRectangle(cornerRadius: 20.0)
-                            .fill(.mint)
+                        RoundedRectangle(cornerRadius: 16.0)
+                            .fill(.teal)
+                            .opacity(0.4)
                         ScrollView {
                             LazyVGrid(columns: columns, spacing: 10) {
                                 ForEach(data, id: \.self) { item in
-                                    Text(item)
+                                    HStack {
+                                        Text(item)
+                                    }
                                 }
                                 .padding()
                             }
                         }
                     }
-                    .frame(width: 325)
+                    .frame(width: 360)
                 }
             }
         }
+        .padding(.top)
         
     }
 }
