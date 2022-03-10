@@ -225,7 +225,7 @@
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					235626E307235037C688F53C = {
-						DevelopmentTeam = RC5Y6UVVJ4;
+						DevelopmentTeam = G6TSQJ6DQ5;
 					};
 				};
 			};
@@ -343,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyGroceries/Preview Content\"";
-				DEVELOPMENT_TEAM = RC5Y6UVVJ4;
+				DEVELOPMENT_TEAM = G6TSQJ6DQ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -532,7 +532,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyGroceries/Preview Content\"";
-				DEVELOPMENT_TEAM = RC5Y6UVVJ4;
+				DEVELOPMENT_TEAM = G6TSQJ6DQ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
