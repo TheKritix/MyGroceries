@@ -13,6 +13,7 @@ struct FridgeGridView : View {
     /*
      Just some dummy data
      */
+   
     let data = (1...100).map {
         "Good no. \($0)"
     }
