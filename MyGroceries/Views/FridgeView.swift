@@ -18,13 +18,13 @@ struct FridgeView : View {
 
 struct FridgeCardView : View {
     
-    let fridgeCard: Fridge
+    let fridgeCard: GroceryItem
     var body: some View {
         Text(fridgeCard.groceryItem)
             .font(.headline)
         Spacer()
         HStack {
-            Label("\(fridgeCard.numberOfItem)", systemImage: "person.3")
+            Label("\(fridgeCard.quantity)", systemImage: "person.3")
             Spacer()
             Label("\(fridgeCard.experationDate)", systemImage: "clock")
         }
@@ -35,7 +35,7 @@ struct FridgeCardView : View {
 struct FridgeView_Previews: PreviewProvider {
     
     //Using the test data provided in the model Fridge.Swift
-    static var fridgeData1 = Fridge.fridgeTestData[0]
+    static var fridgeData1 = GroceryItem.fridgeTestData[0]
     
     static var previews: some View {
         FridgeView()
