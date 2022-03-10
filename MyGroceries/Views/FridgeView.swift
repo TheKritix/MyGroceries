@@ -12,8 +12,7 @@ struct FridgeView : View {
     let title = "Fridge Content"
     
     var body : some View {
-        Text(title)
-            .padding()
+        FridgeGridView()
     }
 }
 
