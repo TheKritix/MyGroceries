@@ -35,7 +35,8 @@ struct FridgeCardView : View {
 struct FridgeView_Previews: PreviewProvider {
     
     //Using the test data provided in the model Fridge.Swift
-    static var fridgeData1 = GroceryItemOld.fridgeTestData[0]
+   /* static var fridgeData1 = GroceryItemOld.fridgeTestData[0]
+    */
     
     static var previews: some View {
         FridgeView()
