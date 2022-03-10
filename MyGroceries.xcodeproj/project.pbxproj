@@ -13,6 +13,7 @@
 		23562ED4EF22F1314118E441 /* MyGroceriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235625CDC06ABE6BE4B5F7E2 /* MyGroceriesUITests.swift */; };
 		23562F35CF4E7814C3E249D3 /* MyGroceriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356230C725DDC63D232E341 /* MyGroceriesUITestsLaunchTests.swift */; };
 		23562F9DF0107F3DC9E2C7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235626C7FB5338F05AF8EDDC /* Preview Assets.xcassets */; };
+		3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E772A27DA24B800C1057B /* FridgeGridView.swift */; };
 		3AD3C31127D0E5AC00B75DB2 /* Fridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31027D0E5AC00B75DB2 /* Fridge.swift */; };
 		3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */; };
 		3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */; };
@@ -46,6 +47,7 @@
 		2356297E67FA1F80932564C5 /* MyGroceriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562A0F0F0739C27B09BF16 /* MyGroceriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562DD73278A6D2D4EC018C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A3E772A27DA24B800C1057B /* FridgeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeGridView.swift; sourceTree = "<group>"; };
 		3AD3C31027D0E5AC00B75DB2 /* Fridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fridge.swift; sourceTree = "<group>"; };
 		3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
 		3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */,
+				3A3E772A27DA24B800C1057B /* FridgeGridView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				E3394BBD27D50EC10091E582 /* Theme.swift in Sources */,
 				3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */,
 				3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */,
+				3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
