@@ -18,7 +18,7 @@ struct FridgeView : View {
 
 struct FridgeCardView : View {
     
-    let fridgeCard: GroceryItem
+    let fridgeCard: GroceryItemOld
     var body: some View {
         Text(fridgeCard.groceryItem)
             .font(.headline)
@@ -35,12 +35,12 @@ struct FridgeCardView : View {
 struct FridgeView_Previews: PreviewProvider {
     
     //Using the test data provided in the model Fridge.Swift
-    static var fridgeData1 = GroceryItem.fridgeTestData[0]
+    static var fridgeData1 = GroceryItemOld.fridgeTestData[0]
     
     static var previews: some View {
         FridgeView()
-        FridgeCardView(fridgeCard: fridgeData1)
+        /*FridgeCardView(fridgeCard: fridgeData1)
             .background(Color("aqua"))
-            .previewLayout(.fixed(width: 400, height: 60))
+            .previewLayout(.fixed(width: 400, height: 60))*/
     }
 }
