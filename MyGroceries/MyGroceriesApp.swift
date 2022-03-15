@@ -22,11 +22,18 @@ struct MyGroceriesApp: App {
                         Text("Fridge")
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                Text("Add more items to your grocery list here.")
+                GroceryList()
+                    .tabItem {
+                        Image(systemName: "checklist")
+                        Text("Grocery List")
+                    }
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                AddItem()
                     .tabItem {
                         Image(systemName: "plus")
                         Text("Add item")
                     }
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
             
         }
