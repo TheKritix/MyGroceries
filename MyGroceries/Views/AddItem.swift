@@ -8,9 +8,12 @@
 
 import SwiftUI
 
-
-
 struct AddItem : View {
+    
+    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    let newGrocery = GroceryItem(context: managedObjectContext)
     
     @State var grocery: String = ""
     @State var quantity: String = ""

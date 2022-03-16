@@ -35,6 +35,9 @@ struct MyGroceriesApp: App {
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
+            .onChange(of: scenePhase) { _ in
+                persistenceController.save()
+            }
             
         }
     }

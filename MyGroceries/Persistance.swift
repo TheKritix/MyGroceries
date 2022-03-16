@@ -55,4 +55,19 @@ struct PersistenceController {
             }
         })
     }
+    
+    //www.hackingwithswift.com/quick-start/swiftui/how-to-configure-core-data-to-work-with-swiftui
+    func save() {
+        let context = container.viewContext
+        
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                //Some error here.
+            }
+        }
+    }
 }
+
+
