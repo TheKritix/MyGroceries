@@ -26,7 +26,7 @@ struct AddItem : View {
         NavigationView {
             Form {
                 Section{
-                    
+                    //Empty for whitespace in UI.
                 }
                 TextField("Grocery", text: $setGrocery)
                 TextField("Quantity", text: $setQuantity)
