@@ -11,6 +11,8 @@ import SwiftUI
 @main
 struct MyGroceriesApp: App {
     
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     let persistenceController = PersistenceController.shared
     
     var body: some Scene {
@@ -35,10 +37,6 @@ struct MyGroceriesApp: App {
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
-            .onChange(of: scenePhase) { _ in
-                persistenceController.save()
-            }
-            
         }
     }
 }

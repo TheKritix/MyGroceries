@@ -10,13 +10,10 @@ import SwiftUI
 
 struct AddItem : View {
     
-    @Environment(\.scenePhase) var scenePhase
-    @Environment(\.managedObjectContext) var managedObjectContext
-    
-    let newGrocery = GroceryItem(context: managedObjectContext)
+    @Environment(\.managedObjectContext) var moc
     
     @State var grocery: String = ""
-    @State var quantity: String = ""
+    @State var quantity: String = "0"
     @State var unit: String = "Unit"
     @State var category: String = "Category"
     @State var purchaseDate: Date = Date()
@@ -68,54 +65,94 @@ struct AddItem : View {
                         Text("N/A")
                     }
                 } label: {
-                     Text(unit)
+                    Text(unit)
                 }
                 
-                //Category
-                Menu {
-                    Button {
-                        category = "Protein"
+                Section {
+                    //Category
+                    Menu {
+                        Button {
+                            category = "Protein"
+                        } label: {
+                            Text("Protein")
+                        }
+                        Button {
+                            category = "Vegetable"
+                        } label: {
+                            Text("Vegetable")
+                        }
+                        Button {
+                            category = "Fruit"
+                        } label: {
+                            Text("Fruit")
+                        }
+                        Button {
+                            category = "Grain"
+                        } label: {
+                            Text("Grain")
+                        }
                     } label: {
-                        Text("Protein")
+                        Text(category)
                     }
-                    Button {
-                        category = "Vegetable"
-                    } label: {
-                        Text("Vegetable")
-                    }
-                    Button {
-                        category = "Fruit"
-                    } label: {
-                        Text("Fruit")
-                    }
-                    Button {
-                        category = "Grain"
-                    } label: {
-                        Text("Grain")
-                    }
-                } label: {
-                     Text(category)
                 }
                 
-                //PurchaseDate
-                DatePicker (
-                    "Purchase Date",
-                    selection: $purchaseDate,
-                    displayedComponents: [.date]
-                )
+                Section {
+                    //PurchaseDate
+                    DatePicker (
+                        "Purchase Date",
+                        selection: $purchaseDate,
+                        displayedComponents: [.date]
+                    )
+                    
+                    //Expiration date
+                    DatePicker (
+                        "Expiration Date",
+                        selection: $expirationDate,
+                        displayedComponents: [.date]
+                    )
+                }
                 
-                //Expiration date
-                DatePicker (
-                    "Expiration Date",
-                    selection: $expirationDate,
-                    displayedComponents: [.date]
-                )
-                
-                Button {
-                    //Do something here.
-                } label : {
+                Button (action: {
+                    let newGrocery = GroceryItem(context: moc)
+                    
+                    newGrocery.groceryType = grocery
+                    newGrocery.quantity = Int16(quantity) ?? 0
+                    newGrocery.unit = unit
+                    newGrocery.purchaseDate = purchaseDate
+                    newGrocery.expirationDate = expirationDate
+                    newGrocery.foodCategory = category
+                    newGrocery.bought = bought
+                    
+                    do {
+                        try moc.save()
+                    } catch {
+                        //SOMETHING
+                    }
+                } )
+                {
                     Text("Add")
+                        .bold()
                 }
+                .frame(width: 200)
+                .background(Color.green)
+                
+//                Button {
+//                    let newGrocery = GroceryItem(context: moc)
+//
+//                    newGrocery.groceryType = grocery
+//                    newGrocery.quantity = Int16(quantity) ?? 0
+//                    newGrocery.unit = unit
+//                    newGrocery.purchaseDate = purchaseDate
+//                    newGrocery.expirationDate = expirationDate
+//                    newGrocery.foodCategory = category
+//
+//                    PersistenceController.shared.save()
+//                } label : {
+//                    Text("Add")
+//                        .bold()
+//                }
+            
+                
             }
             .navigationTitle("Add Item to Grocery List")
         }
@@ -127,13 +164,13 @@ struct AddItem : View {
 struct AddItem_Previews: PreviewProvider {
     
     //Using the test data provided in the model Fridge.Swift
-   /* static var fridgeData1 = GroceryItemOld.fridgeTestData[0]
-    */
+    /* static var fridgeData1 = GroceryItemOld.fridgeTestData[0]
+     */
     
     static var previews: some View {
         AddItem()
         /*FridgeCardView(fridgeCard: fridgeData1)
-            .background(Color("aqua"))
-            .previewLayout(.fixed(width: 400, height: 60))*/
+         .background(Color("aqua"))
+         .previewLayout(.fixed(width: 400, height: 60))*/
     }
 }
