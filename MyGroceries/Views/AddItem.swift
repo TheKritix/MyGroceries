@@ -126,7 +126,7 @@ struct AddItem : View {
                     do {
                         try moc.save()
                     } catch {
-                        //SOMETHING
+                        print("something went wrong")
                     }
                 } )
                 {
@@ -174,3 +174,4 @@ struct AddItem_Previews: PreviewProvider {
          .previewLayout(.fixed(width: 400, height: 60))*/
     }
 }
+

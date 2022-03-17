@@ -15,6 +15,9 @@ struct MyGroceriesApp: App {
     
     let persistenceController = PersistenceController.shared
     
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.groceryType, ascending: true)], animation: .default)
+    private var items: FetchedResults<GroceryItem>
+    
     var body: some Scene {
         WindowGroup {
             TabView {

@@ -10,18 +10,12 @@ import SwiftUI
 
 struct FridgeGridView : View {
     
-    /*
-     Just some dummy data
-     */
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.groceryType, ascending: true)], animation: .default)
+    private var groceryItems: FetchedResults<GroceryItem>
+    
+    private var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
    
-    let data = (1...100).map {
-        "Good no. \($0)"
-    }
-    
-    let columns = [
-        GridItem(.adaptive(minimum: 60))
-    ]
-    
     var body : some View {
         VStack {
             ZStack {
@@ -42,9 +36,12 @@ struct FridgeGridView : View {
                             .opacity(0.4)
                         ScrollView {
                             LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(data, id: \.self) { item in
+                                ForEach(groceryItems, id: \.self) { item in
                                     HStack {
-                                        Text(item)
+                                        if (item.bought){
+                                            Text((item.groceryType ?? "unknown item") as String)
+                                        }
+                                        
                                     }
                                 }
                                 .padding()

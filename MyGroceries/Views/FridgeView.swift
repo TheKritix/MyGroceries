@@ -9,8 +9,6 @@ import SwiftUI
 
 struct FridgeView : View {
     
-    let title = "Fridge Content"
-    
     var body : some View {
         FridgeGridView()
     }
