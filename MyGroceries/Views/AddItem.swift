@@ -118,7 +118,7 @@ struct AddItem : View {
                 Button(action: {
                     let content = UNMutableNotificationContent()
                     content.title = "Expiration date reminder"
-                    content.subtitle = "Your item is about to expire!"
+                    content.subtitle = "Your grocery is about to expire!"
                     content.sound = UNNotificationSound.default
 
                     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
@@ -127,7 +127,7 @@ struct AddItem : View {
                     isClickedOnce = true
                 }){
                     HStack {
-                        Label("", systemImage: "notification")
+                        Text("🔔")
                         Text("Get expiration date reminder")
                     }
                 }
