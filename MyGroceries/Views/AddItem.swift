@@ -7,6 +7,7 @@
 //  Dates Source: https://developer.apple.com/documentation/swiftui/datepicker
 
 import SwiftUI
+import CoreData
 
 struct AddItem : View {
     
@@ -23,7 +24,9 @@ struct AddItem : View {
     @State var showFieldAlert = false
     
     var body : some View {
+        
         NavigationView {
+            
             Form {
                 Section{
                     //Empty for whitespace in UI.
@@ -135,7 +138,7 @@ struct AddItem : View {
                     if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
                     do {
                         try moc.save()
-                        print("dis did someting")
+                        print("Bought record updated")
                     } catch {
                         //SOMETHING
                     }
