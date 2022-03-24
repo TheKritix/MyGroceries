@@ -22,6 +22,7 @@ struct AddItem : View {
     @State var bought: Bool = false
     @State var isClickedOnce = false
     
+    
     var body : some View {
         NavigationView {
             Form {
@@ -114,16 +115,8 @@ struct AddItem : View {
                     )
                 }
                 
-                
-                Button(action: {
-                    let content = UNMutableNotificationContent()
-                    content.title = "Expiration date reminder"
-                    content.subtitle = "Your grocery is about to expire!"
-                    content.sound = UNNotificationSound.default
 
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                    UNUserNotificationCenter.current().add(request)
+                Button(action: {
                     isClickedOnce = true
                 }){
                     HStack {
@@ -154,8 +147,25 @@ struct AddItem : View {
                     newGrocery.foodCategory = category
                     newGrocery.bought = bought
                     
+                    var dateComponent = DateComponents()
+                    dateComponent.calendar = Calendar.current
+                    let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: expirationDate)
+
+                    
                     do {
                         try moc.save()
+                        
+                        let content = UNMutableNotificationContent()
+                        content.title = "Expiration date reminder"
+                        content.subtitle = "Your grocery is about to expire!"
+                        content.sound = UNNotificationSound.default
+
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                       // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                        UNUserNotificationCenter.current().add(request)
+                        
+                        isClickedOnce = false
                     } catch {
                         print("something went wrong")
                     }
