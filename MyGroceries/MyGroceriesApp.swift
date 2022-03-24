@@ -40,6 +40,9 @@ struct MyGroceriesApp: App {
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+        
     }
 }
+    

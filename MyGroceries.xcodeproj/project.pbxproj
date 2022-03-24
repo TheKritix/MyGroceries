@@ -57,6 +57,7 @@
 		3AD3C31027D0E5AC00B75DB2 /* GroceryItemOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemOld.swift; sourceTree = "<group>"; };
 		3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
 		3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
+		3AD641E527EC9A53002BD306 /* MyGroceries.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyGroceries.entitlements; sourceTree = "<group>"; };
 		E31B59F727E0F61700F94310 /* AddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItem.swift; sourceTree = "<group>"; };
 		E31B59F927E0F64800F94310 /* GroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
 		E3394BBC27D50EC10091E582 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 		23562DE94C22D15E498B2FAE /* MyGroceries */ = {
 			isa = PBXGroup;
 			children = (
+				3AD641E527EC9A53002BD306 /* MyGroceries.entitlements */,
 				3AD3C30F27D0E4A400B75DB2 /* Viewmodels */,
 				3AD3C30C27D0E45800B75DB2 /* Views */,
 				3AD3C30B27D0E44900B75DB2 /* Models */,
@@ -361,6 +363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyGroceries/MyGroceries.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyGroceries/Preview Content\"";
 				DEVELOPMENT_TEAM = G6TSQJ6DQ5;
@@ -550,6 +553,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyGroceries/MyGroceries.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyGroceries/Preview Content\"";
 				DEVELOPMENT_TEAM = G6TSQJ6DQ5;

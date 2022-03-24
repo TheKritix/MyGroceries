@@ -5,6 +5,7 @@
 //  Created by Kristoffer Pedersen (s205354) on 15/03/2022.
 //  Dealing with menus Source: https://stackoverflow.com/questions/56513339/is-there-a-way-to-create-a-dropdown-menu-button-in-swiftui
 //  Dates Source: https://developer.apple.com/documentation/swiftui/datepicker
+// Modified by Mia Dong (s205353) on 24/03/2022.
 
 import SwiftUI
 
@@ -19,6 +20,7 @@ struct AddItem : View {
     @State var purchaseDate: Date = Date()
     @State var expirationDate: Date = Date()
     @State var bought: Bool = false
+    @State var isClickedOnce = false
     
     var body : some View {
         NavigationView {
@@ -112,7 +114,36 @@ struct AddItem : View {
                     )
                 }
                 
+                
+                Button(action: {
+                    let content = UNMutableNotificationContent()
+                    content.title = "Expiration date reminder"
+                    content.subtitle = "Your item is about to expire!"
+                    content.sound = UNNotificationSound.default
+
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                    UNUserNotificationCenter.current().add(request)
+                    isClickedOnce = true
+                }){
+                    HStack {
+                        Label("", systemImage: "notification")
+                        Text("Get expiration date reminder")
+                    }
+                }
+                .disabled(isClickedOnce)
+                
+                    
+                
                 Button (action: {
+                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                        if success {
+                            print("Permission granted")
+                        } else if let error = error {
+                            print(error.localizedDescription)
+                        }
+                    }
+                    
                     let newGrocery = GroceryItem(context: moc)
                     
                     newGrocery.groceryType = grocery
@@ -128,7 +159,9 @@ struct AddItem : View {
                     } catch {
                         print("something went wrong")
                     }
-                } )
+                
+                }
+                )
                 {
                     Text("Add")
                         .bold()
@@ -152,11 +185,11 @@ struct AddItem : View {
 //                        .bold()
 //                }
             
+
                 
             }
             .navigationTitle("Add Item to Grocery List")
         }
-        
         
     }
 }
