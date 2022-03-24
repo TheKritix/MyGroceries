@@ -11,7 +11,12 @@ import SwiftUI
 @main
 struct MyGroceriesApp: App {
     
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     let persistenceController = PersistenceController.shared
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.groceryType, ascending: true)], animation: .default)
+    private var items: FetchedResults<GroceryItem>
     
     var body: some Scene {
         WindowGroup {
@@ -22,13 +27,19 @@ struct MyGroceriesApp: App {
                         Text("Fridge")
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                Text("Add more items to your grocery list here.")
+                GroceryList()
+                    .tabItem {
+                        Image(systemName: "checklist")
+                        Text("Grocery List")
+                    }
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                AddItem()
                     .tabItem {
                         Image(systemName: "plus")
                         Text("Add item")
                     }
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
-            
         }
     }
 }
