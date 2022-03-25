@@ -210,7 +210,7 @@ struct AddItem : View {
                         message: Text("Please fill out all the available options.")
                     )
                 }
-                .foregroundColor(Color.green)
+                
             }
        
         }
