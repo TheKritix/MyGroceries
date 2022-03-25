@@ -8,94 +8,103 @@
 // Modified by Mia Dong (s205353) on 24/03/2022.
 
 import SwiftUI
+import CoreData
 
 struct AddItem : View {
     
     @Environment(\.managedObjectContext) var moc
+
+    @State var setGrocery: String = ""
+    @State var setQuantity: String = ""
+    @State var setUnit: String = "Unit"
+    @State var setCategory: String = "Category"
+    @State var setPurchaseDate: Date = Date()
+    @State var setExpirationDate: Date = Date()
+    @State var setBought: Bool = false
     
-    @State var grocery: String = ""
-    @State var quantity: String = "0"
-    @State var unit: String = "Unit"
-    @State var category: String = "Category"
-    @State var purchaseDate: Date = Date()
-    @State var expirationDate: Date = Date()
-    @State var bought: Bool = false
     @State var isClickedOnce = false
-    
+
+    @State var showFieldAlert = false
+
     
     var body : some View {
+        
         NavigationView {
+            
             Form {
-                TextField("Grocery", text: $grocery)
-                TextField("Quantity", text: $quantity)
-                    .keyboardType(.numberPad)
+                Section{
+                    //Empty for whitespace in UI.
+                }
+                TextField("Grocery", text: $setGrocery)
+                TextField("Quantity", text: $setQuantity)
+                    .keyboardType(.decimalPad)
                 
                 //Unit
                 Menu {
                     Button {
-                        unit = "kg"
+                        setUnit = "kg"
                     } label: {
                         Text("Kilogram")
                     }
                     Button {
-                        unit = "g"
+                        setUnit = "g"
                     } label: {
                         Text("Gram")
                     }
                     Button {
-                        unit = "mL"
+                        setUnit = "mL"
                     } label: {
                         Text("Mililiter")
                     }
                     Button {
-                        unit = "cL"
+                        setUnit = "cL"
                     } label: {
                         Text("Centiliter")
                     }
                     Button {
-                        unit = "L"
+                        setUnit = "L"
                     } label: {
                         Text("Liter")
                     }
                     Button {
-                        unit = "pcs"
+                        setUnit = "pcs"
                     } label: {
                         Text("Pieces")
                     }
                     Button {
-                        unit = ""
+                        setUnit = ""
                     } label: {
                         Text("N/A")
                     }
                 } label: {
-                    Text(unit)
+                    Text(setUnit)
                 }
                 
                 Section {
                     //Category
                     Menu {
                         Button {
-                            category = "Protein"
+                            setCategory = "Protein"
                         } label: {
                             Text("Protein")
                         }
                         Button {
-                            category = "Vegetable"
+                            setCategory = "Vegetable"
                         } label: {
                             Text("Vegetable")
                         }
                         Button {
-                            category = "Fruit"
+                            setCategory = "Fruit"
                         } label: {
                             Text("Fruit")
                         }
                         Button {
-                            category = "Grain"
+                            setCategory = "Grain"
                         } label: {
                             Text("Grain")
                         }
                     } label: {
-                        Text(category)
+                        Text(setCategory)
                     }
                 }
                 
@@ -103,14 +112,14 @@ struct AddItem : View {
                     //PurchaseDate
                     DatePicker (
                         "Purchase Date",
-                        selection: $purchaseDate,
+                        selection: $setPurchaseDate,
                         displayedComponents: [.date]
                     )
                     
                     //Expiration date
                     DatePicker (
                         "Expiration Date",
-                        selection: $expirationDate,
+                        selection: $setExpirationDate,
                         displayedComponents: [.date]
                     )
                 }
@@ -139,22 +148,29 @@ struct AddItem : View {
                     
                     let newGrocery = GroceryItem(context: moc)
                     
-                    newGrocery.groceryType = grocery
-                    newGrocery.quantity = Int16(quantity) ?? 0
-                    newGrocery.unit = unit
-                    newGrocery.purchaseDate = purchaseDate
-                    newGrocery.expirationDate = expirationDate
-                    newGrocery.foodCategory = category
-                    newGrocery.bought = bought
+                    newGrocery.groceryType = setGrocery
+                    newGrocery.quantity = Int16(setQuantity) ?? 0
+                    newGrocery.unit = setUnit
+                    newGrocery.purchaseDate = setPurchaseDate
+                    newGrocery.expirationDate = setExpirationDate
+                    newGrocery.foodCategory = setCategory
+                    newGrocery.bought = setBought
+                    
+                    if (setCategory == "") {
+                        setCategory = "Other"
+                    }
                     
                     var dateComponent = DateComponents()
                     dateComponent.calendar = Calendar.current
                     let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: expirationDate)
 
-                    
+                }
+                )
+                    if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
                     do {
                         try moc.save()
-                        
+                        print("Bought record updated")
+                      if (isClickedOnce){
                         let content = UNMutableNotificationContent()
                         content.title = "Expiration date reminder"
                         content.subtitle = "Your grocery is about to expire!"
@@ -166,12 +182,23 @@ struct AddItem : View {
                         UNUserNotificationCenter.current().add(request)
                         
                         isClickedOnce = false
+                      
                     } catch {
                         print("something went wrong")
                     }
-                
-                }
-                )
+                    
+                    setGrocery = ""
+                    setQuantity = ""
+                    setUnit = "Unit"
+                    setCategory = "Category"
+                    setPurchaseDate = Date()
+                    setExpirationDate = Date()
+                    }
+                    else {
+                        showFieldAlert = true
+                    }
+                    
+                } )
                 {
                     Text("Add")
                         .bold()
@@ -201,6 +228,16 @@ struct AddItem : View {
             .navigationTitle("Add Item to Grocery List")
         }
         
+                .alert(isPresented: $showFieldAlert) {
+                    Alert(
+                        title: Text("Empty fields detected"),
+                        message: Text("Please fill out all the available options.")
+                    )
+                }
+                .foregroundColor(Color.green)
+            }
+            .navigationTitle("Add Item to Grocery List")
+        }
     }
 }
 
