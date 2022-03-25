@@ -122,30 +122,21 @@ struct AddItem : View {
                         selection: $setExpirationDate,
                         displayedComponents: [.date]
                     )
-                }
-                
-
-                Button(action: {
-                    isClickedOnce = true
-                }){
-                    HStack {
-                        Text("🔔")
-                        Text("Get expiration date reminder")
-                    }
-                }
-                .disabled(isClickedOnce)
-                
                     
-                
-                Button (action: {
-                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                        if success {
-                            print("Permission granted")
-                        } else if let error = error {
-                            print(error.localizedDescription)
+                    Button(action: {
+                        isClickedOnce = true
+                    }){
+                        HStack {
+                            Text("🔔")
+                            Text("Get expiration date reminder")
                         }
                     }
-                    
+                    .disabled(isClickedOnce)
+                }
+            
+                
+                Button (action: {
+        
                     let newGrocery = GroceryItem(context: moc)
                     
                     newGrocery.groceryType = setGrocery
@@ -155,22 +146,22 @@ struct AddItem : View {
                     newGrocery.expirationDate = setExpirationDate
                     newGrocery.foodCategory = setCategory
                     newGrocery.bought = setBought
+        
                     
                     if (setCategory == "") {
                         setCategory = "Other"
                     }
-                    
-                    var dateComponent = DateComponents()
-                    dateComponent.calendar = Calendar.current
-                    let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: expirationDate)
-
-                }
-                )
+                
+                
                     if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
+                        
                     do {
                         try moc.save()
                         print("Bought record updated")
                       if (isClickedOnce){
+                          var dateComponent = DateComponents()
+                          dateComponent.calendar = Calendar.current
+                          let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: setExpirationDate)
                         let content = UNMutableNotificationContent()
                         content.title = "Expiration date reminder"
                         content.subtitle = "Your grocery is about to expire!"
@@ -183,7 +174,7 @@ struct AddItem : View {
                         
                         isClickedOnce = false
                       
-                    } catch {
+                      }} catch {
                         print("something went wrong")
                     }
                     
@@ -200,32 +191,17 @@ struct AddItem : View {
                     
                 } )
                 {
-                    Text("Add")
+                    Text("Add Item")
                         .bold()
                 }
                 .frame(width: 200)
-                .background(Color.green)
-                
-//                Button {
-//                    let newGrocery = GroceryItem(context: moc)
-//
-//                    newGrocery.groceryType = grocery
-//                    newGrocery.quantity = Int16(quantity) ?? 0
-//                    newGrocery.unit = unit
-//                    newGrocery.purchaseDate = purchaseDate
-//                    newGrocery.expirationDate = expirationDate
-//                    newGrocery.foodCategory = category
-//
-//                    PersistenceController.shared.save()
-//                } label : {
-//                    Text("Add")
-//                        .bold()
-//                }
+                .navigationTitle("Add Item to Grocery List")
+
             
 
                 
             }
-            .navigationTitle("Add Item to Grocery List")
+            
         }
         
                 .alert(isPresented: $showFieldAlert) {
@@ -236,10 +212,11 @@ struct AddItem : View {
                 }
                 .foregroundColor(Color.green)
             }
-            .navigationTitle("Add Item to Grocery List")
+       
         }
-    }
-}
+    
+
+
 
 struct AddItem_Previews: PreviewProvider {
     
