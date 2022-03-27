@@ -25,8 +25,7 @@ struct AddItemView : View {
     @State var isClickedOnce = false
 
     @State var showFieldAlert = false
-    
-    
+
 
     
     var body : some View {
@@ -112,32 +111,6 @@ struct AddItemView : View {
                     }
                 }
                 
-              /*  Section {
-                    //PurchaseDate
-                    DatePicker (
-                        "Purchase Date",
-                        selection: $setPurchaseDate,
-                        displayedComponents: [.date]
-                    )
-                    
-                    //Expiration date
-                    DatePicker (
-                        "Expiration Date",
-                        selection: $setExpirationDate,
-                        displayedComponents: [.date]
-                    )
-                    
-                    Button(action: {
-                        isClickedOnce = true
-                    }){
-                        HStack {
-                            Text("🔔")
-                            Text("Get expiration date reminder")
-                        }
-                    }
-                    .disabled(isClickedOnce)
-                }*/
-            
                 
                 Button (action: {
         
@@ -149,6 +122,7 @@ struct AddItemView : View {
                     newGrocery.purchaseDate = setPurchaseDate
                     newGrocery.expirationDate = setExpirationDate
                     newGrocery.foodCategory = setCategory
+                  
              
                     
                     if (setCategory == "") {
@@ -161,23 +135,8 @@ struct AddItemView : View {
                     do {
                         try moc.save()
                         print("Bought record updated")
-                      if (isClickedOnce){
-                          var dateComponent = DateComponents()
-                          dateComponent.calendar = Calendar.current
-                          let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: setExpirationDate)
-                        let content = UNMutableNotificationContent()
-                        content.title = "Expiration date reminder"
-                        content.subtitle = "Your grocery is about to expire!"
-                        content.sound = UNNotificationSound.default
-
-                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-                       // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                        UNUserNotificationCenter.current().add(request)
                         
-                        isClickedOnce = false
-                      
-                      }} catch {
+                    } catch {
                         print("something went wrong")
                     }
                     

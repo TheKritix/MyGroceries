@@ -22,11 +22,6 @@ struct GroceryListView : View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BoughtItem.groceryType, ascending: true)], animation: .default)
     private var boughtItems: FetchedResults<BoughtItem>
     
-    private let dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateFormat = "MM/dd/yyyy"
-        return df
-    }()
     
     var body : some View {
         NavigationView {
@@ -38,11 +33,6 @@ struct GroceryListView : View {
                         Text(grocery.groceryType ?? "Unable to find grocery")
                         Text(grocery.foodCategory ?? "Unable to idenfity category")
                             .font(.system(size: 15))
-                        if (grocery.purchaseDate != grocery.expirationDate) {
-                            Text("Purchase date: \(dateFormatter.string(from: grocery.purchaseDate ?? Date())) \nExpiration Date: \(dateFormatter.string(from: grocery.expirationDate ?? Date()))")
-                                .font(.system(size: 12))
-                            Spacer()
-                        }
                     }
                     .swipeActions{
                         Button("Purchased") {
@@ -67,8 +57,10 @@ struct GroceryListView : View {
                     
                     }
                 }
-            }
             .navigationTitle("Grocery List")
+            }
+        
+            
         }
     }
 

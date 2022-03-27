@@ -3,6 +3,7 @@
     <entity name="BoughtItem" representedClassName="BoughtItem" syncable="YES" codeGenerationType="class">
         <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="groceryType" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="purchaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
@@ -14,6 +15,7 @@
         <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="foodCategory" optional="YES" attributeType="String"/>
         <attribute name="groceryType" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="purchaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
@@ -22,7 +24,7 @@
         </fetchedProperty>
     </entity>
     <elements>
-        <element name="BoughtItem" positionX="-63" positionY="-9" width="128" height="125"/>
-        <element name="GroceryItem" positionX="-63" positionY="-18" width="128" height="140"/>
+        <element name="BoughtItem" positionX="-63" positionY="-9" width="128" height="140"/>
+        <element name="GroceryItem" positionX="-63" positionY="-18" width="128" height="155"/>
     </elements>
 </model>

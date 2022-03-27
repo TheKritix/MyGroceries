@@ -10,8 +10,13 @@ import SwiftUI
 struct FridgeView : View {
     
     var body : some View {
-        FridgeGridView()
+            
+            FridgeGridView()
+            
     }
+
+        
+    
 }
 
 struct FridgeCardView : View {

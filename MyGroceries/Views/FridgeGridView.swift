@@ -30,6 +30,27 @@ struct FridgeGridView : View {
                     .brightness(0.35)
                 VStack {
                     HStack {
+                        Button(action: {
+                            for item in boughtItems {
+                                if ((item.expirationDate) != nil){
+                                    var dateComponent = DateComponents()
+                                    dateComponent.calendar = Calendar.current
+                                    let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: item.expirationDate ?? Date())
+                                  let content = UNMutableNotificationContent()
+                                  content.title = "Expiration date reminder"
+                                  content.subtitle = "Your grocery is about to expire!"
+                                  content.sound = UNNotificationSound.default
+
+                                 // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                                  let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                                  let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                                  UNUserNotificationCenter.current().add(request)
+                                }
+                            }
+                              
+                        }){
+                        Text("🔔")
+                        }
                         Text("My fridge")
                             .padding(5)
                             .background(.white)
@@ -46,6 +67,7 @@ struct FridgeGridView : View {
                                     HStack {
                                         VStack {
                                             Text((item.groceryType ?? "unknown item") as String)
+                                            Image("Landscape_4")
                                             Text("Purchase date: \(dateFormatter.string(from: item.purchaseDate ?? Date())) \nExpiration Date: \(dateFormatter.string(from: item.expirationDate ?? Date()))")
                                                 .font(.system(size: 12))
                                         }
