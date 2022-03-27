@@ -19,7 +19,7 @@
 		3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */; };
 		3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */; };
 		E31B59F827E0F61700F94310 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B59F727E0F61700F94310 /* AddItemView.swift */; };
-		E31B59FA27E0F64800F94310 /* GroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B59F927E0F64800F94310 /* GroceryList.swift */; };
+		E31B59FA27E0F64800F94310 /* GroceryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B59F927E0F64800F94310 /* GroceryListView.swift */; };
 		E3394BBD27D50EC10091E582 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3394BBC27D50EC10091E582 /* Theme.swift */; };
 		E3A7B8A127E23828000BD3F7 /* MyGroceries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E847A27DA3980007BDB38 /* MyGroceries.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -59,7 +59,7 @@
 		3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
 		3AD641E527EC9A53002BD306 /* MyGroceries.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyGroceries.entitlements; sourceTree = "<group>"; };
 		E31B59F727E0F61700F94310 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
-		E31B59F927E0F64800F94310 /* GroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
+		E31B59F927E0F64800F94310 /* GroceryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListView.swift; sourceTree = "<group>"; };
 		E3394BBC27D50EC10091E582 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,7 +164,7 @@
 				3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */,
 				3A3E772A27DA24B800C1057B /* FridgeGridView.swift */,
 				E31B59F727E0F61700F94310 /* AddItemView.swift */,
-				E31B59F927E0F64800F94310 /* GroceryList.swift */,
+				E31B59F927E0F64800F94310 /* GroceryListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 				3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */,
 				3A6E848027DA42FE007BDB38 /* Persistance.swift in Sources */,
 				3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */,
-				E31B59FA27E0F64800F94310 /* GroceryList.swift in Sources */,
+				E31B59FA27E0F64800F94310 /* GroceryListView.swift in Sources */,
 				E3A7B8A127E23828000BD3F7 /* MyGroceries.xcdatamodeld in Sources */,
 				E31B59F827E0F61700F94310 /* AddItemView.swift in Sources */,
 				3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */,

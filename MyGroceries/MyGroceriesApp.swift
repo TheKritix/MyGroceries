@@ -27,7 +27,7 @@ struct MyGroceriesApp: App {
                         Text("Fridge")
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                GroceryList()
+                GroceryListView()
                     .tabItem {
                         Image(systemName: "checklist")
                         Text("Grocery List")

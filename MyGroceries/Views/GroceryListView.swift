@@ -15,7 +15,7 @@ import Foundation
 
 
 
-struct GroceryList : View {
+struct GroceryListView : View {
     
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var groceryItems: FetchedResults<GroceryItem>
@@ -48,6 +48,8 @@ struct GroceryList : View {
                         Button("Purchased") {
                             let boughtGrocery = BoughtItem(context: moc)
                             boughtGrocery.groceryType = grocery.groceryType
+                            boughtGrocery.quantity = grocery.quantity
+                            boughtGrocery.purchaseDate = Date()
                             do {
                                 try moc.save()
                                 moc.delete(grocery)
@@ -74,7 +76,7 @@ struct GroceryList : View {
 struct GroceryListPreview : PreviewProvider {
     
     static var previews: some View {
-        GroceryList()
+        GroceryListView()
     }
     
 }

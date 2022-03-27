@@ -16,7 +16,12 @@ struct FridgeGridView : View {
     
     private var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
-   
+    private let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        return df
+    }()
+    
     var body : some View {
         VStack {
             ZStack {
@@ -39,8 +44,12 @@ struct FridgeGridView : View {
                             LazyVGrid(columns: columns, spacing: 10) {
                                 ForEach(boughtItems, id: \.self) { item in
                                     HStack {
-                                       
+                                        VStack {
                                             Text((item.groceryType ?? "unknown item") as String)
+                                            Text("Purchase date: \(dateFormatter.string(from: item.purchaseDate ?? Date())) \nExpiration Date: \(dateFormatter.string(from: item.expirationDate ?? Date()))")
+                                                .font(.system(size: 12))
+                                        }
+                                           
                                         
                                         
                                     }
