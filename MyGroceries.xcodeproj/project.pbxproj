@@ -14,6 +14,7 @@
 		23562F35CF4E7814C3E249D3 /* MyGroceriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356230C725DDC63D232E341 /* MyGroceriesUITestsLaunchTests.swift */; };
 		23562F9DF0107F3DC9E2C7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235626C7FB5338F05AF8EDDC /* Preview Assets.xcassets */; };
 		3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E772A27DA24B800C1057B /* FridgeGridView.swift */; };
+		3A4FBFBC27EFF22C00BD7185 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4FBFBB27EFF22C00BD7185 /* ImagePicker.swift */; };
 		3A6E848027DA42FE007BDB38 /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E847F27DA42FE007BDB38 /* Persistance.swift */; };
 		3AD3C31127D0E5AC00B75DB2 /* GroceryItemOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31027D0E5AC00B75DB2 /* GroceryItemOld.swift */; };
 		3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */; };
@@ -52,6 +53,7 @@
 		23562A0F0F0739C27B09BF16 /* MyGroceriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562DD73278A6D2D4EC018C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A3E772A27DA24B800C1057B /* FridgeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeGridView.swift; sourceTree = "<group>"; };
+		3A4FBFBB27EFF22C00BD7185 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3A6E847B27DA3980007BDB38 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3A6E847F27DA42FE007BDB38 /* Persistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
 		3AD3C31027D0E5AC00B75DB2 /* GroceryItemOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemOld.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				23562F7E9EE47A4C867AF5DD /* Preview Content */,
 				235628F3F5281F1E68813773 /* MyGroceriesApp.swift */,
 				3A6E847F27DA42FE007BDB38 /* Persistance.swift */,
+				3A4FBFBB27EFF22C00BD7185 /* ImagePicker.swift */,
 			);
 			path = MyGroceries;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				3A6E848027DA42FE007BDB38 /* Persistance.swift in Sources */,
 				3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */,
 				E31B59FA27E0F64800F94310 /* GroceryListView.swift in Sources */,
+				3A4FBFBC27EFF22C00BD7185 /* ImagePicker.swift in Sources */,
 				E3A7B8A127E23828000BD3F7 /* MyGroceries.xcdatamodeld in Sources */,
 				E31B59F827E0F61700F94310 /* AddItemView.swift in Sources */,
 				3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */,

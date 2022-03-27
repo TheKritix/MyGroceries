@@ -22,6 +22,7 @@ struct FridgeGridView : View {
         return df
     }()
     
+    
     var body : some View {
         VStack {
             ZStack {
@@ -64,16 +65,15 @@ struct FridgeGridView : View {
                         ScrollView {
                             LazyVGrid(columns: columns, spacing: 10) {
                                 ForEach(boughtItems, id: \.self) { item in
-                                    HStack {
-                                        VStack {
-                                            Text((item.groceryType ?? "unknown item") as String)
-                                            Image("Landscape_4")
-                                            Text("Purchase date: \(dateFormatter.string(from: item.purchaseDate ?? Date())) \nExpiration Date: \(dateFormatter.string(from: item.expirationDate ?? Date()))")
-                                                .font(.system(size: 12))
-                                        }
-                                           
-                                        
-                                        
+                                  
+                                        HStack {
+                                            VStack {
+                                                Text((item.groceryType ?? "unknown item") as String)
+                                            
+                                                Text("Purchase date: \(dateFormatter.string(from: item.purchaseDate ?? Date())) \nExpiration Date: \(dateFormatter.string(from: item.expirationDate ?? Date()))")
+                                                    .font(.system(size: 12))
+                                            }
+
                                     }
                                 }
                                 .padding()

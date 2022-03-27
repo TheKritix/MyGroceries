@@ -6,6 +6,9 @@
 //  Dealing with menus Source: https://stackoverflow.com/questions/56513339/is-there-a-way-to-create-a-dropdown-menu-button-in-swiftui
 //  Dates Source: https://developer.apple.com/documentation/swiftui/datepicker
 // Modified by Mia Dong (s205353) on 24/03/2022.
+// ImagePicker implementation
+//https://www.hackingwithswift.com/books/ios-swiftui/importing-an-image-into-swiftui-using-phpickerviewcontroller
+
 
 import SwiftUI
 import CoreData
@@ -21,16 +24,18 @@ struct AddItemView : View {
     @State var setPurchaseDate: Date = Date()
     @State var setExpirationDate: Date = Date()
     @State var setBought: Bool = false
+    @State private var showingImagePicker = false
     
-    @State var isClickedOnce = false
-
+    @State private var inputImage: UIImage?
     @State var showFieldAlert = false
-
-
+    @State var image : Image?
+ 
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        _ = Image(uiImage: inputImage)
+    }
     
     var body : some View {
-        
-        
         
         NavigationView {
             
@@ -111,6 +116,14 @@ struct AddItemView : View {
                     }
                 }
                 
+                Section {
+                    Button(action: {
+                        showingImagePicker = true
+                    }){
+                        Text("Select image")
+                    }
+                }
+                
                 
                 Button (action: {
         
@@ -123,7 +136,6 @@ struct AddItemView : View {
                     newGrocery.expirationDate = setExpirationDate
                     newGrocery.foodCategory = setCategory
                   
-             
                     
                     if (setCategory == "") {
                         setCategory = "Other"
@@ -159,10 +171,15 @@ struct AddItemView : View {
                 .frame(width: 200)
                 .navigationTitle("Add Item to Grocery List")
 
-            
-
+                //WIP
+                image?
+                    .resizable()
+                    .scaledToFit()
+                
                 
             }
+
+        
             
         }
         
@@ -172,8 +189,13 @@ struct AddItemView : View {
                         message: Text("Please fill out all the available options.")
                     )
                 }
+                .onChange(of: inputImage) { _ in loadImage() }
+            .sheet(isPresented: $showingImagePicker) {
+                ImagePicker(image: $inputImage)
                 
             }
+
+        }
        
         }
     
