@@ -12,7 +12,7 @@ struct FridgeGridView : View {
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BoughtItem.groceryType, ascending: true)], animation: .default)
     private var boughtItems: FetchedResults<BoughtItem>
-    
+    @State var isClicked = false
     
     private var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
@@ -32,32 +32,42 @@ struct FridgeGridView : View {
                 VStack {
                     HStack {
                         Button(action: {
-                            for item in boughtItems {
-                                if ((item.expirationDate) != nil){
-                                    var dateComponent = DateComponents()
-                                    dateComponent.calendar = Calendar.current
-                                    let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: item.expirationDate ?? Date())
-                                  let content = UNMutableNotificationContent()
-                                  content.title = "Expiration date reminder"
-                                  content.subtitle = "Your grocery is about to expire!"
-                                  content.sound = UNNotificationSound.default
-
-                                 // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-                                  let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                                  let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                                  UNUserNotificationCenter.current().add(request)
-                                }
-                            }
-                              
+                            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                                                   if success {
+                                                       print("Permission granted")
+                                                   } else if let error = error {
+                                                       print(error.localizedDescription)
+                                                   }
+                                               }
                         }){
                         Text("🔔")
                         }
-                        Text("My fridge")
-                            .padding(5)
-                            .background(.white)
-                            .cornerRadius(15)
+                        
+                        Button(action: {
+                            for item in boughtItems {
+                                    /*var dateComponent = DateComponents() dateComponent.calendar = Calendar.current
+                                     let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: item.expirationDate ?? Date())*/
+                                    let content = UNMutableNotificationContent()
+                                    content.title = "Expiration date reminder"
+                                    content.subtitle = "Your grocery is about to expire!"
+                                    content.sound = UNNotificationSound.default
+
+                                    // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                                       let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                                       let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                                        UNUserNotificationCenter.current().add(request)
+
+                            }
+                        }){
+                            Text("📨")
+                        }
+                        
                     }
                     .padding(10)
+                    Text("My fridge")
+                        .padding(5)
+                        .background(.white)
+                        .cornerRadius(15)
                     ZStack {
                         RoundedRectangle(cornerRadius: 16.0)
                             .fill(.teal)
@@ -75,6 +85,7 @@ struct FridgeGridView : View {
                                             }
 
                                     }
+                                    
                                 }
                                 .padding()
                             }

@@ -23,7 +23,6 @@ struct AddItemView : View {
     @State var setCategory: String = "Category"
     @State var setPurchaseDate: Date = Date()
     @State var setExpirationDate: Date = Date()
-    @State var setBought: Bool = false
     @State private var showingImagePicker = false
     
     @State private var inputImage: UIImage?
