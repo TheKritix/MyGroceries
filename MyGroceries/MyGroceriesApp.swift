@@ -33,7 +33,7 @@ struct MyGroceriesApp: App {
                         Text("Grocery List")
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                AddItem()
+                AddItemView()
                     .tabItem {
                         Image(systemName: "plus")
                         Text("Add item")

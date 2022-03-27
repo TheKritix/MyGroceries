@@ -10,8 +10,9 @@ import SwiftUI
 
 struct FridgeGridView : View {
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.groceryType, ascending: true)], animation: .default)
-    private var groceryItems: FetchedResults<GroceryItem>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BoughtItem.groceryType, ascending: true)], animation: .default)
+    private var boughtItems: FetchedResults<BoughtItem>
+    
     
     private var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
@@ -36,11 +37,11 @@ struct FridgeGridView : View {
                             .opacity(0.4)
                         ScrollView {
                             LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(groceryItems, id: \.self) { item in
+                                ForEach(boughtItems, id: \.self) { item in
                                     HStack {
-                                        if (item.bought){
+                                       
                                             Text((item.groceryType ?? "unknown item") as String)
-                                        }
+                                        
                                         
                                     }
                                 }

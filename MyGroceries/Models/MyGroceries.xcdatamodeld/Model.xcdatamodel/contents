@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D49" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BoughtItem" representedClassName="BoughtItem" syncable="YES" codeGenerationType="class">
+        <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="groceryType" optional="YES" attributeType="String"/>
+        <attribute name="purchaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
+        <fetchedProperty name="fetchBoughtItem" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="BoughtItem"/>
+        </fetchedProperty>
+    </entity>
     <entity name="GroceryItem" representedClassName="GroceryItem" syncable="YES" codeGenerationType="class">
-        <attribute name="bought" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="foodCategory" optional="YES" attributeType="String"/>
         <attribute name="groceryType" optional="YES" attributeType="String"/>
@@ -13,6 +22,7 @@
         </fetchedProperty>
     </entity>
     <elements>
-        <element name="GroceryItem" positionX="-63" positionY="-18" width="128" height="41"/>
+        <element name="BoughtItem" positionX="-63" positionY="-9" width="128" height="125"/>
+        <element name="GroceryItem" positionX="-63" positionY="-18" width="128" height="140"/>
     </elements>
 </model>

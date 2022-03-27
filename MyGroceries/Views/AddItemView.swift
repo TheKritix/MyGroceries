@@ -10,7 +10,7 @@
 import SwiftUI
 import CoreData
 
-struct AddItem : View {
+struct AddItemView : View {
     
     @Environment(\.managedObjectContext) var moc
 
@@ -25,9 +25,13 @@ struct AddItem : View {
     @State var isClickedOnce = false
 
     @State var showFieldAlert = false
+    
+    
 
     
     var body : some View {
+        
+        
         
         NavigationView {
             
@@ -108,7 +112,7 @@ struct AddItem : View {
                     }
                 }
                 
-                Section {
+              /*  Section {
                     //PurchaseDate
                     DatePicker (
                         "Purchase Date",
@@ -132,7 +136,7 @@ struct AddItem : View {
                         }
                     }
                     .disabled(isClickedOnce)
-                }
+                }*/
             
                 
                 Button (action: {
@@ -145,8 +149,7 @@ struct AddItem : View {
                     newGrocery.purchaseDate = setPurchaseDate
                     newGrocery.expirationDate = setExpirationDate
                     newGrocery.foodCategory = setCategory
-                    newGrocery.bought = setBought
-        
+             
                     
                     if (setCategory == "") {
                         setCategory = "Other"
@@ -225,7 +228,7 @@ struct AddItem_Previews: PreviewProvider {
      */
     
     static var previews: some View {
-        AddItem()
+        AddItemView()
         /*FridgeCardView(fridgeCard: fridgeData1)
          .background(Color("aqua"))
          .previewLayout(.fixed(width: 400, height: 60))*/

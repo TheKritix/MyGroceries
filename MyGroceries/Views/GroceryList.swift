@@ -19,6 +19,8 @@ struct GroceryList : View {
     
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var groceryItems: FetchedResults<GroceryItem>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BoughtItem.groceryType, ascending: true)], animation: .default)
+    private var boughtItems: FetchedResults<BoughtItem>
     
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -30,7 +32,7 @@ struct GroceryList : View {
         NavigationView {
             List {
                 ForEach(groceryItems) { grocery in
-                    if(!grocery.bought) {
+                     
                     VStack(alignment: .leading) {
                         Spacer()
                         Text(grocery.groceryType ?? "Unable to find grocery")
@@ -44,9 +46,11 @@ struct GroceryList : View {
                     }
                     .swipeActions{
                         Button("Purchased") {
-                            grocery.bought = true
+                            let boughtGrocery = BoughtItem(context: moc)
+                            boughtGrocery.groceryType = grocery.groceryType
                             do {
                                 try moc.save()
+                                moc.delete(grocery)
                                 print("dis did someting")
                             } catch {
                                 //SOMETHING
@@ -65,7 +69,7 @@ struct GroceryList : View {
             .navigationTitle("Grocery List")
         }
     }
-}
+
 
 struct GroceryListPreview : PreviewProvider {
     
