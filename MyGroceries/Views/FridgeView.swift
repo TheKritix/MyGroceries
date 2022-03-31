@@ -11,8 +11,12 @@ struct FridgeView : View {
     
     var body : some View {
             
-            FridgeGridView()
+        NavigationView {
             
+                FridgeGridView()
+                .navigationTitle("Fridge")
+                
+        }
     }
 
         
