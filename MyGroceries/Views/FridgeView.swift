@@ -9,11 +9,12 @@ import SwiftUI
 
 struct FridgeView : View {
     
+    var boughtItems: FetchedResults<BoughtItem>
+    
     var body : some View {
             
         NavigationView {
-            
-                FridgeGridView()
+                FridgeGridView(boughtItems: boughtItems)
                 .navigationTitle("Fridge")
                 
         }
@@ -46,7 +47,8 @@ struct FridgeView_Previews: PreviewProvider {
     */
     
     static var previews: some View {
-        FridgeView()
+        FridgeView(boughtItems:
+                    BoughtItem.boughtItems)
         /*FridgeCardView(fridgeCard: fridgeData1)
             .background(Color("aqua"))
             .previewLayout(.fixed(width: 400, height: 60))*/

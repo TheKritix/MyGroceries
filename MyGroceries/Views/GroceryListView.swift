@@ -18,9 +18,8 @@ import Foundation
 struct GroceryListView : View {
     
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var groceryItems: FetchedResults<GroceryItem>
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BoughtItem.groceryType, ascending: true)], animation: .default)
-    private var boughtItems: FetchedResults<BoughtItem>
+     var boughtItems: FetchedResults<BoughtItem>
+     var groceryItems: FetchedResults<GroceryItem>
     
     
     var body : some View {
@@ -47,6 +46,15 @@ struct GroceryListView : View {
                             } catch {
                                 //SOMETHING
                             }
+                            
+                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                                                       if success {
+                                                           print("Permission granted")
+                                                       } else if let error = error {
+                                                           print(error.localizedDescription)
+                                                       }
+                                                   }
+                           
                         }
                             .tint(.green)
                     }
@@ -65,10 +73,12 @@ struct GroceryListView : View {
     }
 
 
-struct GroceryListPreview : PreviewProvider {
+//struct GroceryListPreview : PreviewProvider {
     
-    static var previews: some View {
-        GroceryListView()
-    }
+  //  static var previews: some View {
+        //GroceryListView(groceryItems:
+               //             GroceryItem.groceryItems, boughtItem:
+                     //       BoughtItem.boughtItem)
+  //  }
     
-}
+//}
