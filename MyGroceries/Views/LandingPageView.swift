@@ -15,8 +15,7 @@ struct LandingPageView : View {
     
     var body : some View {
         Text(verbatim: "hej")
-                
- 
+        
         
     }
 }

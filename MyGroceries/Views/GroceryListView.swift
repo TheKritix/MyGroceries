@@ -41,12 +41,14 @@ struct GroceryListView : View {
                             boughtGrocery.purchaseDate = Date()
                             do {
                                 try moc.save()
-                                moc.delete(grocery)
                                 print("dis did someting")
                             } catch {
                                 //SOMETHING
                             }
                             
+                          
+                             moc.delete(grocery)
+                    
                                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                                                        if success {
                                                            print("Permission granted")

@@ -29,6 +29,10 @@ struct GroceryItemView : View {
                     Text(boughtItem?.groceryType ?? "Grocery")
                     Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
                         .font(.system(size: 10))
+                   
+                   
+                    
+                        
                 }
                 .padding()
             }

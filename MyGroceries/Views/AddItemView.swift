@@ -23,22 +23,25 @@ struct AddItemView : View {
     @State var setCategory: String = "Category"
     @State var setPurchaseDate: Date = Date()
     @State var setExpirationDate: Date = Date()
+    
     @State private var showingImagePicker = false
     
     @State private var inputImage: UIImage?
     @State var showFieldAlert = false
-    @State var image : Image?
+    @State var image = Image("person.fill.badge")
  
     func loadImage() {
         guard let inputImage = inputImage else { return }
-        _ = Image(uiImage: inputImage)
+        image = Image(uiImage: inputImage)
     }
     
     var body : some View {
         
         NavigationView {
-            
+   
+
             Form {
+
                 Section{
                     //Empty for whitespace in UI.
                 }
@@ -110,6 +113,11 @@ struct AddItemView : View {
                         } label: {
                             Text("Grain")
                         }
+                        Button {
+                            setCategory = "Snack"
+                        } label: {
+                            Text("Snack")
+                        }
                     } label: {
                         Text(setCategory)
                     }
@@ -121,8 +129,22 @@ struct AddItemView : View {
                     }){
                         Text("Select image")
                     }
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 150, height: 150, alignment: .center)
+                            .clipped()
+                    
+
                 }
-                
+              
+            
+        
+                Section {
+                    
+                }
+
+              
                 
                 Button (action: {
         
@@ -134,6 +156,7 @@ struct AddItemView : View {
                     newGrocery.purchaseDate = setPurchaseDate
                     newGrocery.expirationDate = setExpirationDate
                     newGrocery.foodCategory = setCategory
+                    
                   
                     
                     if (setCategory == "") {
@@ -170,17 +193,10 @@ struct AddItemView : View {
                 .frame(width: 200)
                 .navigationTitle("Add Item to Grocery List")
 
-                //WIP
-                image?
-                    .resizable()
-                    .scaledToFit()
+
                 
                 
             }
-
-        
-            
-        }
         
                 .alert(isPresented: $showFieldAlert) {
                     Alert(
@@ -188,13 +204,19 @@ struct AddItemView : View {
                         message: Text("Please fill out all the available options.")
                     )
                 }
-                .onChange(of: inputImage) { _ in loadImage() }
-            .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(image: $inputImage)
+
                 
             }
-
+        .onChange(of: inputImage) {
+            _ in loadImage()
         }
+        .sheet(isPresented: $showingImagePicker) {
+        ImagePicker(image: $inputImage)
+        }
+
+
+    }
+
        
         }
     

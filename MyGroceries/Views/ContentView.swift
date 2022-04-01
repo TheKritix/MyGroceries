@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var managedObjectContext
 
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.groceryType, ascending: true)], animation: .default)
      var groceryItems: FetchedResults<GroceryItem>

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct FridgeGridView : View {
-    
+ 
     var boughtItems : FetchedResults<BoughtItem>
     @State var isClicked = false
     
@@ -23,6 +23,8 @@ struct FridgeGridView : View {
     
     
     var body : some View {
+        
+     
         VStack {
             Button(action: {
                 for item in boughtItems {
