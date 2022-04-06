@@ -6,11 +6,14 @@
 //  Dealing with menus Source: https://stackoverflow.com/questions/56513339/is-there-a-way-to-create-a-dropdown-menu-button-in-swiftui
 //  Dates Source: https://developer.apple.com/documentation/swiftui/datepicker
 // Modified by Mia Dong (s205353) on 24/03/2022.
+// ImagePicker implementation
+//https://www.hackingwithswift.com/books/ios-swiftui/importing-an-image-into-swiftui-using-phpickerviewcontroller
+
 
 import SwiftUI
 import CoreData
 
-struct AddItem : View {
+struct AddItemView : View {
     
     @Environment(\.managedObjectContext) var moc
 
@@ -20,18 +23,25 @@ struct AddItem : View {
     @State var setCategory: String = "Category"
     @State var setPurchaseDate: Date = Date()
     @State var setExpirationDate: Date = Date()
-    @State var setBought: Bool = false
     
-    @State var isClickedOnce = false
-
+    @State private var showingImagePicker = false
+    
+    @State private var inputImage: UIImage?
     @State var showFieldAlert = false
-
+    @State var image = Image("person.fill.badge")
+ 
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
     
     var body : some View {
         
         NavigationView {
-            
+   
+
             Form {
+
                 Section{
                     //Empty for whitespace in UI.
                 }
@@ -103,37 +113,38 @@ struct AddItem : View {
                         } label: {
                             Text("Grain")
                         }
+                        Button {
+                            setCategory = "Snack"
+                        } label: {
+                            Text("Snack")
+                        }
                     } label: {
                         Text(setCategory)
                     }
                 }
                 
                 Section {
-                    //PurchaseDate
-                    DatePicker (
-                        "Purchase Date",
-                        selection: $setPurchaseDate,
-                        displayedComponents: [.date]
-                    )
-                    
-                    //Expiration date
-                    DatePicker (
-                        "Expiration Date",
-                        selection: $setExpirationDate,
-                        displayedComponents: [.date]
-                    )
-                    
                     Button(action: {
-                        isClickedOnce = true
+                        showingImagePicker = true
                     }){
-                        HStack {
-                            Text("🔔")
-                            Text("Get expiration date reminder")
-                        }
+                        Text("Select image")
                     }
-                    .disabled(isClickedOnce)
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 150, height: 150, alignment: .center)
+                            .clipped()
+                    
+
                 }
+              
             
+        
+                Section {
+                    
+                }
+
+              
                 
                 Button (action: {
         
@@ -145,8 +156,8 @@ struct AddItem : View {
                     newGrocery.purchaseDate = setPurchaseDate
                     newGrocery.expirationDate = setExpirationDate
                     newGrocery.foodCategory = setCategory
-                    newGrocery.bought = setBought
-        
+                    newGrocery.image = inputImage?.pngData()
+                  
                     
                     if (setCategory == "") {
                         setCategory = "Other"
@@ -158,23 +169,8 @@ struct AddItem : View {
                     do {
                         try moc.save()
                         print("Bought record updated")
-                      if (isClickedOnce){
-                          var dateComponent = DateComponents()
-                          dateComponent.calendar = Calendar.current
-                          let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: setExpirationDate)
-                        let content = UNMutableNotificationContent()
-                        content.title = "Expiration date reminder"
-                        content.subtitle = "Your grocery is about to expire!"
-                        content.sound = UNNotificationSound.default
-
-                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-                       // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                        UNUserNotificationCenter.current().add(request)
                         
-                        isClickedOnce = false
-                      
-                      }} catch {
+                    } catch {
                         print("something went wrong")
                     }
                     
@@ -184,6 +180,7 @@ struct AddItem : View {
                     setCategory = "Category"
                     setPurchaseDate = Date()
                     setExpirationDate = Date()
+                    image = Image("person.fill.badge")
                     }
                     else {
                         showFieldAlert = true
@@ -197,12 +194,10 @@ struct AddItem : View {
                 .frame(width: 200)
                 .navigationTitle("Add Item to Grocery List")
 
-            
 
                 
+                
             }
-            
-        }
         
                 .alert(isPresented: $showFieldAlert) {
                     Alert(
@@ -210,8 +205,19 @@ struct AddItem : View {
                         message: Text("Please fill out all the available options.")
                     )
                 }
+
                 
             }
+        .onChange(of: inputImage) {
+            _ in loadImage()
+        }
+        .sheet(isPresented: $showingImagePicker) {
+        ImagePicker(image: $inputImage)
+        }
+
+
+    }
+
        
         }
     
@@ -225,7 +231,7 @@ struct AddItem_Previews: PreviewProvider {
      */
     
     static var previews: some View {
-        AddItem()
+        AddItemView()
         /*FridgeCardView(fridgeCard: fridgeData1)
          .background(Color("aqua"))
          .previewLayout(.fixed(width: 400, height: 60))*/

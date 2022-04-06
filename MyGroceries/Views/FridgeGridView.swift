@@ -9,43 +9,70 @@ import Foundation
 import SwiftUI
 
 struct FridgeGridView : View {
+ 
+    var boughtItems : FetchedResults<BoughtItem>
+    @State var isClicked = false
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.groceryType, ascending: true)], animation: .default)
-    private var groceryItems: FetchedResults<GroceryItem>
+    var columns = [GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5) ]
     
-    private var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        return df
+    }()
     
-   
+    
     var body : some View {
+        
+     
         VStack {
+//            Button(action: {
+//                for item in boughtItems {
+//                    if (item.expirationDate != nil){
+//                        var dateComponent = DateComponents(); dateComponent.calendar = Calendar.current
+//                                         let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: item.expirationDate ?? Date())
+//                                        let content = UNMutableNotificationContent()
+//                                        content.title = "Expiration date reminder"
+//                                        content.subtitle = "Your grocery is about to expire!"
+//                                        content.sound = UNNotificationSound.default
+//
+//                                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+//
+//                                           let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//                                            UNUserNotificationCenter.current().add(request)
+//                    }
+//                }
+//            }){
+//                Text("Send notifications")
+//            }
             ZStack {
                 RoundedRectangle(cornerRadius: 50)
                     .fill(.gray)
                     .brightness(0.35)
                 VStack {
-                    HStack {
-                        Text("My fridge")
-                            .padding(5)
-                            .background(.white)
-                            .cornerRadius(15)
-                    }
-                    .padding(10)
+                    Text("My fridge")
+                        .padding(5)
+                        .background(.white)
+                        .cornerRadius(15)
                     ZStack {
                         RoundedRectangle(cornerRadius: 16.0)
                             .fill(.teal)
                             .opacity(0.4)
                         ScrollView {
-                            LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(groceryItems, id: \.self) { item in
-                                    HStack {
-                                        if (item.bought){
-                                            Text((item.groceryType ?? "unknown item") as String)
-                                        }
-                                        
+                            LazyVGrid(columns: columns, spacing: 5) {
+                                ForEach(boughtItems, id: \.self) { item in
+                                  
+                                        HStack {
+                                            VStack {
+                                                GroceryItemView(boughtItem: item)
+                                            }
+
                                     }
+                                    
                                 }
-                                .padding()
+                             
                             }
+                            .padding( 5)
                         }
                     }
                     .frame(width: 360)
@@ -60,6 +87,7 @@ struct FridgeGridView : View {
 
 struct FridgeGridView_Previews: PreviewProvider {
     static var previews: some View {
-        FridgeGridView()
+        FridgeGridView(boughtItems:
+                        BoughtItem.boughtItems)
     }
 }
