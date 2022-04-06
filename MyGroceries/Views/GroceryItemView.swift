@@ -17,6 +17,7 @@ struct GroceryItemView : View {
         df.dateFormat = "MM/dd/yyyy"
         return df
     }()
+
     
     var body : some View {
         ZStack {
@@ -26,9 +27,25 @@ struct GroceryItemView : View {
                 
             VStack {
                 VStack {
-                    Text(boughtItem?.groceryType ?? "Grocery")
-                    Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                    if (boughtItem?.image != nil){
+                        let image = UIImage(data: boughtItem!.image!)
+                        Image(uiImage: image!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 70, height: 70, alignment: .center)
+                            .clipped()
+                    } else {
+                        Text(boughtItem?.groceryType ?? "Grocery")
+                    }
+                    
+                    if (boughtItem?.expirationDate != nil){
+                        Text("Expires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
                         .font(.system(size: 10))
+                    }
+
+                    
+                    //Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                        //.font(.system(size: 10))
                    
                    
                     
@@ -51,3 +68,15 @@ struct GroceryItemView_Previews : PreviewProvider {
     }
 }
 
+/*
+ https://sarunw.com/posts/getting-number-of-days-between-two-dates/
+ */
+extension Calendar {
+    func numberOfDaysBetween(_ from: Date, and to: Date) -> Int {
+        let fromDate = startOfDay(for: from)
+        let toDate = startOfDay(for: to)
+        let numberOfDays = dateComponents([.day], from: fromDate, to: toDate)
+        
+        return numberOfDays.day! + 1 // <1>
+    }
+}

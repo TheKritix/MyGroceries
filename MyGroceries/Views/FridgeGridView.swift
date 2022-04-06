@@ -13,7 +13,7 @@ struct FridgeGridView : View {
     var boughtItems : FetchedResults<BoughtItem>
     @State var isClicked = false
     
-    var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), ]
+    var columns = [GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5) ]
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -26,40 +26,40 @@ struct FridgeGridView : View {
         
      
         VStack {
-            Button(action: {
-                for item in boughtItems {
-                    if (item.expirationDate != nil){
-                        var dateComponent = DateComponents(); dateComponent.calendar = Calendar.current
-                                         let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: item.expirationDate ?? Date())
-                                        let content = UNMutableNotificationContent()
-                                        content.title = "Expiration date reminder"
-                                        content.subtitle = "Your grocery is about to expire!"
-                                        content.sound = UNNotificationSound.default
-
-                                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-                                           
-                                           let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                                            UNUserNotificationCenter.current().add(request)
-                    }
-                }
-            }){
-                Text("Send notifications")
-            }
+//            Button(action: {
+//                for item in boughtItems {
+//                    if (item.expirationDate != nil){
+//                        var dateComponent = DateComponents(); dateComponent.calendar = Calendar.current
+//                                         let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: item.expirationDate ?? Date())
+//                                        let content = UNMutableNotificationContent()
+//                                        content.title = "Expiration date reminder"
+//                                        content.subtitle = "Your grocery is about to expire!"
+//                                        content.sound = UNNotificationSound.default
+//
+//                                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+//
+//                                           let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//                                            UNUserNotificationCenter.current().add(request)
+//                    }
+//                }
+//            }){
+//                Text("Send notifications")
+//            }
             ZStack {
                 RoundedRectangle(cornerRadius: 50)
                     .fill(.gray)
                     .brightness(0.35)
                 VStack {
-                        Text("My fridge")
-                            .padding(5)
-                            .background(.white)
-                            .cornerRadius(15)
+                    Text("My fridge")
+                        .padding(5)
+                        .background(.white)
+                        .cornerRadius(15)
                     ZStack {
                         RoundedRectangle(cornerRadius: 16.0)
                             .fill(.teal)
                             .opacity(0.4)
                         ScrollView {
-                            LazyVGrid(columns: columns, spacing: 0) {
+                            LazyVGrid(columns: columns, spacing: 5) {
                                 ForEach(boughtItems, id: \.self) { item in
                                   
                                         HStack {
@@ -70,8 +70,9 @@ struct FridgeGridView : View {
                                     }
                                     
                                 }
-                                .padding()
+                             
                             }
+                            .padding( 5)
                         }
                     }
                     .frame(width: 360)

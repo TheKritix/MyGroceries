@@ -32,6 +32,14 @@ struct GroceryListView : View {
                         Text(grocery.groceryType ?? "Unable to find grocery")
                         Text(grocery.foodCategory ?? "Unable to idenfity category")
                             .font(.system(size: 15))
+                        if (grocery.image != nil){
+                            let image = UIImage(data: grocery.image!)
+                            Image(uiImage: image!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 60, height: 60, alignment: .center)
+                                .clipped()
+                        }
                     }
                     .swipeActions{
                         Button("Purchased") {
@@ -39,6 +47,8 @@ struct GroceryListView : View {
                             boughtGrocery.groceryType = grocery.groceryType
                             boughtGrocery.quantity = grocery.quantity
                             boughtGrocery.purchaseDate = Date()
+                            boughtGrocery.image = grocery.image
+                            boughtGrocery.expirationDate = Date()
                             do {
                                 try moc.save()
                                 print("dis did someting")

@@ -156,7 +156,7 @@ struct AddItemView : View {
                     newGrocery.purchaseDate = setPurchaseDate
                     newGrocery.expirationDate = setExpirationDate
                     newGrocery.foodCategory = setCategory
-                    
+                    newGrocery.image = inputImage?.pngData()
                   
                     
                     if (setCategory == "") {
@@ -180,6 +180,7 @@ struct AddItemView : View {
                     setCategory = "Category"
                     setPurchaseDate = Date()
                     setExpirationDate = Date()
+                    image = Image("person.fill.badge")
                     }
                     else {
                         showFieldAlert = true
