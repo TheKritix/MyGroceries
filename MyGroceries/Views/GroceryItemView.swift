@@ -22,8 +22,7 @@ struct GroceryItemView : View {
     var body : some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill(.white).opacity(0.5)
-                
+                .fill(.white).opacity(0.3)
                 
             VStack {
                 VStack {
@@ -32,8 +31,9 @@ struct GroceryItemView : View {
                         Image(uiImage: image!)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 70, height: 70, alignment: .center)
+                            .frame(width: 85, height: 90, alignment: .center)
                             .clipped()
+                            .cornerRadius(16.0)
                     } else {
                         Text(boughtItem?.groceryType ?? "Grocery")
                     }
@@ -42,16 +42,12 @@ struct GroceryItemView : View {
                         Text("Expires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
                         .font(.system(size: 10))
                     }
-
                     
                     //Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
                         //.font(.system(size: 10))
                    
-                   
-                    
-                        
                 }
-                .padding()
+                .padding(9)
             }
         }
 
