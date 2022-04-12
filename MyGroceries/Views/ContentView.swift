@@ -35,6 +35,11 @@ struct ContentView: View {
                     Image(systemName: "plus")
                     Text("Add item")
                 }
+            CameraScan()
+                .tabItem{
+                    Image(systemName: "barcode")
+                    Text("Barcode Scan")
+                }
         }
     }
 }
