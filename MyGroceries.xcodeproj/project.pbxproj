@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,10 @@
 		3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */; };
 		E31B59F827E0F61700F94310 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B59F727E0F61700F94310 /* AddItemView.swift */; };
 		E31B59FA27E0F64800F94310 /* GroceryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B59F927E0F64800F94310 /* GroceryListView.swift */; };
+		E32B7FDB2805B14900222096 /* JSONParser in Frameworks */ = {isa = PBXBuildFile; productRef = E32B7FDA2805B14900222096 /* JSONParser */; };
+		E332717727F602FF0018477D /* CameraScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E332717627F602FF0018477D /* CameraScan.swift */; };
+		E332717A27FDE1500018477D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = E332717927FDE1500018477D /* CodeScanner */; };
+		E332717C27FDE86E0018477D /* ApiAddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E332717B27FDE86E0018477D /* ApiAddItemView.swift */; };
 		E3394BBD27D50EC10091E582 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3394BBC27D50EC10091E582 /* Theme.swift */; };
 		E3A7B8A127E23828000BD3F7 /* MyGroceries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E847A27DA3980007BDB38 /* MyGroceries.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -62,6 +66,8 @@
 		3AD641E527EC9A53002BD306 /* MyGroceries.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyGroceries.entitlements; sourceTree = "<group>"; };
 		E31B59F727E0F61700F94310 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		E31B59F927E0F64800F94310 /* GroceryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListView.swift; sourceTree = "<group>"; };
+		E332717627F602FF0018477D /* CameraScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScan.swift; sourceTree = "<group>"; };
+		E332717B27FDE86E0018477D /* ApiAddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAddItemView.swift; sourceTree = "<group>"; };
 		E3394BBC27D50EC10091E582 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E332717A27FDE1500018477D /* CodeScanner in Frameworks */,
+				E32B7FDB2805B14900222096 /* JSONParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +176,8 @@
 				3A3E772A27DA24B800C1057B /* FridgeGridView.swift */,
 				E31B59F727E0F61700F94310 /* AddItemView.swift */,
 				E31B59F927E0F64800F94310 /* GroceryListView.swift */,
+				E332717627F602FF0018477D /* CameraScan.swift */,
+				E332717B27FDE86E0018477D /* ApiAddItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +224,10 @@
 			dependencies = (
 			);
 			name = MyGroceries;
+			packageProductDependencies = (
+				E332717927FDE1500018477D /* CodeScanner */,
+				E32B7FDA2805B14900222096 /* JSONParser */,
+			);
 			productName = MyGroceries;
 			productReference = 2356281551211BFB952A8381 /* MyGroceries.app */;
 			productType = "com.apple.product-type.application";
@@ -259,6 +273,10 @@
 				Base,
 			);
 			mainGroup = 235620D11931877D46B5B5C4;
+			packageReferences = (
+				E332717827FDE1500018477D /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				E32B7FD92805B14900222096 /* XCRemoteSwiftPackageReference "JSONParser" */,
+			);
 			productRefGroup = 235620E9CAE74D85134A108C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -319,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AD3C31127D0E5AC00B75DB2 /* GroceryItemOld.swift in Sources */,
+				E332717727F602FF0018477D /* CameraScan.swift in Sources */,
 				23562E2243ACFD4B941F4F6C /* MyGroceriesApp.swift in Sources */,
 				E3394BBD27D50EC10091E582 /* Theme.swift in Sources */,
 				3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */,
@@ -328,6 +347,7 @@
 				3A4FBFBC27EFF22C00BD7185 /* ImagePicker.swift in Sources */,
 				E3A7B8A127E23828000BD3F7 /* MyGroceries.xcdatamodeld in Sources */,
 				E31B59F827E0F61700F94310 /* AddItemView.swift in Sources */,
+				E332717C27FDE86E0018477D /* ApiAddItemView.swift in Sources */,
 				3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,19 +396,24 @@
 				DEVELOPMENT_TEAM = G6TSQJ6DQ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MyGroceries;
+				PRODUCT_BUNDLE_IDENTIFIER = dtu.engtech.s205354.mygroceries;
 				PRODUCT_NAME = MyGroceries;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				q = "";
 			};
 			name = Release;
 		};
@@ -519,7 +544,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -569,19 +595,24 @@
 				DEVELOPMENT_TEAM = G6TSQJ6DQ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SwiftProjectDTU.MyGroceries;
+				PRODUCT_BUNDLE_IDENTIFIER = dtu.engtech.s205354.mygroceries;
 				PRODUCT_NAME = MyGroceries;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				q = "";
 			};
 			name = Debug;
 		};
@@ -625,6 +656,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E32B7FD92805B14900222096 /* XCRemoteSwiftPackageReference "JSONParser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Gerzer/JSONParser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		E332717827FDE1500018477D /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E32B7FDA2805B14900222096 /* JSONParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E32B7FD92805B14900222096 /* XCRemoteSwiftPackageReference "JSONParser" */;
+			productName = JSONParser;
+		};
+		E332717927FDE1500018477D /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E332717827FDE1500018477D /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3A6E847A27DA3980007BDB38 /* MyGroceries.xcdatamodeld */ = {

@@ -39,6 +39,11 @@ struct MyGroceriesApp: App {
                         Text("Add item")
                     }
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                CameraScan()
+                    .tabItem{
+                        Image(systemName: "barcode")
+                        Text("Barcode Scan")
+                    }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
