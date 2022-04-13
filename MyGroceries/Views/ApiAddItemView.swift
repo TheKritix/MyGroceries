@@ -34,14 +34,16 @@ struct ApiAddItemView: View {
     
     
     var body: some View {
-
-        VStack {
-            Text(productResult.product_name ?? "Fetching product name...")
-            Text(productResult.code ?? "Fetching barcode...")
-            Text(productResult.status_verbose ?? "Fetching status...")
-            AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
+        
+        NavigationView {
+            VStack {
+                Text(productResult.product_name ?? "Fetching product name...")
+                Text(productResult.code ?? "Fetching barcode...")
+                Text(productResult.status_verbose ?? "Fetching status...")
+                AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
+            }
         }
-            .task{await loadData()}
+        .task{await loadData()}
     }
     
     func loadData() async {
