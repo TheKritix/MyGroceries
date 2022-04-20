@@ -41,140 +41,151 @@ struct ApiAddItemView: View {
     @State var setCategory: String = "Category"
     @State var setPurchaseDate: Date = Date()
     @State var setExpirationDate: Date = Date()
-
+    
     @State private var inputImage: UIImageView?
+    
+    @State var unableToFindProduct = false
+    
+    
     
     var body: some View {
         
         NavigationView {
             Form {
-                TextField("Grocery", text: $setGrocery)
-                TextField("Quantity", text: $setQuantity)
-                    .keyboardType(.decimalPad)
-                
-                //Unit
-                Menu {
-                    Button {
-                        setUnit = "kg"
-                    } label: {
-                        Text("Kilogram")
-                    }
-                    Button {
-                        setUnit = "g"
-                    } label: {
-                        Text("Gram")
-                    }
-                    Button {
-                        setUnit = "mL"
-                    } label: {
-                        Text("Mililiter")
-                    }
-                    Button {
-                        setUnit = "cL"
-                    } label: {
-                        Text("Centiliter")
-                    }
-                    Button {
-                        setUnit = "L"
-                    } label: {
-                        Text("Liter")
-                    }
-                    Button {
-                        setUnit = "pcs"
-                    } label: {
-                        Text("Pieces")
-                    }
-                    Button {
-                        setUnit = ""
-                    } label: {
-                        Text("N/A")
-                    }
-                } label: {
-                    Text(setUnit)
+                if (unableToFindProduct) {
+                    Text("Unable to find product. Please add manually, or scan another item")
+                    Text("Scanned Barcode: " + (productResult.code ?? "Unable to find Barcode"))
                 }
-                
-                Section {
-                    //Category
+                else {
+                    TextField("Grocery", text: $setGrocery)
+                    TextField("Quantity", text: $setQuantity)
+                        .keyboardType(.decimalPad)
+                    
+                    //Unit
                     Menu {
                         Button {
-                            setCategory = "Protein"
+                            setUnit = "kg"
                         } label: {
-                            Text("Protein")
+                            Text("Kilogram")
                         }
                         Button {
-                            setCategory = "Vegetable"
+                            setUnit = "g"
                         } label: {
-                            Text("Vegetable")
+                            Text("Gram")
                         }
                         Button {
-                            setCategory = "Fruit"
+                            setUnit = "mL"
                         } label: {
-                            Text("Fruit")
+                            Text("Mililiter")
                         }
                         Button {
-                            setCategory = "Grain"
+                            setUnit = "cL"
                         } label: {
-                            Text("Grain")
+                            Text("Centiliter")
                         }
                         Button {
-                            setCategory = "Snack"
+                            setUnit = "L"
                         } label: {
-                            Text("Snack")
+                            Text("Liter")
                         }
                         Button {
-                            setCategory = "Other"
+                            setUnit = "pcs"
                         } label: {
-                            Text("Other")
+                            Text("Pieces")
+                        }
+                        Button {
+                            setUnit = ""
+                        } label: {
+                            Text("N/A")
                         }
                     } label: {
-                        Text(setCategory)
+                        Text(setUnit)
                     }
-                }
-                AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
-                    .frame(width: 150, height: 400, alignment: .center)
-                Section {}
-
-                Button (action: {
-                    let newGrocery = GroceryItem(context: moc)
                     
-                    newGrocery.groceryType = setGrocery
-                    newGrocery.quantity = Int16(setQuantity) ?? 0
-                    newGrocery.unit = setUnit
-                    newGrocery.purchaseDate = setPurchaseDate
-                    newGrocery.expirationDate = setExpirationDate
-                    newGrocery.foodCategory = setCategory
-                  
-                    
-                    if (setCategory == "") {
-                        setCategory = "Other"
+                    Section {
+                        //Category
+                        Menu {
+                            Button {
+                                setCategory = "Protein"
+                            } label: {
+                                Text("Protein")
+                            }
+                            Button {
+                                setCategory = "Vegetable"
+                            } label: {
+                                Text("Vegetable")
+                            }
+                            Button {
+                                setCategory = "Fruit"
+                            } label: {
+                                Text("Fruit")
+                            }
+                            Button {
+                                setCategory = "Grain"
+                            } label: {
+                                Text("Grain")
+                            }
+                            Button {
+                                setCategory = "Snack"
+                            } label: {
+                                Text("Snack")
+                            }
+                            Button {
+                                setCategory = "Other"
+                            } label: {
+                                Text("Other")
+                            }
+                        } label: {
+                            Text(setCategory)
+                        }
                     }
-                
-                    if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
+                    AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
+                        .frame(width: 150, height: 400, alignment: .center)
+                    Section {}
+                    
+                    Button (action: {
+                        let newGrocery = GroceryItem(context: moc)
                         
-                    do {
-                        try moc.save()
-                        print("Bought record updated")
+                        newGrocery.groceryType = setGrocery
+                        newGrocery.quantity = Int16(setQuantity) ?? 0
+                        newGrocery.unit = setUnit
+                        newGrocery.purchaseDate = setPurchaseDate
+                        newGrocery.expirationDate = setExpirationDate
+                        newGrocery.foodCategory = setCategory
                         
-                    } catch {
-                        print("something went wrong")
+                        
+                        if (setCategory == "") {
+                            setCategory = "Other"
+                        }
+                        
+                        if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
+                            
+                            do {
+                                try moc.save()
+                                print("Bought record updated")
+                                
+                            } catch {
+                                print("something went wrong")
+                            }
+                            
+                            setGrocery = ""
+                            setQuantity = ""
+                            setUnit = "Unit"
+                            setCategory = "Category"
+                            setPurchaseDate = Date()
+                            setExpirationDate = Date()
+                        }
+                        
+                    } )
+                    {
+                        Text("Add Item")
+                            .bold()
                     }
-                    
-                    setGrocery = ""
-                    setQuantity = ""
-                    setUnit = "Unit"
-                    setCategory = "Category"
-                    setPurchaseDate = Date()
-                    setExpirationDate = Date()
-                    }
-                
-                } )
-                {
-                    Text("Add Item")
-                        .bold()
                 }
             }
             .padding(.top, 120)
             .edgesIgnoringSafeArea(.top)
+            
         }
         .task{await loadData()}
         .navigationBarTitle("Add Item", displayMode: .inline)
@@ -199,6 +210,10 @@ struct ApiAddItemView: View {
             setGrocery = productResult.product_name ?? "Fetching product name..."
             
             await inputImage?.loadFrom(URLAddress: productResult.imageURL ?? "localhost")
+            
+            if (productResult.status_verbose == "product not found") {
+                unableToFindProduct = true
+            }
         }
         catch {
             print("Invalid Data")
@@ -217,7 +232,7 @@ extension UIImageView {
         DispatchQueue.main.async { [weak self] in
             if let imageData = try? Data(contentsOf: url) {
                 if let loadedImage = UIImage(data: imageData) {
-                        self?.image = loadedImage
+                    self?.image = loadedImage
                 }
             }
         }
