@@ -21,6 +21,8 @@ struct BarProduct: Codable {
 
 struct ApiAddItemView: View {
     
+    @Environment(\.managedObjectContext) var moc
+    
     @State var scannedCode: String?
     @State private var productResult = BarProduct(product_name: nil, imageURL: nil, code: nil, status_verbose: nil)
     
@@ -33,17 +35,149 @@ struct ApiAddItemView: View {
     //let jsonURL = "https://world.openfoodfacts.org/api/v0/product/5741000119020.json"
     
     
+    @State var setGrocery: String = ""
+    @State var setQuantity: String = ""
+    @State var setUnit: String = "Unit"
+    @State var setCategory: String = "Category"
+    @State var setPurchaseDate: Date = Date()
+    @State var setExpirationDate: Date = Date()
+
+    @State private var inputImage: UIImageView?
+    
     var body: some View {
         
         NavigationView {
-            VStack {
-                Text(productResult.product_name ?? "Fetching product name...")
-                Text(productResult.code ?? "Fetching barcode...")
-                Text(productResult.status_verbose ?? "Fetching status...")
+            Form {
+                TextField("Grocery", text: $setGrocery)
+                TextField("Quantity", text: $setQuantity)
+                    .keyboardType(.decimalPad)
+                
+                //Unit
+                Menu {
+                    Button {
+                        setUnit = "kg"
+                    } label: {
+                        Text("Kilogram")
+                    }
+                    Button {
+                        setUnit = "g"
+                    } label: {
+                        Text("Gram")
+                    }
+                    Button {
+                        setUnit = "mL"
+                    } label: {
+                        Text("Mililiter")
+                    }
+                    Button {
+                        setUnit = "cL"
+                    } label: {
+                        Text("Centiliter")
+                    }
+                    Button {
+                        setUnit = "L"
+                    } label: {
+                        Text("Liter")
+                    }
+                    Button {
+                        setUnit = "pcs"
+                    } label: {
+                        Text("Pieces")
+                    }
+                    Button {
+                        setUnit = ""
+                    } label: {
+                        Text("N/A")
+                    }
+                } label: {
+                    Text(setUnit)
+                }
+                
+                Section {
+                    //Category
+                    Menu {
+                        Button {
+                            setCategory = "Protein"
+                        } label: {
+                            Text("Protein")
+                        }
+                        Button {
+                            setCategory = "Vegetable"
+                        } label: {
+                            Text("Vegetable")
+                        }
+                        Button {
+                            setCategory = "Fruit"
+                        } label: {
+                            Text("Fruit")
+                        }
+                        Button {
+                            setCategory = "Grain"
+                        } label: {
+                            Text("Grain")
+                        }
+                        Button {
+                            setCategory = "Snack"
+                        } label: {
+                            Text("Snack")
+                        }
+                        Button {
+                            setCategory = "Other"
+                        } label: {
+                            Text("Other")
+                        }
+                    } label: {
+                        Text(setCategory)
+                    }
+                }
                 AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
+                    .frame(width: 150, height: 400, alignment: .center)
+                Section {}
+
+                Button (action: {
+                    let newGrocery = GroceryItem(context: moc)
+                    
+                    newGrocery.groceryType = setGrocery
+                    newGrocery.quantity = Int16(setQuantity) ?? 0
+                    newGrocery.unit = setUnit
+                    newGrocery.purchaseDate = setPurchaseDate
+                    newGrocery.expirationDate = setExpirationDate
+                    newGrocery.foodCategory = setCategory
+                  
+                    
+                    if (setCategory == "") {
+                        setCategory = "Other"
+                    }
+                
+                    if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
+                        
+                    do {
+                        try moc.save()
+                        print("Bought record updated")
+                        
+                    } catch {
+                        print("something went wrong")
+                    }
+                    
+                    setGrocery = ""
+                    setQuantity = ""
+                    setUnit = "Unit"
+                    setCategory = "Category"
+                    setPurchaseDate = Date()
+                    setExpirationDate = Date()
+                    }
+                
+                } )
+                {
+                    Text("Add Item")
+                        .bold()
+                }
             }
+            .padding(.top, 120)
+            .edgesIgnoringSafeArea(.top)
         }
         .task{await loadData()}
+        .navigationBarTitle("Add Item", displayMode: .inline)
     }
     
     func loadData() async {
@@ -61,9 +195,31 @@ struct ApiAddItemView: View {
             productResult.imageURL = parser![dictionaryAt: "product"]?["image_url", as: String.self] ?? "Unable to fetch barcode"
             productResult.code = parser!["code", as: String.self] ?? "Unable to fetch code"
             productResult.status_verbose = parser!["status_verbose", as: String.self] ?? "Unable to fetch status"
+            
+            setGrocery = productResult.product_name ?? "Fetching product name..."
+            
+            await inputImage?.loadFrom(URLAddress: productResult.imageURL ?? "localhost")
         }
         catch {
             print("Invalid Data")
+        }
+    }
+}
+
+//TODO: Make it work with UIImage
+// Used following solution: https://www.codingem.com/swift-load-image-from-url/
+extension UIImageView {
+    func loadFrom(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                        self?.image = loadedImage
+                }
+            }
         }
     }
 }

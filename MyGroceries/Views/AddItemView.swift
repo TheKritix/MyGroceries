@@ -39,9 +39,7 @@ struct AddItemView : View {
         
         NavigationView {
    
-
             Form {
-
                 Section{
                     //Empty for whitespace in UI.
                 }
@@ -134,17 +132,9 @@ struct AddItemView : View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 150, height: 150, alignment: .center)
                             .clipped()
-                    
-
                 }
               
-            
-        
-                Section {
-                    
-                }
-
-              
+                Section {}
                 
                 Button (action: {
         
