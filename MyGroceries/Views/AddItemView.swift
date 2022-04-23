@@ -135,8 +135,6 @@ struct AddItemView : View {
                             .frame(width: 150, height: 150, alignment: .center)
                             .clipped()
                 }
-              
-                Section {}
                 
                 Button (action: {
         
@@ -183,12 +181,7 @@ struct AddItemView : View {
                     Text("Add Item")
                         .bold()
                 }
-                .frame(width: 200)
-                .navigationTitle("Add Item to Grocery List")
-
-
-                
-                
+                .navigationTitle("Add Item to List")
             }
         
                 .alert(isPresented: $showFieldAlert) {
