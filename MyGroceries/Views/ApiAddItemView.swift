@@ -46,8 +46,6 @@ struct ApiAddItemView: View {
     
     @State var unableToFindProduct = false
     
-    
-    
     var body: some View {
         
         NavigationView {
@@ -57,6 +55,7 @@ struct ApiAddItemView: View {
                     Text("Scanned Barcode: " + (productResult.code ?? "Unable to find Barcode"))
                 }
                 else {
+                    
                     TextField("Grocery", text: $setGrocery)
                     TextField("Quantity", text: $setQuantity)
                         .keyboardType(.decimalPad)
@@ -94,12 +93,13 @@ struct ApiAddItemView: View {
                             Text("Pieces")
                         }
                         Button {
-                            setUnit = ""
+                            setUnit = "N/A"
                         } label: {
                             Text("N/A")
                         }
                     } label: {
-                        Text(setUnit)
+                        Label(setUnit, systemImage: "list.dash")
+                            .frame(width: 290, height: 50, alignment: .center)
                     }
                     
                     Section {
@@ -136,7 +136,8 @@ struct ApiAddItemView: View {
                                 Text("Other")
                             }
                         } label: {
-                            Text(setCategory)
+                            Label(setCategory, systemImage: "list.dash")
+                                .frame(width: 290, height: 50, alignment: .center)
                         }
                     }
                     AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
@@ -183,9 +184,6 @@ struct ApiAddItemView: View {
                     }
                 }
             }
-            .padding(.top, 120)
-            .edgesIgnoringSafeArea(.top)
-            
         }
         .task{await loadData()}
         .navigationBarTitle("Add Item", displayMode: .inline)

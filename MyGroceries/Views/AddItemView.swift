@@ -85,7 +85,8 @@ struct AddItemView : View {
                         Text("N/A")
                     }
                 } label: {
-                    Text(setUnit)
+                    Label(setUnit, systemImage: "list.dash")
+                        .frame(width: 290, height: 50, alignment: .center)
                 }
                 
                 Section {
@@ -117,7 +118,8 @@ struct AddItemView : View {
                             Text("Snack")
                         }
                     } label: {
-                        Text(setCategory)
+                        Label(setCategory, systemImage: "list.dash")
+                            .frame(width: 290, height: 50, alignment: .center)
                     }
                 }
                 
