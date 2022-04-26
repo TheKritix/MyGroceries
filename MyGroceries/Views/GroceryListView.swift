@@ -30,6 +30,8 @@ struct GroceryListView : View {
                     VStack(alignment: .leading) {
                         Spacer()
                         Text(grocery.groceryType ?? "Unable to find grocery")
+                        Text(String(grocery.quantity))
+                        Text(grocery.unit ?? "Unable to idenfity unit")
                         Text(grocery.foodCategory ?? "Unable to idenfity category")
                             .font(.system(size: 15))
                         if (grocery.image != nil){

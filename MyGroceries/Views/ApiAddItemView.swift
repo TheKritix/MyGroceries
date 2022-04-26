@@ -19,6 +19,7 @@ struct BarProduct: Codable {
 // Source: https://www.hackingwithswift.com/books/ios-swiftui/sending-and-receiving-codable-data-with-urlsession-and-swiftui
 // Source: https://github.com/Gerzer/JSONParser
 
+
 struct ApiAddItemView: View {
     
     @Environment(\.managedObjectContext) var moc
@@ -46,7 +47,11 @@ struct ApiAddItemView: View {
     
     @State var unableToFindProduct = false
     
+
+    
     var body: some View {
+        
+
         
         NavigationView {
             Form {
@@ -142,6 +147,7 @@ struct ApiAddItemView: View {
                     }
                     AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
                         .frame(width: 150, height: 400, alignment: .center)
+                    let asyncImage = AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
                     Section {}
                     
                     Button (action: {
@@ -153,6 +159,9 @@ struct ApiAddItemView: View {
                         newGrocery.purchaseDate = setPurchaseDate
                         newGrocery.expirationDate = setExpirationDate
                         newGrocery.foodCategory = setCategory
+                        
+                        
+                        newGrocery.image = asyncImage.snapshot().pngData();
                         
                         
                         if (setCategory == "") {
@@ -236,3 +245,25 @@ extension UIImageView {
         }
     }
 }
+
+extension View {
+    func snapshot() -> UIImage {
+        let controller = UIHostingController(rootView: self)
+        let view = controller.view
+
+        let targetSize = controller.view.intrinsicContentSize
+        view?.bounds = CGRect(origin: .zero, size: targetSize)
+        view?.backgroundColor = .clear
+        
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+
+        return renderer.image { _ in
+            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+        }
+    }
+}
+
+
+
+
+
