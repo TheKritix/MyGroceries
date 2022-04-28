@@ -9,9 +9,13 @@ import Foundation
 import SwiftUI
 
 struct FridgeGridView : View {
+    
+    @Environment(\.managedObjectContext) var moc
+    
  
     var boughtItems : FetchedResults<BoughtItem>
     @State var isClicked = false
+    @State private var isEditing = false
     
     var columns = [GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5) ]
     
@@ -23,9 +27,26 @@ struct FridgeGridView : View {
     
     
     var body : some View {
-        
      
-        VStack {
+        VStack(alignment: .trailing) {
+            HStack {
+                Button(action: {
+                    if isEditing {
+                        isEditing = false
+                    } else {
+                        isEditing = true
+                    }
+                }){
+                    if isEditing {
+                        Text("Done")
+                    } else {
+                        Text("Edit Fridge")
+                    }
+                    
+                }
+            }
+            .background(.blue)
+
 //            Button(action: {
 //                for item in boughtItems {
 //                    if (item.expirationDate != nil){
@@ -46,18 +67,19 @@ struct FridgeGridView : View {
 //                Text("Send notifications")
 //            }
             ZStack {
-                RoundedRectangle(cornerRadius: 50)
+                Rectangle()
                     .fill(.gray)
                     .brightness(0.35)
+                    
                 VStack {
                     Text("My fridge")
                         .padding(5)
                         .background(.white)
                         .cornerRadius(15)
                     ZStack {
-                        RoundedRectangle(cornerRadius: 16.0)
-                            .fill(.teal)
-                            .opacity(0.4)
+                        Rectangle()
+                            .fill(.white)
+                            .opacity(0.5)
                         ScrollView {
                             LazyVGrid(columns: columns, spacing: 5) {
                                 ForEach(boughtItems, id: \.self) { item in
@@ -68,22 +90,68 @@ struct FridgeGridView : View {
                                             }
 
                                     }
+                                        .overlay(alignment: .topTrailing) {
+                                    if isEditing {
+                                        Button {
+                                            withAnimation {
+                                                do {
+                                                    moc.delete(item)
+                                                    try moc.save()
+                                                    
+                                                } catch {
+                                                    print("something went wrong with deleting grocery")
+                                                }
+
+                                            }
+                                        } label: {
+                                            Image(systemName: "xmark.square.fill")
+                                                        .font(Font.title)
+                                                        .symbolRenderingMode(.palette)
+                                                        .foregroundStyle(.white, .red)
+                                        }
+                                        .offset(x: 7, y: -7)
+                                    }
+                                }
                                     
                                 }
+                                
                              
                             }
-                            .padding( 5)
+                            .padding(8)
+
                         }
                     }
-                    .frame(width: 360)
+                    .cornerRadius( 16, corners: [.topLeft, .topRight])
+                    .frame(width: 380)
                 }
             }
+            .cornerRadius( 50, corners: [.topLeft, .topRight])
         }
         .padding(.top)
         
     }
 }
 
+/*
+ Reference for struct RoundedCorner and cornerRadius View extension
+ https://stackoverflow.com/questions/56760335/round-specific-corners-swiftui
+ */
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
 
 struct FridgeGridView_Previews: PreviewProvider {
     static var previews: some View {
