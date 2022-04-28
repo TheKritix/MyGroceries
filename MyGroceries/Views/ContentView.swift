@@ -19,9 +19,9 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            FridgeView(boughtItems: boughtItems)
+            FridgeGridView(boughtItems: boughtItems)
                 .tabItem {
-                    Image(systemName: "1.magnifyingglass")
+                    Image(systemName: "square.grid.3x3.square")
                     Text("Fridge")
                 }
             GroceryListView(boughtItems: boughtItems,groceryItems: groceryItems)

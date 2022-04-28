@@ -46,18 +46,19 @@ struct FridgeGridView : View {
 //                Text("Send notifications")
 //            }
             ZStack {
-                RoundedRectangle(cornerRadius: 50)
+                Rectangle()
                     .fill(.gray)
                     .brightness(0.35)
+                    
                 VStack {
                     Text("My fridge")
                         .padding(5)
                         .background(.white)
                         .cornerRadius(15)
                     ZStack {
-                        RoundedRectangle(cornerRadius: 16.0)
-                            .fill(.teal)
-                            .opacity(0.4)
+                        Rectangle()
+                            .fill(.white)
+                            .opacity(0.5)
                         ScrollView {
                             LazyVGrid(columns: columns, spacing: 5) {
                                 ForEach(boughtItems, id: \.self) { item in
@@ -72,18 +73,40 @@ struct FridgeGridView : View {
                                 }
                              
                             }
-                            .padding( 5)
+                            .padding(8)
                         }
                     }
-                    .frame(width: 360)
+                    .cornerRadius( 16, corners: [.topLeft, .topRight])
+                    .frame(width: 380)
                 }
             }
+            .cornerRadius( 50, corners: [.topLeft, .topRight])
         }
         .padding(.top)
         
     }
 }
 
+/*
+ Reference for struct RoundedCorner and cornerRadius View extension
+ https://stackoverflow.com/questions/56760335/round-specific-corners-swiftui
+ */
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
 
 struct FridgeGridView_Previews: PreviewProvider {
     static var previews: some View {

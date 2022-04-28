@@ -26,6 +26,11 @@ struct GroceryItemView : View {
                 
             VStack {
                 VStack {
+                    if (boughtItem?.groceryType != nil){
+                        Text(boughtItem?.groceryType ?? "Unknown grocery type")
+                        .font(.system(size: 10))
+                        .bold()
+                    }
                     if (boughtItem?.image != nil){
                         let image = UIImage(data: boughtItem!.image!)
                         Image(uiImage: image!)
