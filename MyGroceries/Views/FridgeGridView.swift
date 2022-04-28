@@ -104,9 +104,8 @@ struct FridgeGridView : View {
 
                                             }
                                         } label: {
-                                            Image(systemName: "xmark.square.fill")
-                                                        .font(Font.title)
-                                                        .symbolRenderingMode(.palette)
+                                            Image(systemName: "minus.circle.fill")
+                                                        .font(.title)
                                                         .foregroundStyle(.white, .red)
                                         }
                                         .offset(x: 7, y: -7)
