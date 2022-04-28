@@ -41,6 +41,7 @@ struct ContentView: View {
                     Text("Barcode Scan")
                 }
         }
+        .navigationBarHidden(true)
     }
         
         

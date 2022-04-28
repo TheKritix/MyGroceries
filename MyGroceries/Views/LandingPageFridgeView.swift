@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 struct LandingPageFridgeView : View {
-    
+
 
     var body : some View {
 

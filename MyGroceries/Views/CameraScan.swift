@@ -22,7 +22,6 @@ struct CameraScan : View {
             VStack(spacing: 10) {
                 if let code = scannedCode {
                     NavigationLink("AddItemApi", destination: ApiAddItemView(scannedCode: code), isActive: .constant(isActive)).hidden()
-                        .navigationTitle("Barcode scanner")
                 }
                 Button {
                     isPresentingScanner = true
@@ -35,7 +34,6 @@ struct CameraScan : View {
                     
                 }
             }
-        }
         .sheet(isPresented: $isPresentingScanner) {
             CodeScannerView(codeTypes: [.ean8, .ean13]) { response in
                 if case let .success(result) = response {
@@ -46,5 +44,7 @@ struct CameraScan : View {
                 }
             }
         }
+        }
+           
     }
 }

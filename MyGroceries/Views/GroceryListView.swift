@@ -23,7 +23,6 @@ struct GroceryListView : View {
     
     
     var body : some View {
-        NavigationView {
             List {
                 ForEach(groceryItems) { grocery in
                      
@@ -72,9 +71,6 @@ struct GroceryListView : View {
                             } catch {
                                 print("something went wrong with deleting grocery from list")
                             }
-                    
-
-                           
                         }
                             .tint(.green)
                     }
@@ -93,10 +89,11 @@ struct GroceryListView : View {
                 }
             .navigationTitle("Grocery List")
             }
+
         
             
         }
-    }
+    
 
 
 //struct GroceryListPreview : PreviewProvider {

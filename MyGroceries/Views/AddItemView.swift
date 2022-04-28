@@ -36,8 +36,6 @@ struct AddItemView : View {
     }
     
     var body : some View {
-        
-        NavigationView {
    
             Form {
                 Section{
@@ -181,7 +179,6 @@ struct AddItemView : View {
                     Text("Add Item")
                         .bold()
                 }
-                .navigationTitle("Add Item to List")
             }
         
                 .alert(isPresented: $showFieldAlert) {
@@ -192,7 +189,6 @@ struct AddItemView : View {
                 }
 
                 
-            }
         .onChange(of: inputImage) {
             _ in loadImage()
         }
@@ -200,8 +196,8 @@ struct AddItemView : View {
         ImagePicker(image: $inputImage)
         }
 
-
     }
+        
 
        
         }
