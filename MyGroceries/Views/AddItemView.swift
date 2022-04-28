@@ -36,7 +36,8 @@ struct AddItemView : View {
     }
     
     var body : some View {
-   
+        VStack {
+            TitleTextView(titleText: "Add Items to Grocery List")
             Form {
                 Section{
                     //Empty for whitespace in UI.
@@ -187,6 +188,8 @@ struct AddItemView : View {
                         message: Text("Please fill out all the available options.")
                     )
                 }
+        }
+
 
                 
         .onChange(of: inputImage) {

@@ -23,7 +23,10 @@ struct GroceryListView : View {
     
     
     var body : some View {
+        VStack {
+            TitleTextView(titleText: "Grocery List")
             List {
+                
                 ForEach(groceryItems) { grocery in
                      
                     VStack(alignment: .leading) {
@@ -88,6 +91,8 @@ struct GroceryListView : View {
                     }
                 }
             .navigationTitle("Grocery List")
+        }
+
             }
 
         

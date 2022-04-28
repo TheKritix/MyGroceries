@@ -29,9 +29,9 @@ struct LandingPageView : View {
                             Image(systemName: "hand.tap")
                         }
                         .padding()
-                        .background(Color.blue)
+                        .background(.orange)
                         .cornerRadius(20.0)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(.white)
                         .padding(10)
                     }
                 } else {
@@ -40,7 +40,6 @@ struct LandingPageView : View {
                 }
 
             }
-
 
         
 
