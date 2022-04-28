@@ -9,10 +9,9 @@
 import Foundation
 import SwiftUI
 
-struct LandingPageView : View {
+struct LandingPageFridgeView : View {
     
-    let persistenceController = PersistenceController.shared
-    
+
     var body : some View {
 
                 ZStack {
@@ -31,28 +30,6 @@ struct LandingPageView : View {
                         }
                         .frame(width: 360, height: 200)
                         ZStack {
-                            NavigationLink(
-                                destination: ContentView()
-                                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                                    .navigationBarBackButtonHidden(true)
-                            ){
-                            
-                                    HStack {
-                                        Text("Open my fridge")
-                                            .fontWeight(.bold)
-                                            .font(.title)
-                                        Image(systemName: "hand.tap")
-                                    }
-                                        .padding()
-                                        .background(Color.orange)
-                                        .cornerRadius(20.0)
-                                        .foregroundColor(Color.white)
-                                        .padding(10)
-
-                                
-                                    
-                            }
-                            
                             
                             RoundedRectangle(cornerRadius: 30.0)
                                 .fill(.white)
@@ -76,8 +53,3 @@ struct LandingPageView : View {
 
 }
 
-struct LandingPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        LandingPageView()
-    }
-}

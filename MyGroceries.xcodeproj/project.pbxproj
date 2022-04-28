@@ -13,6 +13,7 @@
 		23562ED4EF22F1314118E441 /* MyGroceriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235625CDC06ABE6BE4B5F7E2 /* MyGroceriesUITests.swift */; };
 		23562F35CF4E7814C3E249D3 /* MyGroceriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356230C725DDC63D232E341 /* MyGroceriesUITestsLaunchTests.swift */; };
 		23562F9DF0107F3DC9E2C7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235626C7FB5338F05AF8EDDC /* Preview Assets.xcassets */; };
+		3A21A485281A972000D8D511 /* LandingPageFridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21A484281A972000D8D511 /* LandingPageFridgeView.swift */; };
 		3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E772A27DA24B800C1057B /* FridgeGridView.swift */; };
 		3A4FBFBC27EFF22C00BD7185 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4FBFBB27EFF22C00BD7185 /* ImagePicker.swift */; };
 		3A4FBFBE27F5D73700BD7185 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4FBFBD27F5D73700BD7185 /* LandingPageView.swift */; };
@@ -65,6 +66,7 @@
 		2356297E67FA1F80932564C5 /* MyGroceriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562A0F0F0739C27B09BF16 /* MyGroceriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562DD73278A6D2D4EC018C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A21A484281A972000D8D511 /* LandingPageFridgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageFridgeView.swift; sourceTree = "<group>"; };
 		3A3E772A27DA24B800C1057B /* FridgeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeGridView.swift; sourceTree = "<group>"; };
 		3A4FBFBB27EFF22C00BD7185 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3A4FBFBD27F5D73700BD7185 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				3A52804627F5F4E80023DE9C /* ContentView.swift */,
 				E32B7FDC2806193700222096 /* CameraScan.swift */,
 				E32B7FE12806197900222096 /* ApiAddItemView.swift */,
+				3A21A484281A972000D8D511 /* LandingPageFridgeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				3A52804727F5F4E80023DE9C /* ContentView.swift in Sources */,
 				E31B59F827E0F61700F94310 /* AddItemView.swift in Sources */,
 				3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */,
+				3A21A485281A972000D8D511 /* LandingPageFridgeView.swift in Sources */,
 				3A52804327F5E4010023DE9C /* GroceryData.swift in Sources */,
 				E32B7FDD2806193700222096 /* CameraScan.swift in Sources */,
 			);
