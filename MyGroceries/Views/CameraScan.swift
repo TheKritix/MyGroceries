@@ -6,7 +6,7 @@
 //
 
 // Source: https://www.hackingwithswift.com/books/ios-swiftui/scanning-qr-codes-with-swiftui
-// Source: https://github.com/twostraws/CodeScanner
+// Source: "https://github.com/twostraws/CodeScanner"
 
 import SwiftUI
 import CodeScanner
@@ -42,7 +42,7 @@ struct CameraScan : View {
                     isActive = true
                     scannedCode = result.string
                     isPresentingScanner = false
-                    print(scannedCode)
+                    print(scannedCode ?? "unable to find code")
                 }
             }
         }

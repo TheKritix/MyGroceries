@@ -88,6 +88,7 @@ struct AddItemView : View {
                     Label(setUnit, systemImage: "list.dash")
                         .frame(width: 290, height: 50, alignment: .center)
                 }
+                .accessibilityIdentifier("unitMenu")
                 
                 Section {
                     //Category
@@ -121,7 +122,9 @@ struct AddItemView : View {
                         Label(setCategory, systemImage: "list.dash")
                             .frame(width: 290, height: 50, alignment: .center)
                     }
+                    .accessibilityIdentifier("categoryMenu")
                 }
+                
                 
                 Section {
                     Button(action: {
