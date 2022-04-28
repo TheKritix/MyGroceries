@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GroceryItemView : View {
     
+
     let boughtItem : BoughtItem?
     
     private let dateFormatter: DateFormatter = {
@@ -22,7 +23,7 @@ struct GroceryItemView : View {
     var body : some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill(.white).opacity(0.3)
+                .fill(.white).opacity(0.2)
                 
             VStack {
                 VStack {

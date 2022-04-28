@@ -58,9 +58,7 @@ struct GroceryListView : View {
                                 //SOMETHING
                             }
                             
-                          
-                             moc.delete(grocery)
-                    
+                            do {
                                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                                                        if success {
                                                            print("Permission granted")
@@ -68,12 +66,26 @@ struct GroceryListView : View {
                                                            print(error.localizedDescription)
                                                        }
                                                    }
+                                moc.delete(grocery)
+                                try moc.save()
+                                
+                            } catch {
+                                print("something went wrong with deleting grocery from list")
+                            }
+                    
+
                            
                         }
                             .tint(.green)
                     }
                     .swipeActions{Button("Delete") {
-                        moc.delete(grocery)
+                        do {
+                            moc.delete(grocery)
+                            try moc.save()
+                            
+                        } catch {
+                            print("something went wrong with deleting grocery from list")
+                        }
                     }
                         .tint(.red)}
                     
