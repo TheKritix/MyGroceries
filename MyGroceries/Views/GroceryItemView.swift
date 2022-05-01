@@ -18,12 +18,21 @@ struct GroceryItemView : View {
         df.dateFormat = "MM/dd/yyyy"
         return df
     }()
-
     
     var body : some View {
+        let days = Calendar.current.numberOfDaysBetween(boughtItem?.expirationDate ?? Date(), and: Date())
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(.white).opacity(0.2)
+            if (days <= 2) {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.red).opacity(0.2)
+            } else if (days >= 3 && days <= 5){
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.yellow).opacity(0.2)
+            } else {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.green).opacity(0.2)
+            }
+                
                 
             VStack {
                 VStack {
@@ -42,11 +51,15 @@ struct GroceryItemView : View {
                             .cornerRadius(16.0)
                     } else {
                         Text(boughtItem?.groceryType ?? "Grocery")
+                            .frame(width: 85, height: 90, alignment: .center)
+                            .cornerRadius(16.0)
                     }
                     
                     if (boughtItem?.expirationDate != nil){
                         Text("Expires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
                         .font(.system(size: 10))
+                        Text(String(days) + " days to expiration")
+                            .font(.system(size: 10))
                     }
                     
                     //Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
@@ -79,6 +92,6 @@ extension Calendar {
         let toDate = startOfDay(for: to)
         let numberOfDays = dateComponents([.day], from: fromDate, to: toDate)
         
-        return numberOfDays.day! + 1 // <1>
+        return numberOfDays.day! // <1>
     }
 }
