@@ -20,28 +20,38 @@ struct ContentView: View {
     var body: some View {
         TabView {
             FridgeGridView(boughtItems: boughtItems)
+                .accentColor(.orange)
                 .tabItem {
                     Image(systemName: "square.grid.3x3.square")
                     Text("Fridge")
                 }
             GroceryListView(boughtItems: boughtItems,groceryItems: groceryItems)
+                .accentColor(.orange)
                 .tabItem {
                     Image(systemName: "checklist")
                     Text("Grocery List")
                 }
+
     
             AddItemView()
+                .accentColor(.orange)
                 .tabItem {
                     Image(systemName: "plus")
                     Text("Add item")
                 }
+                
             CameraScan()
+                .accentColor(.orange)
                 .tabItem{
                     Image(systemName: "barcode")
                     Text("Barcode Scan")
                 }
+            
+
         }
+        .accentColor(.orange)
     }
+
         
         
 }

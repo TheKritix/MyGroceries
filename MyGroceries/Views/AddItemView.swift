@@ -36,9 +36,8 @@ struct AddItemView : View {
     }
     
     var body : some View {
-        
-        NavigationView {
-   
+        VStack {
+            TitleTextView(titleText: "Add Items to Grocery List")
             Form {
                 Section{
                     //Empty for whitespace in UI.
@@ -184,7 +183,6 @@ struct AddItemView : View {
                     Text("Add Item")
                         .bold()
                 }
-                .navigationTitle("Add Item to List")
             }
         
                 .alert(isPresented: $showFieldAlert) {
@@ -193,9 +191,10 @@ struct AddItemView : View {
                         message: Text("Please fill out all the available options.")
                     )
                 }
+        }
+
 
                 
-            }
         .onChange(of: inputImage) {
             _ in loadImage()
         }
@@ -203,8 +202,8 @@ struct AddItemView : View {
         ImagePicker(image: $inputImage)
         }
 
-
     }
+        
 
        
         }

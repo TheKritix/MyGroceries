@@ -10,13 +10,11 @@ import SwiftUI
 @main
 struct MyGroceriesApp: App {
 
-
     var body: some Scene {
         WindowGroup {
-            NavigationView {
                 LandingPageView()
-            }
         }
+
 
         
     }
