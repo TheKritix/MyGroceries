@@ -13,6 +13,7 @@ extension BoughtItem {
 
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BoughtItem.groceryType, ascending: true)], animation: .default)
     static var boughtItems: FetchedResults<BoughtItem>
+  
 }
 
 extension GroceryItem {

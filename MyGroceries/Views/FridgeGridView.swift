@@ -25,10 +25,25 @@ struct FridgeGridView : View {
         return df
     }()
     
+    @GestureState var isDetectingLongPress = false
+     @State var completedLongPress = false
+
+    var longPress : some Gesture {
+         LongPressGesture(minimumDuration: 3)
+             .updating($isDetectingLongPress) { currentState, gestureState,
+                     transaction in
+                 gestureState = currentState
+                 transaction.animation = Animation.easeIn(duration: 2.0)
+             }
+             .onEnded { finished in
+                 self.completedLongPress = finished
+             }
+     }
+
+    
     
     var body : some View {
         VStack {
-            TitleTextView(titleText: "Fridge")
             VStack {
                 Button(action: {
                     if isEditing {
@@ -88,8 +103,29 @@ struct FridgeGridView : View {
                                     HStack {
                                         VStack {
                                             GroceryItemView(boughtItem: item)
+                                                .gesture(longPress)
                                         }
                                         
+                                    }
+
+                                    .overlay(alignment: .bottom) {
+                                        if isEditing {
+                                            Button {
+                                                withAnimation {
+                                                    do {
+                                                        moc.delete(item)
+                                                        try moc.save()
+                                                        
+                                                    } catch {
+                                                        print("something went wrong with deleting grocery")
+                                                    }
+                                                    
+                                                }
+                                            } label: {
+                                                InformationBoxView(boughtItem: item)
+                                            }
+                                            .offset(y: 120)
+                                        }
                                     }
                                     .overlay(alignment: .topTrailing) {
                                         if isEditing {
@@ -112,7 +148,7 @@ struct FridgeGridView : View {
                                             .offset(x: 7, y: -7)
                                         }
                                     }
-                                    
+
                                 }
                                 
                                 
@@ -164,3 +200,5 @@ struct FridgeGridView_Previews: PreviewProvider {
                         BoughtItem.boughtItems)
     }
 }
+
+

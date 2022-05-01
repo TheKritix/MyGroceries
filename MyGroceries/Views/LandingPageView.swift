@@ -33,17 +33,13 @@ struct LandingPageView : View {
                         .cornerRadius(20.0)
                         .foregroundColor(.white)
                         .padding(10)
+                        .accessibilityIdentifier("landingButton")
                     }
                 } else {
                     ContentView()
                            .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 }
-                .padding()
-                .background(Color.blue)
-                .cornerRadius(20.0)
-                .foregroundColor(Color.white)
-                .padding(10)
-                .accessibilityIdentifier("landingButton")
+
                 
                 
                 
