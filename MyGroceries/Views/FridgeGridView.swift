@@ -77,6 +77,7 @@ struct FridgeGridView : View {
                     .brightness(0.35)
                 
                 VStack {
+                    Spacer()
                     Text("My fridge")
                         .padding(5)
                         .background(.white)
