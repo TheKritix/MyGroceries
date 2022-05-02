@@ -22,8 +22,16 @@ struct InformationBoxView : View {
     var body : some View {
         let days = Calendar.current.numberOfDaysBetween(boughtItem?.expirationDate ?? Date(), and: Date())
         ZStack {
+            if (days <= 2) {
                 RoundedRectangle(cornerRadius: 20)
-                .fill(.white)
+                    .fill(.red).opacity(0.2)
+            } else if (days >= 3 && days <= 5){
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.yellow).opacity(0.2)
+            } else {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.green).opacity(0.2)
+            }
                 
             VStack {
                 if (boughtItem?.groceryType != nil){
@@ -49,7 +57,7 @@ struct InformationBoxView : View {
                 
             }
             .padding(9)
-            .accentColor(.black)
+
 
         }
         .frame(width: 120, height: 160)

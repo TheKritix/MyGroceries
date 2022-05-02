@@ -29,7 +29,7 @@ struct GroceryItemView : View {
         let days = Calendar.current.numberOfDaysBetween(boughtItem?.expirationDate ?? Date(), and: Date())
 
                     Button {
-                            withAnimation(.easeInOut(duration: 1.5)) {
+                        withAnimation(.easeInOut(duration: 1)) {
                                 animationAmount += 180
                                 if frontView {
                                     frontView = false
@@ -93,8 +93,8 @@ struct GroceryItemView : View {
 
                     }
                     .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+                    .accentColor(.black)
 
-                    
 
 
                 
@@ -102,6 +102,7 @@ struct GroceryItemView : View {
 
         
     }
+    
 }
 
 

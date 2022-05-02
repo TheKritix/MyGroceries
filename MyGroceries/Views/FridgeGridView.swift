@@ -103,10 +103,11 @@ struct FridgeGridView : View {
                                     HStack {
                                         VStack {
                                             GroceryItemView(boughtItem: item)
-                                                .gesture(longPress)
+                                                
                                         }
                                         
                                     }
+                                    
                                     .overlay(alignment: .topTrailing) {
                                         if isEditing {
                                             Button {
