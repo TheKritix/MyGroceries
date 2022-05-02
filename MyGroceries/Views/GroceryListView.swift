@@ -28,22 +28,37 @@ struct GroceryListView : View {
             List {
                 
                 ForEach(groceryItems) { grocery in
-                     
-                    VStack(alignment: .leading) {
+                    VStack {
                         Spacer()
-                        Text(grocery.groceryType ?? "Unable to find grocery")
-                        Text(String(grocery.quantity))
-                        Text(grocery.unit ?? "Unable to idenfity unit")
-                        Text(grocery.foodCategory ?? "Unable to idenfity category")
-                            .font(.system(size: 15))
-                        if (grocery.image != nil){
-                            let image = UIImage(data: grocery.image!)
-                            Image(uiImage: image!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 60, height: 60, alignment: .center)
-                                .clipped()
+                        HStack {
+                            
+                            VStack(alignment: .leading) {
+                                Text(grocery.foodCategory ?? "Unable to idenfity category")
+                                    .font(.system(size: 10))
+                                Text(grocery.groceryType ?? "Unable to find grocery")
+                                    .fontWeight(.semibold)
+                                HStack {
+                                    Text(String(grocery.quantity))
+                                    Text(grocery.unit ?? "Unable to idenfity unit")
+                                }
+                                
+                            }
+                            Spacer()
+                            VStack(alignment: .trailing) {
+                                if (grocery.image != nil){
+                                    let image = UIImage(data: grocery.image!)
+                                    Image(uiImage: image!)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 80, height: 80, alignment: .trailing)
+                                        .clipped()
+                                }
+                            }
                         }
+                        
+
+
+
                     }
                     .swipeActions{
                         Button("Purchased") {
