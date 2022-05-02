@@ -44,6 +44,30 @@ struct GroceryItemFrontView : View {
                     .frame(width: 85, height: 90, alignment: .center)
                     .clipped()
                     .cornerRadius(16.0)
+                    .overlay(alignment: .bottom) {
+                            Button {
+                                withAnimation {
+                                    do {
+                              
+                                        
+                                    } catch {
+                                   
+                                    }
+                                    
+                                }
+                            } label: {
+                                HStack {
+                                    Text(String(Int16(boughtItem?.quantity ?? 1)))
+                                    Text(boughtItem?.unit ?? "")
+                                }
+                                    .font(.system(size: 12))
+                                    .padding(2)
+                                    .background(.yellow)
+                                    .cornerRadius(30)
+                                    .accentColor(.white)
+                            }
+                      
+                    }
             } else {
                 Text(boughtItem?.groceryType ?? "Grocery")
                     .frame(width: 85, height: 90, alignment: .center)

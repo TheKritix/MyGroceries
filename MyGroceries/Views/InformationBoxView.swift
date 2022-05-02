@@ -34,20 +34,24 @@ struct InformationBoxView : View {
             }
                 
             VStack {
+                Spacer()
                 if (boughtItem?.groceryType != nil){
-                    Text(boughtItem?.groceryType ?? "")
-                        .font(.system(size: 10))
-                    Spacer()
-                    Spacer()
+                    Text(boughtItem?.groceryType ?? "Unknown grocery type")
+                    .font(.system(size: 10))
+                    .bold()
                 }
+                Spacer()
+                Spacer()
+                
               
                     Text(String(days) + " days to expiration")
                         .font(.system(size: 10))
-                    
+                    Spacer()
                     if (boughtItem?.purchaseDate != nil){
                         Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date()))")
                             .font(.system(size: 10))
                     }
+                Spacer()
                     if (boughtItem?.expirationDate != nil){
                         Text("Expires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))\n")
                         .font(.system(size: 10))
@@ -57,6 +61,8 @@ struct InformationBoxView : View {
                 
             }
             .padding(9)
+            //to secure that text does not become mirrored when it flips
+            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
 
 
         }
