@@ -20,7 +20,7 @@ struct GroceryListView : View {
     @Environment(\.managedObjectContext) var moc
      var boughtItems: FetchedResults<BoughtItem>
      var groceryItems: FetchedResults<GroceryItem>
-    
+    @State var setExpirationDate: Date = Date()
     
     var body : some View {
         VStack {
@@ -56,7 +56,11 @@ struct GroceryListView : View {
                             }
                         }
                         
-
+                        DatePicker (
+                            "Expiration Date",
+                            selection: $setExpirationDate,
+                            displayedComponents: [.date]
+                        )
 
 
                     }
@@ -67,7 +71,7 @@ struct GroceryListView : View {
                             boughtGrocery.quantity = grocery.quantity
                             boughtGrocery.purchaseDate = Date()
                             boughtGrocery.image = grocery.image
-                            boughtGrocery.expirationDate = Date()
+                            boughtGrocery.expirationDate = setExpirationDate
                             do {
                                 try moc.save()
                                 print("dis did someting")

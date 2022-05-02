@@ -12,6 +12,7 @@ struct InformationBoxView : View {
     
 
     let boughtItem : BoughtItem?
+    let days : Int
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "MM/dd/yyyy"
@@ -20,7 +21,6 @@ struct InformationBoxView : View {
     
     
     var body : some View {
-        let days = Calendar.current.numberOfDaysBetween(boughtItem?.expirationDate ?? Date(), and: Date())
         ZStack {
             if (days <= 2) {
                 RoundedRectangle(cornerRadius: 20)

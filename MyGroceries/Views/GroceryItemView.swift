@@ -26,7 +26,7 @@ struct GroceryItemView : View {
     }()
     
     var body : some View {
-        let days = Calendar.current.numberOfDaysBetween(boughtItem?.expirationDate ?? Date(), and: Date())
+        let days = Calendar.current.numberOfDaysBetween(Date(), and: boughtItem?.expirationDate ?? Date())
 
                     Button {
                         withAnimation(.easeInOut(duration: 1)) {
@@ -88,7 +88,7 @@ struct GroceryItemView : View {
                         }
                             
                         } else {
-                            InformationBoxView(boughtItem: boughtItem)
+                            InformationBoxView(boughtItem: boughtItem, days: days)
                         }
 
                     }
