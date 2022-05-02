@@ -103,30 +103,11 @@ struct FridgeGridView : View {
                                     HStack {
                                         VStack {
                                             GroceryItemView(boughtItem: item)
-                                                .gesture(longPress)
+                                                
                                         }
                                         
                                     }
-
-                                    .overlay(alignment: .bottom) {
-                                        if isEditing {
-                                            Button {
-                                                withAnimation {
-                                                    do {
-                                                        moc.delete(item)
-                                                        try moc.save()
-                                                        
-                                                    } catch {
-                                                        print("something went wrong with deleting grocery")
-                                                    }
-                                                    
-                                                }
-                                            } label: {
-                                                InformationBoxView(boughtItem: item)
-                                            }
-                                            .offset(y: 120)
-                                        }
-                                    }
+                                    
                                     .overlay(alignment: .topTrailing) {
                                         if isEditing {
                                             Button {
