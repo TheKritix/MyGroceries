@@ -19,20 +19,25 @@ struct InformationBoxView : View {
         return df
     }()
     
+    
     var body : some View {
         let days = Calendar.current.numberOfDaysBetween(boughtItem?.expirationDate ?? Date(), and: Date())
         ZStack {
-                Rectangle()
-                .fill(.white).opacity(0.8)
+                RoundedRectangle(cornerRadius: 20)
+                .fill(.white)
                 
             VStack {
+                if (boughtItem?.groceryType != nil){
+                    Text(boughtItem?.groceryType ?? "")
+                        .fontWeight(.semibold)
+                }
                 VStack {
                     if (boughtItem?.purchaseDate != nil){
-                        Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                        Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date()))")
                             .font(.system(size: 10))
                     }
                     if (boughtItem?.expirationDate != nil){
-                        Text("Expires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                        Text("\n\nExpires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
                         .font(.system(size: 10))
                         Text(String(days) + " days to expiration")
                             .font(.system(size: 10))
@@ -43,17 +48,9 @@ struct InformationBoxView : View {
                 }
                 .padding(9)
             }
+            .accentColor(.black)
         }
-        .overlay(alignment: .top) {
-                Button {
-   
-                } label: {
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 30, height: 30, alignment: .center)
-                }
-                .offset(y: -20)
-        }
+
         
 
         

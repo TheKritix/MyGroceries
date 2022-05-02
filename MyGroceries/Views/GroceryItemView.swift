@@ -13,6 +13,12 @@ struct GroceryItemView : View {
 
     let boughtItem : BoughtItem?
     
+    @State var frontView = true
+    
+    @State var showingPopup = false
+    
+    @State private var animationAmount = 1.0
+    
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "MM/dd/yyyy"
@@ -21,54 +27,74 @@ struct GroceryItemView : View {
     
     var body : some View {
         let days = Calendar.current.numberOfDaysBetween(boughtItem?.expirationDate ?? Date(), and: Date())
-        ZStack {
-            if (days <= 2) {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.red).opacity(0.2)
-            } else if (days >= 3 && days <= 5){
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.yellow).opacity(0.2)
-            } else {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.green).opacity(0.2)
-            }
+
                 
                 
-            VStack {
-                VStack {
-                    if (boughtItem?.groceryType != nil){
-                        Text(boughtItem?.groceryType ?? "Unknown grocery type")
-                        .font(.system(size: 10))
-                        .bold()
+           
+               
+                    Button {
+                            withAnimation(.easeInOut(duration: 1.5)) {
+                                animationAmount += 180
+                                frontView = false
+                            }
+                    } label: {
+                        if (frontView){
+                            
+                        }
+                        ZStack {
+                            if (days <= 2) {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(.red).opacity(0.2)
+                            } else if (days >= 3 && days <= 5){
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(.yellow).opacity(0.2)
+                            } else {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(.green).opacity(0.2)
+                            }
+                            
+                        VStack {
+                            if (boughtItem?.groceryType != nil){
+                                Text(boughtItem?.groceryType ?? "Unknown grocery type")
+                                .font(.system(size: 10))
+                                .bold()
+                            }
+                            if (boughtItem?.image != nil){
+                                let image = UIImage(data: boughtItem!.image!)
+                                Image(uiImage: image!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 85, height: 90, alignment: .center)
+                                    .clipped()
+                                    .cornerRadius(16.0)
+                            } else {
+                                Text(boughtItem?.groceryType ?? "Grocery")
+                                    .frame(width: 85, height: 90, alignment: .center)
+                                    .cornerRadius(16.0)
+                            }
+                            if (boughtItem?.expirationDate != nil){
+                                Text("Expires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                                .font(.system(size: 10))
+                                Text(String(days) + " days to expiration")
+                                    .font(.system(size: 10))
+                            }
+                            
+                            //Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                                //.font(.system(size: 10))
+                           
+                        }
+                        .padding(9)
+                        
+                        
                     }
-                    if (boughtItem?.image != nil){
-                        let image = UIImage(data: boughtItem!.image!)
-                        Image(uiImage: image!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 85, height: 90, alignment: .center)
-                            .clipped()
-                            .cornerRadius(16.0)
-                    } else {
-                        Text(boughtItem?.groceryType ?? "Grocery")
-                            .frame(width: 85, height: 90, alignment: .center)
-                            .cornerRadius(16.0)
                     }
+                    .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+
                     
-                    if (boughtItem?.expirationDate != nil){
-                        Text("Expires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
-                        .font(.system(size: 10))
-                        Text(String(days) + " days to expiration")
-                            .font(.system(size: 10))
-                    }
-                    
-                    //Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
-                        //.font(.system(size: 10))
-                   
-                }
-                .padding(9)
-            }
-        }
+
+
+                
+
 
         
     }
