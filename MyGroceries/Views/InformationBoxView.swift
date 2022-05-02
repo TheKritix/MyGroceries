@@ -12,7 +12,6 @@ struct InformationBoxView : View {
     
 
     let boughtItem : BoughtItem?
-    
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "MM/dd/yyyy"
@@ -29,28 +28,31 @@ struct InformationBoxView : View {
             VStack {
                 if (boughtItem?.groceryType != nil){
                     Text(boughtItem?.groceryType ?? "")
-                        .fontWeight(.semibold)
+                        .font(.system(size: 10))
+                    Spacer()
+                    Spacer()
                 }
-                VStack {
+              
+                    Text(String(days) + " days to expiration")
+                        .font(.system(size: 10))
+                    
                     if (boughtItem?.purchaseDate != nil){
                         Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date()))")
                             .font(.system(size: 10))
                     }
                     if (boughtItem?.expirationDate != nil){
-                        Text("\n\nExpires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                        Text("Expires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))\n")
                         .font(.system(size: 10))
-                        Text(String(days) + " days to expiration")
-                            .font(.system(size: 10))
+                        Spacer()
+
                     }
-                    
-
-                   
-                }
-                .padding(9)
+                
             }
+            .padding(9)
             .accentColor(.black)
-        }
 
+        }
+        .frame(width: 120, height: 160)
         
 
         
