@@ -99,7 +99,7 @@ struct FridgeGridView : View {
                                         
                                     }
                                     
-                                    .overlay(alignment: .topTrailing) {
+                                    .overlay(alignment: .topLeading) {
                                         if isEditing {
                                             Button {
                                                 withAnimation {
@@ -122,7 +122,7 @@ struct FridgeGridView : View {
                                                     .font(.title)
                                                     .foregroundStyle(.white, .gray)
                                             }
-                                            .offset(x: 7, y: -7)
+                                            .offset(x: -7, y: 7)
                                         }
                                     }
 

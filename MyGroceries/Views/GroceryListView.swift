@@ -42,7 +42,8 @@ struct GroceryListView : View {
                                     Text(String(grocery.quantity))
                                     Text(grocery.unit ?? "Unable to idenfity unit")
                                 }
-
+                                Spacer()
+                                Spacer()
                             }
                             Spacer()
                             VStack(alignment: .trailing) {
@@ -54,6 +55,8 @@ struct GroceryListView : View {
                                         .frame(width: 80, height: 80, alignment: .trailing)
                                         .clipped()
                                 }
+                                Spacer()
+                                Spacer()
                             }
                         }
                         

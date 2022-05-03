@@ -181,6 +181,7 @@
 		3AD3C30B27D0E44900B75DB2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3A9AC170281AD344000A38F8 /* Title.swift */,
 				3AD3C31027D0E5AC00B75DB2 /* GroceryItemOld.swift */,
 				E3394BBC27D50EC10091E582 /* Theme.swift */,
 				3A6E847A27DA3980007BDB38 /* MyGroceries.xcdatamodeld */,
@@ -201,7 +202,6 @@
 				E32B7FDC2806193700222096 /* CameraScan.swift */,
 				E32B7FE12806197900222096 /* ApiAddItemView.swift */,
 				3A21A484281A972000D8D511 /* LandingPageFridgeView.swift */,
-				3A9AC170281AD344000A38F8 /* Title.swift */,
 				3A9796E2281F274000361610 /* InformationBoxView.swift */,
 				3A48C950281FED810059D0C5 /* GroceryItemFrontView.swift */,
 			);
