@@ -63,8 +63,14 @@ struct GroceryItemFrontView : View {
                     .cornerRadius(16.0)
             }
             if (boughtItem?.expirationDate != nil){
-                Text(String(days) + " days to expiration")
-                    .font(.system(size: 10))
+                if days >= 0 {
+                    Text(String(days) + " days to expiration")
+                        .font(.system(size: 10))
+                } else {
+                    Text(String(days) + " past expiration")
+                        .font(.system(size: 10))
+                }
+
             }
             
         }

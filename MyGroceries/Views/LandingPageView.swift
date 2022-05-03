@@ -20,15 +20,11 @@ struct LandingPageView : View {
             ZStack {
                 if (!showContentView){
                     LandingPageFridgeView()
-                        .rotation3DEffect(.degrees(animationAmount), axis: (x: 1, y: 0, z: 0))
+                        
                     Button(action: {
                        
-                    showContentView = true
-                        withAnimation(.easeInOut(duration: 1)) {
-                                animationAmount += 180
-                            
-                                
-                            }
+          
+                        showContentView = true
                     }){
                     
                         HStack {
@@ -47,6 +43,7 @@ struct LandingPageView : View {
                 } else {
                     ContentView()
                            .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                           
                            
                 }
 

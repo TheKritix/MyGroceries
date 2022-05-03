@@ -4,8 +4,15 @@ struct TitleTextView : View {
     
     var titleText : String
     var body : some View {
-            Text(titleText)
+        VStack(alignment: .leading) {
+                Text(titleText)
                 .font(.title)
                 .bold()
+                .padding()
+                .foregroundColor(.orange)
+                .accessibilityIdentifier("Title")
+                .frame(alignment: .leading)
+        }
+        
     }
 }

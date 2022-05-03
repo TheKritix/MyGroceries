@@ -52,12 +52,16 @@ struct InformationBoxView : View {
                             .font(.system(size: 10))
                     }
                 Spacer()
-                    if (boughtItem?.expirationDate != nil){
-                        Text("Expires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))\n")
-                        .font(.system(size: 10))
-                        Spacer()
-
+                if (boughtItem?.expirationDate != nil){
+                    if days >= 0 {
+                        Text(String(days) + " days to expiration")
+                            .font(.system(size: 10))
+                    } else {
+                        Text(String(days) + " past expiration")
+                            .font(.system(size: 10))
                     }
+
+                }
                 
             }
             .padding(9)

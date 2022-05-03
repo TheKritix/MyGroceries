@@ -25,21 +25,6 @@ struct FridgeGridView : View {
         return df
     }()
     
-    @GestureState var isDetectingLongPress = false
-     @State var completedLongPress = false
-
-    var longPress : some Gesture {
-         LongPressGesture(minimumDuration: 3)
-             .updating($isDetectingLongPress) { currentState, gestureState,
-                     transaction in
-                 gestureState = currentState
-                 transaction.animation = Animation.easeIn(duration: 2.0)
-             }
-             .onEnded { finished in
-                 self.completedLongPress = finished
-             }
-     }
-
     
     
     var body : some View {
@@ -47,7 +32,7 @@ struct FridgeGridView : View {
             HStack {
                 
                 VStack(alignment: .leading) {
-
+                    
                 }
                 Spacer()
                 VStack(alignment: .trailing) {
@@ -68,9 +53,9 @@ struct FridgeGridView : View {
                 }
             }
             .padding()
-
             
-
+            
+            
             ZStack {
                 Rectangle()
                     .fill(.gray)
@@ -94,7 +79,7 @@ struct FridgeGridView : View {
                                     HStack {
                                         VStack {
                                             GroceryItemView(boughtItem: item)
-
+                                            
                                         }
                                         
                                     }
@@ -106,6 +91,7 @@ struct FridgeGridView : View {
                                                     do {
                                                         if (item.quantity > 1){
                                                             item.quantity = item.quantity - 1
+                                                            try moc.save()
                                                         } else {
                                                             moc.delete(item)
                                                             try moc.save()
@@ -122,11 +108,11 @@ struct FridgeGridView : View {
                                                     .font(.title)
                                                     .foregroundStyle(.white, .gray)
                                             }
-                                            .offset(x: -7, y: 7)
+                                            .offset(x: -7, y: -7)
                                         }
                                     }
-
-
+                                    
+                                    
                                 }
                                 
                                 
@@ -141,11 +127,11 @@ struct FridgeGridView : View {
             }
             .cornerRadius( 50, corners: [.topLeft, .topRight])
         }
- 
+        
         //.navigationTitle("Fridge")
+        
+        
 
-
-        .padding(.top)
         
         
     }

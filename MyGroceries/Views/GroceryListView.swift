@@ -52,9 +52,10 @@ struct GroceryListView : View {
                                     Image(uiImage: image!)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
-                                        .frame(width: 80, height: 80, alignment: .trailing)
+                                        .frame(width: 130, height: 80, alignment: .trailing)
                                         .clipped()
                                 }
+                                Spacer()
                                 Spacer()
                                 Spacer()
                             }
@@ -94,7 +95,7 @@ struct GroceryListView : View {
                                 let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: boughtGrocery.expirationDate ?? Date())
                                                 let content = UNMutableNotificationContent()
                                                 content.title = "Expiration date reminder"
-                                                content.subtitle = "Your grocery is about to expire!"
+                                content.subtitle = "Your \(boughtGrocery.groceryType ?? "grocery") is about to expire!"
                                                 content.sound = UNNotificationSound.default
         
                                                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
