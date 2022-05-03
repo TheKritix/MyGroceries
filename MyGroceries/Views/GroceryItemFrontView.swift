@@ -44,7 +44,7 @@ struct GroceryItemFrontView : View {
                     .frame(width: 85, height: 90, alignment: .center)
                     .clipped()
                     .cornerRadius(16.0)
-                    .overlay(alignment: .bottomTrailing) {
+                    .overlay(alignment: .bottom) {
                                 HStack {
                                     Text(String(Int16(boughtItem?.quantity ?? 1)))
                                     Text(boughtItem?.unit ?? "")

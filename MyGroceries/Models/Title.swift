@@ -4,7 +4,7 @@ struct TitleTextView : View {
     
     var titleText : String
     var body : some View {
-        VStack(alignment: .leading) {
+        VStack {
                 Text(titleText)
                 .font(.title)
                 .bold()
