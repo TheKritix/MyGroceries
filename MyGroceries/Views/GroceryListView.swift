@@ -42,7 +42,7 @@ struct GroceryListView : View {
                                     Text(String(grocery.quantity))
                                     Text(grocery.unit ?? "Unable to idenfity unit")
                                 }
-                                
+
                             }
                             Spacer()
                             VStack(alignment: .trailing) {
@@ -57,13 +57,16 @@ struct GroceryListView : View {
                             }
                         }
                         
-                        /*DatePicker (
+
+
+
+                    }
+                    .overlay(alignment: .bottom){
+                        DatePicker (
                             "Expiration Date",
                             selection: $setExpirationDate,
                             displayedComponents: [.date]
-                        )*/
-
-
+                        )
                     }
                     .swipeActions{
                         Button("Purchased") {
