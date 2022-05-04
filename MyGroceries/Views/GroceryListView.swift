@@ -21,6 +21,7 @@ struct GroceryListView : View {
      var boughtItems: FetchedResults<BoughtItem>
      var groceryItems: FetchedResults<GroceryItem>
     @State var setExpirationDate: Date = Date()
+    @State var showFieldAlert = false
     
     var body : some View {
         VStack {
@@ -41,7 +42,8 @@ struct GroceryListView : View {
                                     Text(String(grocery.quantity))
                                     Text(grocery.unit ?? "Unable to idenfity unit")
                                 }
-                                
+                                Spacer()
+                                Spacer()
                             }
                             Spacer()
                             VStack(alignment: .trailing) {
@@ -50,28 +52,57 @@ struct GroceryListView : View {
                                     Image(uiImage: image!)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
-                                        .frame(width: 80, height: 80, alignment: .trailing)
+                                        .frame(width: 130, height: 80, alignment: .trailing)
                                         .clipped()
                                 }
+                                Spacer()
+                                Spacer()
+                                Spacer()
                             }
                         }
                         
+
+
+
+                    }
+                    .overlay(alignment: .bottom){
                         DatePicker (
                             "Expiration Date",
                             selection: $setExpirationDate,
                             displayedComponents: [.date]
                         )
-
-
                     }
                     .swipeActions{
                         Button("Purchased") {
+                            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                                                   if success {
+                                                       print("Permission granted")
+                                                   } else if let error = error {
+                                                       print(error.localizedDescription)
+                                                   }
+                                               }
+                            showFieldAlert = true
                             let boughtGrocery = BoughtItem(context: moc)
                             boughtGrocery.groceryType = grocery.groceryType
                             boughtGrocery.quantity = grocery.quantity
+                            boughtGrocery.unit = grocery.unit
                             boughtGrocery.purchaseDate = Date()
                             boughtGrocery.image = grocery.image
                             boughtGrocery.expirationDate = setExpirationDate
+                            
+                            if (boughtGrocery.expirationDate != Date()){
+                                var dateComponent = DateComponents(); dateComponent.calendar = Calendar.current
+                                let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: boughtGrocery.expirationDate ?? Date())
+                                                let content = UNMutableNotificationContent()
+                                                content.title = "Expiration date reminder"
+                                content.subtitle = "Your \(boughtGrocery.groceryType ?? "grocery") is about to expire!"
+                                                content.sound = UNNotificationSound.default
+        
+                                                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+                                                   let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                                                    UNUserNotificationCenter.current().add(request)
+                            }
                             do {
                                 try moc.save()
                                 print("dis did someting")
@@ -80,13 +111,8 @@ struct GroceryListView : View {
                             }
                             
                             do {
-                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                                                       if success {
-                                                           print("Permission granted")
-                                                       } else if let error = error {
-                                                           print(error.localizedDescription)
-                                                       }
-                                                   }
+
+
                                 moc.delete(grocery)
                                 try moc.save()
                                 
@@ -95,6 +121,7 @@ struct GroceryListView : View {
                             }
                         }
                             .tint(.green)
+
                     }
                     .swipeActions{Button("Delete") {
                         do {

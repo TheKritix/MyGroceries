@@ -39,10 +39,11 @@ struct AddItemView : View {
         VStack {
             TitleTextView(titleText: "Add Items to Grocery List")
             Form {
+                
                 Section{
-                    //Empty for whitespace in UI.
+                    TextField("Grocery", text: $setGrocery)
                 }
-                TextField("Grocery", text: $setGrocery)
+           
                 TextField("Quantity", text: $setQuantity)
                     .keyboardType(.decimalPad)
                 
@@ -111,6 +112,11 @@ struct AddItemView : View {
                             setCategory = "Grain"
                         } label: {
                             Text("Grain")
+                        }
+                        Button {
+                            setCategory = "Dairy"
+                        } label: {
+                            Text("Dairy")
                         }
                         Button {
                             setCategory = "Snack"

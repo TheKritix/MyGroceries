@@ -11,7 +11,6 @@ import SwiftUI
 
 struct LandingPageFridgeView : View {
 
-
     var body : some View {
 
                 ZStack {
@@ -19,6 +18,7 @@ struct LandingPageFridgeView : View {
                         .fill(.gray)
                         .brightness(0.35)
                     VStack {
+                        Spacer()
                             Text("My fridge")
                                 .padding(5)
                                 .background(.white)

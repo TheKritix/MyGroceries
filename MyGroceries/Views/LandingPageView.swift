@@ -14,14 +14,19 @@ struct LandingPageView : View {
     let persistenceController = PersistenceController.shared
     @State var showContentView: Bool = false
     
+    @State private var animationAmount = 1.0
+    
     var body : some View {
             ZStack {
                 if (!showContentView){
                     LandingPageFridgeView()
+                        
                     Button(action: {
-                    showContentView = true
-
+                       
+          
+                        showContentView = true
                     }){
+                    
                         HStack {
                             Text("Open my fridge")
                                 .fontWeight(.bold)
@@ -38,6 +43,8 @@ struct LandingPageView : View {
                 } else {
                     ContentView()
                            .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                           
+                           
                 }
 
                 

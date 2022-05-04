@@ -9,52 +9,54 @@ import SwiftUI
 
 
 struct ContentView: View {
-
+    init() {
+        UITabBar.appearance().backgroundColor = .clear
+        }
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.groceryType, ascending: true)], animation: .default)
-     var groceryItems: FetchedResults<GroceryItem>
-
+    var groceryItems: FetchedResults<GroceryItem>
+    
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BoughtItem.groceryType, ascending: true)], animation: .default)
-     var boughtItems: FetchedResults<BoughtItem>
-
+    var boughtItems: FetchedResults<BoughtItem>
+    
     
     var body: some View {
         TabView {
+            
             FridgeGridView(boughtItems: boughtItems)
-                .accentColor(.orange)
                 .tabItem {
                     Image(systemName: "square.grid.3x3.square")
                     Text("Fridge")
                 }
             GroceryListView(boughtItems: boughtItems,groceryItems: groceryItems)
-                .accentColor(.orange)
                 .tabItem {
                     Image(systemName: "checklist")
                     Text("Grocery List")
                 }
-
-    
+            
+            
             AddItemView()
-                .accentColor(.orange)
                 .tabItem {
                     Image(systemName: "plus")
                     Text("Add item")
                 }
-                
+            
             CameraScan()
-                .accentColor(.orange)
                 .tabItem{
                     Image(systemName: "barcode")
-                    Text("Barcode Scan")
+                    Text("Add item")
                 }
             
-
+            
         }
         .accentColor(.orange)
-    }
+        
 
-        
-        
+    }
+    
+
+    
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
