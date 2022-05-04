@@ -34,17 +34,17 @@ struct CameraScan : View {
                     
                 }
             }
-        .sheet(isPresented: $isPresentingScanner) {
-            CodeScannerView(codeTypes: [.ean8, .ean13]) { response in
-                if case let .success(result) = response {
-                    isActive = true
-                    scannedCode = result.string
-                    isPresentingScanner = false
-                    print(scannedCode ?? "unable to find code")
+            .sheet(isPresented: $isPresentingScanner) {
+                CodeScannerView(codeTypes: [.ean8, .ean13]) { response in
+                    if case let .success(result) = response {
+                        isActive = true
+                        scannedCode = result.string
+                        isPresentingScanner = false
+                        print(scannedCode ?? "unable to find code")
+                    }
                 }
             }
         }
-        }
-           
+        
     }
 }

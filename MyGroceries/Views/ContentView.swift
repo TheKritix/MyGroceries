@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     init() {
         UITabBar.appearance().backgroundColor = .clear
-        }
+    }
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \GroceryItem.groceryType, ascending: true)], animation: .default)
     var groceryItems: FetchedResults<GroceryItem>
     
@@ -50,10 +50,10 @@ struct ContentView: View {
         }
         .accentColor(.orange)
         
-
+        
     }
     
-
+    
     
 }
 

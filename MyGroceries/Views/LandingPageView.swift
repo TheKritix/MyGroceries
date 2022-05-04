@@ -17,43 +17,43 @@ struct LandingPageView : View {
     @State private var animationAmount = 1.0
     
     var body : some View {
-            ZStack {
-                if (!showContentView){
-                    LandingPageFridgeView()
-                        
-                    Button(action: {
-                       
-          
-                        showContentView = true
-                    }){
-                    
-                        HStack {
-                            Text("Open my fridge")
-                                .fontWeight(.bold)
-                                .font(.title)
-                            Image(systemName: "hand.tap")
-                        }
-                        .padding()
-                        .background(.orange)
-                        .cornerRadius(20.0)
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .accessibilityIdentifier("landingButton")
-                    }
-                } else {
-                    ContentView()
-                           .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                           
-                           
-                }
-
+        ZStack {
+            if (!showContentView){
+                LandingPageFridgeView()
                 
+                Button(action: {
+                    
+                    
+                    showContentView = true
+                }){
+                    
+                    HStack {
+                        Text("Open my fridge")
+                            .fontWeight(.bold)
+                            .font(.title)
+                        Image(systemName: "hand.tap")
+                    }
+                    .padding()
+                    .background(.orange)
+                    .cornerRadius(20.0)
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .accessibilityIdentifier("landingButton")
+                }
+            } else {
+                ContentView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 
                 
             }
-
+            
+            
+            
+            
+        }
         
-
+        
+        
         
         
         

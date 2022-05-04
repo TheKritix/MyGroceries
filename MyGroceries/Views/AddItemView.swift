@@ -16,7 +16,7 @@ import CoreData
 struct AddItemView : View {
     
     @Environment(\.managedObjectContext) var moc
-
+    
     @State var setGrocery: String = ""
     @State var setQuantity: String = ""
     @State var setUnit: String = "Unit"
@@ -29,7 +29,7 @@ struct AddItemView : View {
     @State private var inputImage: UIImage?
     @State var showFieldAlert = false
     @State var image = Image("person.fill.badge")
- 
+    
     func loadImage() {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
@@ -43,7 +43,7 @@ struct AddItemView : View {
                 Section{
                     TextField("Grocery", text: $setGrocery)
                 }
-           
+                
                 TextField("Quantity", text: $setQuantity)
                     .keyboardType(.decimalPad)
                 
@@ -137,15 +137,15 @@ struct AddItemView : View {
                     }){
                         Text("Select image")
                     }
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 150, height: 150, alignment: .center)
-                            .clipped()
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 150, height: 150, alignment: .center)
+                        .clipped()
                 }
                 
                 Button (action: {
-        
+                    
                     let newGrocery = GroceryItem(context: moc)
                     
                     newGrocery.groceryType = setGrocery
@@ -155,30 +155,30 @@ struct AddItemView : View {
                     newGrocery.expirationDate = setExpirationDate
                     newGrocery.foodCategory = setCategory
                     newGrocery.image = inputImage?.pngData()
-                  
+                    
                     
                     if (setCategory == "") {
                         setCategory = "Other"
                     }
-                
-                
+                    
+                    
                     if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
                         
-                    do {
-                        try moc.save()
-                        print("Bought record updated")
+                        do {
+                            try moc.save()
+                            print("Bought record updated")
+                            
+                        } catch {
+                            print("something went wrong")
+                        }
                         
-                    } catch {
-                        print("something went wrong")
-                    }
-                    
-                    setGrocery = ""
-                    setQuantity = ""
-                    setUnit = "Unit"
-                    setCategory = "Category"
-                    setPurchaseDate = Date()
-                    setExpirationDate = Date()
-                    image = Image("person.fill.badge")
+                        setGrocery = ""
+                        setQuantity = ""
+                        setUnit = "Unit"
+                        setCategory = "Category"
+                        setPurchaseDate = Date()
+                        setExpirationDate = Date()
+                        image = Image("person.fill.badge")
                     }
                     else {
                         showFieldAlert = true
@@ -190,30 +190,30 @@ struct AddItemView : View {
                         .bold()
                 }
             }
-        
-                .alert(isPresented: $showFieldAlert) {
-                    Alert(
-                        title: Text("Empty fields detected"),
-                        message: Text("Please fill out all the available options.")
-                    )
-                }
+            
+            .alert(isPresented: $showFieldAlert) {
+                Alert(
+                    title: Text("Empty fields detected"),
+                    message: Text("Please fill out all the available options.")
+                )
+            }
         }
-
-
-                
+        
+        
+        
         .onChange(of: inputImage) {
             _ in loadImage()
         }
         .sheet(isPresented: $showingImagePicker) {
-        ImagePicker(image: $inputImage)
+            ImagePicker(image: $inputImage)
         }
-
-    }
         
-
-       
-        }
+    }
     
+    
+    
+}
+
 
 
 

@@ -128,10 +128,8 @@ struct FridgeGridView : View {
             .cornerRadius( 50, corners: [.topLeft, .topRight])
         }
         
-        //.navigationTitle("Fridge")
         
         
-
         
         
     }
