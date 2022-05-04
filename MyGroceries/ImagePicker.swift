@@ -1,10 +1,3 @@
-//
-//  ImagePicker.swift
-//  MyGroceries
-//
-//  Created by anton dong on 27/03/2022.
-//
-
 import PhotosUI
 import SwiftUI
 

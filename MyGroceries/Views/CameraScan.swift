@@ -1,10 +1,3 @@
-//
-//  CameraScan.swift
-//  MyGroceries
-//
-//  Created by Kristoffer Pedersen (s205354) on 31/03/2022.
-//
-
 // Source: https://www.hackingwithswift.com/books/ios-swiftui/scanning-qr-codes-with-swiftui
 // Source: "https://github.com/twostraws/CodeScanner"
 

@@ -1,8 +1,3 @@
-//
-//  AddItem.swift
-//  MyGroceries
-//
-//  Created by Kristoffer Pedersen (s205354) on 15/03/2022.
 //  Dealing with menus Source: https://stackoverflow.com/questions/56513339/is-there-a-way-to-create-a-dropdown-menu-button-in-swiftui
 //  Dates Source: https://developer.apple.com/documentation/swiftui/datepicker
 
