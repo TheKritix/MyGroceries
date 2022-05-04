@@ -1,12 +1,5 @@
-//
-//  GroceryList.swift
-//  MyGroceries
-//
-//  Created by Kristoffer (s205354) on 15/03/2022.
-//
 //  Source for Fetching Object: https://www.hackingwithswift.com/books/ios-swiftui/building-a-list-with-fetchrequest
-//
-
+// Notification implementation from lecture material
 
 
 import SwiftUI
@@ -44,6 +37,10 @@ struct GroceryListView : View {
                                 }
                                 Spacer()
                                 Spacer()
+                                Spacer()
+                                Spacer()
+                                Spacer()
+                               
                             }
                             Spacer()
                             VStack(alignment: .trailing) {
@@ -55,9 +52,7 @@ struct GroceryListView : View {
                                         .frame(width: 130, height: 80, alignment: .trailing)
                                         .clipped()
                                 }
-                                Spacer()
-                                Spacer()
-                                Spacer()
+                                
                             }
                         }
                         
@@ -71,6 +66,7 @@ struct GroceryListView : View {
                             selection: $setExpirationDate,
                             displayedComponents: [.date]
                         )
+                        .font(.system(size: 14))
                     }
                     .swipeActions{
                         Button("Purchased") {

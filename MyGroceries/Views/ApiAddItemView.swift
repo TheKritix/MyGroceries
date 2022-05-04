@@ -1,10 +1,3 @@
-//
-//  ApiAddItemView.swift
-//  MyGroceries
-//
-//  Created by Kristoffer Pedersen on 06/04/2022.
-//
-
 import Foundation
 import SwiftUI
 import JSONParser
@@ -54,6 +47,7 @@ struct ApiAddItemView: View {
         
         
         NavigationView {
+            TitleTextView(titleText: "Add Items to Grocery List")
             Form {
                 if (unableToFindProduct) {
                     Text("Unable to find product. Please add manually, or scan another item")
@@ -195,7 +189,6 @@ struct ApiAddItemView: View {
             }
         }
         .task{await loadData()}
-        .navigationBarTitle("Add Item", displayMode: .inline)
     }
     
     func loadData() async {

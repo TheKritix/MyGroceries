@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "279408175_717257256138108_2342197363597527620_n-2.png",
+      "filename" : "40x40.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "279408175_717257256138108_2342197363597527620_n-3.png",
+      "filename" : "60x60.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -33,13 +33,13 @@
       "size" : "40x40"
     },
     {
-      "filename" : "279408175_717257256138108_2342197363597527620_n-4.png",
+      "filename" : "rsz_11fridge_icon.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "279408175_717257256138108_2342197363597527620_n-5.png",
+      "filename" : "rsz_21fridge_icon.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"

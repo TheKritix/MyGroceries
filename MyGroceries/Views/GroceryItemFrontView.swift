@@ -1,10 +1,3 @@
-//
-//  GroceryItemFrontView.swift
-//  MyGroceries
-//
-//  Created by anton dong on 02/05/2022.
-//
-
 import SwiftUI
 
 struct GroceryItemFrontView : View {
@@ -51,9 +44,9 @@ struct GroceryItemFrontView : View {
                             }
                             .font(.system(size: 12))
                             .padding(2)
-                            .background(.yellow)
+                            .background(.white.opacity(0.5))
                             .cornerRadius(30)
-                            .accentColor(.white)
+                            .accentColor(.gray)
                             
                             
                         }
