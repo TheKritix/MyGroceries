@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GroceryItemView : View {
     
-
+    
     let boughtItem : BoughtItem?
     
     @State var frontView = true
@@ -27,34 +27,34 @@ struct GroceryItemView : View {
     
     var body : some View {
         let days = Calendar.current.numberOfDaysBetween(Date(), and: boughtItem?.expirationDate ?? Date())
-
-                    Button {
-                        withAnimation(.easeInOut(duration: 1)) {
-                                animationAmount += 180
-                                if frontView {
-                                    frontView = false
-                                } else {
-                                    frontView = true
-                                }
-                                
-                            }
-                    } label: {
-                        if (frontView){
-                            GroceryItemFrontView(boughtItem: boughtItem, days: days)
-                            
-                        } else {
-                            InformationBoxView(boughtItem: boughtItem, days: days)
-                        }
-
-                    }
-                    .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
-                    .accentColor(.black)
-
-
-
+        
+        Button {
+            withAnimation(.easeInOut(duration: 1)) {
+                animationAmount += 180
+                if frontView {
+                    frontView = false
+                } else {
+                    frontView = true
+                }
                 
-
-
+            }
+        } label: {
+            if (frontView){
+                GroceryItemFrontView(boughtItem: boughtItem, days: days)
+                
+            } else {
+                InformationBoxView(boughtItem: boughtItem, days: days)
+            }
+            
+        }
+        .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+        .accentColor(.black)
+        
+        
+        
+        
+        
+        
         
     }
     
