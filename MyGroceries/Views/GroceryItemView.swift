@@ -10,49 +10,54 @@ import SwiftUI
 
 struct GroceryItemView : View {
     
+
     let boughtItem : BoughtItem?
+    
+    @State var frontView = true
+    
+    @State var showingPopup = false
+    
+    @State private var animationAmount = 1.0
     
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "MM/dd/yyyy"
         return df
     }()
-
     
     var body : some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(.white).opacity(0.3)
+        let days = Calendar.current.numberOfDaysBetween(Date(), and: boughtItem?.expirationDate ?? Date())
+
+                    Button {
+                        withAnimation(.easeInOut(duration: 1)) {
+                                animationAmount += 180
+                                if frontView {
+                                    frontView = false
+                                } else {
+                                    frontView = true
+                                }
+                                
+                            }
+                    } label: {
+                        if (frontView){
+                            GroceryItemFrontView(boughtItem: boughtItem, days: days)
+                            
+                        } else {
+                            InformationBoxView(boughtItem: boughtItem, days: days)
+                        }
+
+                    }
+                    .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+                    .accentColor(.black)
+
+
+
                 
-            VStack {
-                VStack {
-                    if (boughtItem?.image != nil){
-                        let image = UIImage(data: boughtItem!.image!)
-                        Image(uiImage: image!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 85, height: 90, alignment: .center)
-                            .clipped()
-                            .cornerRadius(16.0)
-                    } else {
-                        Text(boughtItem?.groceryType ?? "Grocery")
-                    }
-                    
-                    if (boughtItem?.expirationDate != nil){
-                        Text("Expires \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
-                        .font(.system(size: 10))
-                    }
-                    
-                    //Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date())) \n\nExpires: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
-                        //.font(.system(size: 10))
-                   
-                }
-                .padding(9)
-            }
-        }
+
 
         
     }
+    
 }
 
 
@@ -73,6 +78,6 @@ extension Calendar {
         let toDate = startOfDay(for: to)
         let numberOfDays = dateComponents([.day], from: fromDate, to: toDate)
         
-        return numberOfDays.day! + 1 // <1>
+        return numberOfDays.day! // <1>
     }
 }

@@ -11,55 +11,55 @@ import SwiftUI
 
 struct LandingPageView : View {
     
+    let persistenceController = PersistenceController.shared
+    @State var showContentView: Bool = false
     
+    @State private var animationAmount = 1.0
     
     var body : some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 50)
-                .fill(.gray)
-                .brightness(0.35)
-            VStack {
-                    Text("My fridge")
-                        .padding(5)
-                        .background(.white)
-                        .cornerRadius(15)
-                ZStack {
-                    RoundedRectangle(cornerRadius: 30.0)
-                        .fill(.white)
-                        .opacity(0.4)
-                }
-                .frame(width: 360, height: 200)
-                ZStack {
-                    Button(action: {
+            ZStack {
+                if (!showContentView){
+                    LandingPageFridgeView()
                         
+                    Button(action: {
+                       
+          
+                        showContentView = true
                     }){
-                        Text("THIS IS A BUTTON \n YES IT IS")
+                    
+                        HStack {
+                            Text("Open my fridge")
+                                .fontWeight(.bold)
+                                .font(.title)
+                            Image(systemName: "hand.tap")
+                        }
+                        .padding()
+                        .background(.orange)
+                        .cornerRadius(20.0)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .accessibilityIdentifier("landingButton")
                     }
-                    .background(.white)
-                    
-                    RoundedRectangle(cornerRadius: 30.0)
-                        .fill(.white)
-                        .opacity(0.4)
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 30.0)
-                            .fill(.black)
-                            .opacity(0.2)
-
-                    }.frame(width: 10, height: 550)
+                } else {
+                    ContentView()
+                           .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                           
+                           
                 }
-                .frame(width: 360, height: 550)
-                .padding()
 
+                
+                
+                
             }
-        }
+
         
-    }
-}
 
-
-struct LandingPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        LandingPageView()
+        
+        
+        
+        
+        
+        
+        
     }
 }

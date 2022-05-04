@@ -36,16 +36,14 @@ struct AddItemView : View {
     }
     
     var body : some View {
-        
-        NavigationView {
-   
-
+        VStack {
+            TitleTextView(titleText: "Add Items to Grocery List")
             Form {
-
+                
                 Section{
-                    //Empty for whitespace in UI.
+                    TextField("Grocery", text: $setGrocery)
                 }
-                TextField("Grocery", text: $setGrocery)
+           
                 TextField("Quantity", text: $setQuantity)
                     .keyboardType(.decimalPad)
                 
@@ -87,8 +85,10 @@ struct AddItemView : View {
                         Text("N/A")
                     }
                 } label: {
-                    Text(setUnit)
+                    Label(setUnit, systemImage: "list.dash")
+                        .frame(width: 290, height: 50, alignment: .center)
                 }
+                .accessibilityIdentifier("unitMenu")
                 
                 Section {
                     //Category
@@ -114,14 +114,22 @@ struct AddItemView : View {
                             Text("Grain")
                         }
                         Button {
+                            setCategory = "Dairy"
+                        } label: {
+                            Text("Dairy")
+                        }
+                        Button {
                             setCategory = "Snack"
                         } label: {
                             Text("Snack")
                         }
                     } label: {
-                        Text(setCategory)
+                        Label(setCategory, systemImage: "list.dash")
+                            .frame(width: 290, height: 50, alignment: .center)
                     }
+                    .accessibilityIdentifier("categoryMenu")
                 }
+                
                 
                 Section {
                     Button(action: {
@@ -134,17 +142,7 @@ struct AddItemView : View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 150, height: 150, alignment: .center)
                             .clipped()
-                    
-
                 }
-              
-            
-        
-                Section {
-                    
-                }
-
-              
                 
                 Button (action: {
         
@@ -191,12 +189,6 @@ struct AddItemView : View {
                     Text("Add Item")
                         .bold()
                 }
-                .frame(width: 200)
-                .navigationTitle("Add Item to Grocery List")
-
-
-                
-                
             }
         
                 .alert(isPresented: $showFieldAlert) {
@@ -205,9 +197,10 @@ struct AddItemView : View {
                         message: Text("Please fill out all the available options.")
                     )
                 }
+        }
+
 
                 
-            }
         .onChange(of: inputImage) {
             _ in loadImage()
         }
@@ -215,8 +208,8 @@ struct AddItemView : View {
         ImagePicker(image: $inputImage)
         }
 
-
     }
+        
 
        
         }

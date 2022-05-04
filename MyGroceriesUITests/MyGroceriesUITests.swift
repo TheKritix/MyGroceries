@@ -40,4 +40,77 @@ class MyGroceriesUITests: XCTestCase {
             }
         }
     }
+    
+    func testLandingPageTitleText() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let landing = app.staticTexts["My fridge"]
+        
+        XCTAssert(landing.exists)
+    }
+    
+    func testLandingPageButtonText() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let landing = app.staticTexts["Open my fridge"]
+        
+        XCTAssert(landing.exists)
+    }
+    
+    //Test of accessibilityIdentifier.
+    func testLandingPageButton() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let landing = app.staticTexts["landingButton"]
+        
+        XCTAssert(landing.exists)
+    }
+    
+    func testAddItem() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.staticTexts["landingButton"].tap()
+        
+        app.buttons["Add item"].tap()
+        
+        let Grocery = app.textFields["Grocery"]
+        Grocery.tap()
+        Grocery.typeText("Banan kage")
+        XCTAssert(Grocery.exists)
+        
+        let Quantity = app.textFields["Quantity"]
+        Quantity.tap()
+        Quantity.typeText("5")
+        XCTAssert(Quantity.exists)
+        
+        let unitMenu = app.buttons["unitMenu"]
+        XCTAssert(unitMenu.exists)
+        
+        unitMenu.tap()
+        let unit = app.buttons["Pieces"]
+        XCTAssert(unit.exists)
+        
+        unit.tap()
+        
+        let category = app.buttons["categoryMenu"]
+        XCTAssert(category.exists)
+        
+        category.tap()
+        let fruit = app.buttons["Fruit"]
+        XCTAssert(fruit.exists)
+        
+        fruit.tap()
+        
+        let image = app.buttons["Select image"]
+        XCTAssert(image.exists)
+        
+        let add = app.buttons["Add item"]
+        XCTAssert(add.exists)
+        
+        
+    }
 }

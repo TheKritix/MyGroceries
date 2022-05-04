@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,24 +13,27 @@
 		23562ED4EF22F1314118E441 /* MyGroceriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235625CDC06ABE6BE4B5F7E2 /* MyGroceriesUITests.swift */; };
 		23562F35CF4E7814C3E249D3 /* MyGroceriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356230C725DDC63D232E341 /* MyGroceriesUITestsLaunchTests.swift */; };
 		23562F9DF0107F3DC9E2C7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235626C7FB5338F05AF8EDDC /* Preview Assets.xcassets */; };
+		3A21A485281A972000D8D511 /* LandingPageFridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21A484281A972000D8D511 /* LandingPageFridgeView.swift */; };
 		3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E772A27DA24B800C1057B /* FridgeGridView.swift */; };
+		3A48C951281FED810059D0C5 /* GroceryItemFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48C950281FED810059D0C5 /* GroceryItemFrontView.swift */; };
 		3A4FBFBC27EFF22C00BD7185 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4FBFBB27EFF22C00BD7185 /* ImagePicker.swift */; };
 		3A4FBFBE27F5D73700BD7185 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4FBFBD27F5D73700BD7185 /* LandingPageView.swift */; };
 		3A52803F27F5DE800023DE9C /* GroceryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52803E27F5DE800023DE9C /* GroceryItemView.swift */; };
 		3A52804327F5E4010023DE9C /* GroceryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52804227F5E4010023DE9C /* GroceryData.swift */; };
 		3A52804727F5F4E80023DE9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52804627F5F4E80023DE9C /* ContentView.swift */; };
-		3A52804927F78CE20023DE9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A52804827F78CE20023DE9C /* GoogleService-Info.plist */; };
-		3A52804A27F78CE20023DE9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A52804827F78CE20023DE9C /* GoogleService-Info.plist */; };
-		3A52804B27F78CE20023DE9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A52804827F78CE20023DE9C /* GoogleService-Info.plist */; };
 		3A52808A27F78FD80023DE9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52808927F78FD80023DE9C /* AppDelegate.swift */; };
 		3A52808B27F78FD80023DE9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52808927F78FD80023DE9C /* AppDelegate.swift */; };
 		3A52808C27F78FD80023DE9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52808927F78FD80023DE9C /* AppDelegate.swift */; };
 		3A6E848027DA42FE007BDB38 /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E847F27DA42FE007BDB38 /* Persistance.swift */; };
-		3AD3C31127D0E5AC00B75DB2 /* GroceryItemOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31027D0E5AC00B75DB2 /* GroceryItemOld.swift */; };
-		3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */; };
+		3A9796E3281F274000361610 /* InformationBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9796E2281F274000361610 /* InformationBoxView.swift */; };
+		3A9AC171281AD344000A38F8 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9AC170281AD344000A38F8 /* Title.swift */; };
 		3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */; };
 		E31B59F827E0F61700F94310 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B59F727E0F61700F94310 /* AddItemView.swift */; };
 		E31B59FA27E0F64800F94310 /* GroceryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B59F927E0F64800F94310 /* GroceryListView.swift */; };
+		E32B7FDD2806193700222096 /* CameraScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B7FDC2806193700222096 /* CameraScan.swift */; };
+		E32B7FE02806196300222096 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = E32B7FDF2806196300222096 /* CodeScanner */; };
+		E32B7FE22806197900222096 /* ApiAddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32B7FE12806197900222096 /* ApiAddItemView.swift */; };
+		E32B7FE52806198500222096 /* JSONParser in Frameworks */ = {isa = PBXBuildFile; productRef = E32B7FE42806198500222096 /* JSONParser */; };
 		E3394BBD27D50EC10091E582 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3394BBC27D50EC10091E582 /* Theme.swift */; };
 		E3A7B8A127E23828000BD3F7 /* MyGroceries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E847A27DA3980007BDB38 /* MyGroceries.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -62,22 +65,25 @@
 		2356297E67FA1F80932564C5 /* MyGroceriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562A0F0F0739C27B09BF16 /* MyGroceriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGroceriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23562DD73278A6D2D4EC018C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A21A484281A972000D8D511 /* LandingPageFridgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageFridgeView.swift; sourceTree = "<group>"; };
 		3A3E772A27DA24B800C1057B /* FridgeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeGridView.swift; sourceTree = "<group>"; };
+		3A48C950281FED810059D0C5 /* GroceryItemFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemFrontView.swift; sourceTree = "<group>"; };
 		3A4FBFBB27EFF22C00BD7185 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3A4FBFBD27F5D73700BD7185 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
 		3A52803E27F5DE800023DE9C /* GroceryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemView.swift; sourceTree = "<group>"; };
 		3A52804227F5E4010023DE9C /* GroceryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryData.swift; sourceTree = "<group>"; };
 		3A52804627F5F4E80023DE9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3A52804827F78CE20023DE9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A52808927F78FD80023DE9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A6E847B27DA3980007BDB38 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3A6E847F27DA42FE007BDB38 /* Persistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
-		3AD3C31027D0E5AC00B75DB2 /* GroceryItemOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemOld.swift; sourceTree = "<group>"; };
-		3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
+		3A9796E2281F274000361610 /* InformationBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationBoxView.swift; sourceTree = "<group>"; };
+		3A9AC170281AD344000A38F8 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		3AD3C31427D0E5CF00B75DB2 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
 		3AD641E527EC9A53002BD306 /* MyGroceries.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyGroceries.entitlements; sourceTree = "<group>"; };
 		E31B59F727E0F61700F94310 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		E31B59F927E0F64800F94310 /* GroceryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListView.swift; sourceTree = "<group>"; };
+		E32B7FDC2806193700222096 /* CameraScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScan.swift; sourceTree = "<group>"; };
+		E32B7FE12806197900222096 /* ApiAddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAddItemView.swift; sourceTree = "<group>"; };
 		E3394BBC27D50EC10091E582 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32B7FE02806196300222096 /* CodeScanner in Frameworks */,
+				E32B7FE52806198500222096 /* JSONParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +117,6 @@
 		235620D11931877D46B5B5C4 = {
 			isa = PBXGroup;
 			children = (
-				3A52804827F78CE20023DE9C /* GoogleService-Info.plist */,
 				235620E9CAE74D85134A108C /* Products */,
 				23562DE94C22D15E498B2FAE /* MyGroceries */,
 				235628B001DC02C7A68DA7E4 /* MyGroceriesTests */,
@@ -172,7 +179,7 @@
 		3AD3C30B27D0E44900B75DB2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3AD3C31027D0E5AC00B75DB2 /* GroceryItemOld.swift */,
+				3A9AC170281AD344000A38F8 /* Title.swift */,
 				E3394BBC27D50EC10091E582 /* Theme.swift */,
 				3A6E847A27DA3980007BDB38 /* MyGroceries.xcdatamodeld */,
 				3A52804227F5E4010023DE9C /* GroceryData.swift */,
@@ -183,13 +190,17 @@
 		3AD3C30C27D0E45800B75DB2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3AD3C31227D0E5BF00B75DB2 /* FridgeView.swift */,
 				3A3E772A27DA24B800C1057B /* FridgeGridView.swift */,
 				E31B59F727E0F61700F94310 /* AddItemView.swift */,
 				E31B59F927E0F64800F94310 /* GroceryListView.swift */,
 				3A4FBFBD27F5D73700BD7185 /* LandingPageView.swift */,
 				3A52803E27F5DE800023DE9C /* GroceryItemView.swift */,
 				3A52804627F5F4E80023DE9C /* ContentView.swift */,
+				E32B7FDC2806193700222096 /* CameraScan.swift */,
+				E32B7FE12806197900222096 /* ApiAddItemView.swift */,
+				3A21A484281A972000D8D511 /* LandingPageFridgeView.swift */,
+				3A9796E2281F274000361610 /* InformationBoxView.swift */,
+				3A48C950281FED810059D0C5 /* GroceryItemFrontView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,6 +248,8 @@
 			);
 			name = MyGroceries;
 			packageProductDependencies = (
+				E32B7FDF2806196300222096 /* CodeScanner */,
+				E32B7FE42806198500222096 /* JSONParser */,
 			);
 			productName = MyGroceries;
 			productReference = 2356281551211BFB952A8381 /* MyGroceries.app */;
@@ -285,6 +298,8 @@
 			);
 			mainGroup = 235620D11931877D46B5B5C4;
 			packageReferences = (
+				E32B7FDE2806196300222096 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				E32B7FE32806198500222096 /* XCRemoteSwiftPackageReference "JSONParser" */,
 			);
 			productRefGroup = 235620E9CAE74D85134A108C /* Products */;
 			projectDirPath = "";
@@ -302,7 +317,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A52804B27F78CE20023DE9C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +324,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A52804A27F78CE20023DE9C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +333,6 @@
 			files = (
 				2356242618EA6AC37C2155DE /* Assets.xcassets in Resources */,
 				23562F9DF0107F3DC9E2C7E9 /* Preview Assets.xcassets in Resources */,
-				3A52804927F78CE20023DE9C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,22 +362,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AD3C31127D0E5AC00B75DB2 /* GroceryItemOld.swift in Sources */,
 				3A4FBFBE27F5D73700BD7185 /* LandingPageView.swift in Sources */,
 				23562E2243ACFD4B941F4F6C /* MyGroceriesApp.swift in Sources */,
 				E3394BBD27D50EC10091E582 /* Theme.swift in Sources */,
+				3A9AC171281AD344000A38F8 /* Title.swift in Sources */,
+				3A9796E3281F274000361610 /* InformationBoxView.swift in Sources */,
 				3AD3C31527D0E5CF00B75DB2 /* DummyViewModel.swift in Sources */,
 				3A6E848027DA42FE007BDB38 /* Persistance.swift in Sources */,
-				3AD3C31327D0E5BF00B75DB2 /* FridgeView.swift in Sources */,
 				E31B59FA27E0F64800F94310 /* GroceryListView.swift in Sources */,
 				3A52808A27F78FD80023DE9C /* AppDelegate.swift in Sources */,
 				3A52803F27F5DE800023DE9C /* GroceryItemView.swift in Sources */,
 				3A4FBFBC27EFF22C00BD7185 /* ImagePicker.swift in Sources */,
 				E3A7B8A127E23828000BD3F7 /* MyGroceries.xcdatamodeld in Sources */,
+				E32B7FE22806197900222096 /* ApiAddItemView.swift in Sources */,
 				3A52804727F5F4E80023DE9C /* ContentView.swift in Sources */,
 				E31B59F827E0F61700F94310 /* AddItemView.swift in Sources */,
 				3A3E772B27DA24B800C1057B /* FridgeGridView.swift in Sources */,
+				3A48C951281FED810059D0C5 /* GroceryItemFrontView.swift in Sources */,
+				3A21A485281A972000D8D511 /* LandingPageFridgeView.swift in Sources */,
 				3A52804327F5E4010023DE9C /* GroceryData.swift in Sources */,
+				E32B7FDD2806193700222096 /* CameraScan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,12 +429,16 @@
 				DEVELOPMENT_TEAM = G6TSQJ6DQ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access to Camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dtu.engtech.s205353.mygroceries;
 				PRODUCT_NAME = MyGroceries;
@@ -556,7 +576,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -606,12 +627,16 @@
 				DEVELOPMENT_TEAM = G6TSQJ6DQ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access to Camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dtu.engtech.s205353.mygroceries;
 				PRODUCT_NAME = MyGroceries;
@@ -662,6 +687,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E32B7FDE2806196300222096 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		E32B7FE32806198500222096 /* XCRemoteSwiftPackageReference "JSONParser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Gerzer/JSONParser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E32B7FDF2806196300222096 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E32B7FDE2806196300222096 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		E32B7FE42806198500222096 /* JSONParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E32B7FE32806198500222096 /* XCRemoteSwiftPackageReference "JSONParser" */;
+			productName = JSONParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3A6E847A27DA3980007BDB38 /* MyGroceries.xcdatamodeld */ = {
