@@ -146,6 +146,7 @@ struct AddItemView : View {
                 
                 Button (action: {
                     
+                    if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
                     let newGrocery = GroceryItem(context: moc)
                     
                     newGrocery.groceryType = setGrocery
@@ -162,7 +163,7 @@ struct AddItemView : View {
                     }
                     
                     
-                    if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
+                    
                         
                         do {
                             try moc.save()
