@@ -9,7 +9,7 @@ struct FridgeGridView : View {
     var boughtItems : FetchedResults<BoughtItem>
     @State var isClicked = false
     @State private var isEditing = false
-
+    
     
     var columns = [GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5) ]
     
@@ -19,6 +19,19 @@ struct FridgeGridView : View {
         return df
     }()
     
+    func subtractFromQuantity(item : BoughtItem) {
+        if (item.quantity >= 1000){
+            item.quantity = item.quantity - 200
+        } else if (item.quantity < 1000 && item.quantity >= 500) {
+            item.quantity = item.quantity - 100
+        } else if (item.quantity < 500 && item.quantity >= 100) {
+            item.quantity = item.quantity - 50}
+        else if (item.quantity < 100 && item.quantity >= 20) {
+            item.quantity = item.quantity - 20
+        } else if (item.quantity < 20 && item.quantity > 1) {
+            item.quantity = item.quantity - 1
+        }
+    }
     
     
     
@@ -68,10 +81,10 @@ struct FridgeGridView : View {
                     
                     
                     ZStack {
-                       
+                        
                         
                         VStack {
-                       
+                            
                             ZStack {
                                 Rectangle()
                                     .fill(.white)
@@ -96,14 +109,14 @@ struct FridgeGridView : View {
                                                     Button {
                                                         withAnimation {
                                                             do {
-                                                                if (item.quantity > 1){
-                                                                    item.quantity = item.quantity - 1
-                                                                    try moc.save()
-                                                                } else {
-                                                                    moc.delete(item)
-                                                                    try moc.save()
+                                                                if (item.quantity > 1) {
+                                                                    subtractFromQuantity(item: item)
                                                                 }
                                                                 
+                                                                else {
+                                                                    moc.delete(item)
+                                                                }
+                                                                try moc.save()
                                                                 
                                                             } catch {
                                                                 print("something went wrong with deleting grocery")
@@ -115,11 +128,11 @@ struct FridgeGridView : View {
                                                             .font(.title)
                                                             .foregroundStyle(.gray, .white)
                                                             .opacity(0.8)
-                                                
-                                                                
+                                                        
+                                                        
                                                     }
                                                     .offset(x: -7, y: -7)
-                                               
+                                                    
                                                 }
                                             }
                                             
@@ -128,8 +141,8 @@ struct FridgeGridView : View {
                                         
                                         
                                     }
-                                
-                                   
+                                    
+                                    
                                     
                                 }
                                 
@@ -145,8 +158,8 @@ struct FridgeGridView : View {
                 
             }
         }
-
-
+        
+        
         
         
         
