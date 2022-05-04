@@ -109,7 +109,7 @@ struct FridgeGridView : View {
                                                     Button {
                                                         withAnimation {
                                                             do {
-                                                                if (item.quantity > 1) {
+                                                                if (item.quantity > 1) {
                                                                     subtractFromQuantity(item: item)
                                                                 }
                                                                 
