@@ -1,7 +1,6 @@
-import Foundation
 import SwiftUI
 
-struct LandingPageFridgeView : View {
+struct FridgeViewBackground : View {
     
     var body : some View {
         
@@ -27,12 +26,6 @@ struct LandingPageFridgeView : View {
                         .fill(.white)
                         .opacity(0.4)
                     
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 30.0)
-                            .fill(.black)
-                            .opacity(0.2)
-                        
-                    }.frame(width: 10, height: 550)
                 }
                 .frame(width: 360, height: 550)
                 .padding()

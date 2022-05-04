@@ -1,11 +1,3 @@
-//
-//  Persistance.swift
-//  MyGroceries
-//
-//  Created by anton dong on 10/03/2022.
-//
-
-
 import CoreData
 
 struct PersistenceController {

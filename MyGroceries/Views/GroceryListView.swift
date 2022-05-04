@@ -1,12 +1,5 @@
-//
-//  GroceryList.swift
-//  MyGroceries
-//
-//  Created by Kristoffer (s205354) on 15/03/2022.
-//
 //  Source for Fetching Object: https://www.hackingwithswift.com/books/ios-swiftui/building-a-list-with-fetchrequest
-//
-
+// Notification implementation from lecture material
 
 
 import SwiftUI

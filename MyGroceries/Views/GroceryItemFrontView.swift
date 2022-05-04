@@ -1,10 +1,3 @@
-//
-//  GroceryItemFrontView.swift
-//  MyGroceries
-//
-//  Created by anton dong on 02/05/2022.
-//
-
 import SwiftUI
 
 struct GroceryItemFrontView : View {

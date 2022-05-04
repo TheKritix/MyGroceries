@@ -1,10 +1,3 @@
-//
-//  ApiAddItemView.swift
-//  MyGroceries
-//
-//  Created by Kristoffer Pedersen on 06/04/2022.
-//
-
 import Foundation
 import SwiftUI
 import JSONParser

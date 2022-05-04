@@ -1,10 +1,3 @@
-//
-//  FridgeGridView.swift
-//  MyGroceries
-//
-//  Created by anton dong on 09/03/2022.
-//
-
 import Foundation
 import SwiftUI
 
@@ -44,7 +37,7 @@ struct FridgeGridView : View {
                     .fill(.gray)
                     .brightness(0.35)
                     .cornerRadius( 50, corners: [.topLeft, .topRight])
-                LandingPageFridgeView()
+                FridgeViewBackground()
                 VStack {
                     HStack {
                         

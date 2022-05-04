@@ -1,11 +1,3 @@
-//
-//  MyGroceriesUITestsLaunchTests.swift
-//  MyGroceriesUITests
-//
-//  Created by KRTP Project on 03/03/2022.
-//
-//
-
 import XCTest
 
 class MyGroceriesUITestsLaunchTests: XCTestCase {
