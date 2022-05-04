@@ -44,6 +44,10 @@ struct GroceryListView : View {
                                 }
                                 Spacer()
                                 Spacer()
+                                Spacer()
+                                Spacer()
+                                Spacer()
+                               
                             }
                             Spacer()
                             VStack(alignment: .trailing) {
@@ -55,9 +59,7 @@ struct GroceryListView : View {
                                         .frame(width: 130, height: 80, alignment: .trailing)
                                         .clipped()
                                 }
-                                Spacer()
-                                Spacer()
-                                Spacer()
+                                
                             }
                         }
                         
@@ -71,6 +73,7 @@ struct GroceryListView : View {
                             selection: $setExpirationDate,
                             displayedComponents: [.date]
                         )
+                        .font(.system(size: 14))
                     }
                     .swipeActions{
                         Button("Purchased") {

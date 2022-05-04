@@ -5,7 +5,7 @@
 //  Created by Kristoffer Pedersen (s205354) on 15/03/2022.
 //  Dealing with menus Source: https://stackoverflow.com/questions/56513339/is-there-a-way-to-create-a-dropdown-menu-button-in-swiftui
 //  Dates Source: https://developer.apple.com/documentation/swiftui/datepicker
-// Modified by Mia Dong (s205353) on 24/03/2022.
+
 // ImagePicker implementation
 //https://www.hackingwithswift.com/books/ios-swiftui/importing-an-image-into-swiftui-using-phpickerviewcontroller
 
@@ -146,7 +146,7 @@ struct AddItemView : View {
                 
                 Button (action: {
                     
-                    if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
+                    if (setGrocery != "") {
                     let newGrocery = GroceryItem(context: moc)
                     
                     newGrocery.groceryType = setGrocery
