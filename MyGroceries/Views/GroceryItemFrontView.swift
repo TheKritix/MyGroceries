@@ -51,9 +51,9 @@ struct GroceryItemFrontView : View {
                             }
                             .font(.system(size: 12))
                             .padding(2)
-                            .background(.yellow)
+                            .background(.white.opacity(0.5))
                             .cornerRadius(30)
-                            .accentColor(.white)
+                            .accentColor(.gray)
                             
                             
                         }

@@ -48,7 +48,7 @@ struct LandingPageFridgeView : View {
             }
         }
         
-        .navigationBarBackButtonHidden(true)
+        
     }
     
 }
