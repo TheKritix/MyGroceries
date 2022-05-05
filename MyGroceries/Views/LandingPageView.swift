@@ -11,6 +11,7 @@ struct LandingPageView : View {
     @State private var buttonPressed = false
 
     var body : some View {
+        
         ZStack {
             if (!showContentView){
                 LandingPageFridgeView()

@@ -38,12 +38,8 @@ struct FridgeGridView : View {
     
     var body : some View {
         VStack {
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
+            TitleTextView(titleText: "Fridge")
+                .padding()
             
             ZStack {
                 Rectangle()
@@ -157,6 +153,7 @@ struct FridgeGridView : View {
                 
                 
             }
+            
         }
         
         
