@@ -47,7 +47,6 @@ struct ApiAddItemView: View {
         
         
         NavigationView {
-            TitleTextView(titleText: "Add Items to Grocery List")
             Form {
                 if (unableToFindProduct) {
                     Text("Unable to find product. Please add manually, or scan another item")
