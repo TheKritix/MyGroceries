@@ -61,10 +61,10 @@ struct GroceryItemFrontView : View {
                 }
                 if (boughtItem?.expirationDate != nil){
                     if days >= 0 {
-                        Text(String(days) + " days to expiration")
+                        Text(String(days) + " days left")
                             .font(.system(size: 10))
                     } else {
-                        Text(String(abs(days)) + " days past expiration")
+                        Text(String(abs(days)) + " days expired")
                             .font(.system(size: 10))
                     }
                     
@@ -75,7 +75,8 @@ struct GroceryItemFrontView : View {
             
             
         }
-        .frame(width: 120, height: 160)
+        .frame(width: 100, height: 130)
+        .padding([.top, .bottom])
     }
     
 }

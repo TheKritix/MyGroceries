@@ -45,18 +45,27 @@ struct InformationBoxView : View {
                     .font(.system(size: 10))
                 Spacer()
                 if (boughtItem?.purchaseDate != nil){
-                    Text("Purchased: \(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date()))")
+                    Text("Purchased:")
+                        .font(.system(size: 10))
+                    Text("\(dateFormatter.string(from: boughtItem?.purchaseDate ?? Date()))")
                         .font(.system(size: 10))
                 }
                 Spacer()
                 if (boughtItem?.expirationDate != nil){
-                    Text("Expires on: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                    Text("Expires:")
                         .font(.system(size: 10))
+                    Text("\(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                        .font(.system(size: 10))
+                    Spacer()
                     if days >= 0 {
-                        Text(String(days) + " days to expiration")
+                        Text(String(days) + " days")
+                            .font(.system(size: 10))
+                        Text(" to expiration")
                             .font(.system(size: 10))
                     } else {
-                        Text(String(abs(days)) + " days past expiration")
+                        Text(String(abs(days)) + " days ")
+                            .font(.system(size: 10))
+                        Text(" past expiration")
                             .font(.system(size: 10))
                     }
                     
@@ -69,7 +78,8 @@ struct InformationBoxView : View {
             
             
         }
-        .frame(width: 120, height: 160)
+        .frame(width: 105, height: 130)
+        .padding([.top, .bottom])
         
         
         
