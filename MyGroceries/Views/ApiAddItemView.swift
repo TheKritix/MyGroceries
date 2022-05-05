@@ -40,8 +40,6 @@ struct ApiAddItemView: View {
     
     @State var unableToFindProduct = false
     
-    
-    
     var body: some View {
         
         
@@ -138,6 +136,7 @@ struct ApiAddItemView: View {
                                 .frame(width: 290, height: 50, alignment: .center)
                         }
                     }
+                    
                     AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
                         .frame(width: 150, height: 400, alignment: .center)
                     let asyncImage = AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
@@ -153,8 +152,16 @@ struct ApiAddItemView: View {
                         newGrocery.expirationDate = setExpirationDate
                         newGrocery.foodCategory = setCategory
                         
+                        guard let url = URL(string: productResult.imageURL!) else {
+                            print("Invalid URL")
+                            return
+                        }
                         
-                        newGrocery.image = asyncImage.snapshot().pngData();
+                        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+                            let uiimage = UIImage(data: (data!))
+                            newGrocery.image = uiimage?.pngData()
+                        }
+                        task.resume()
                         
                         
                         if (setCategory == "") {
