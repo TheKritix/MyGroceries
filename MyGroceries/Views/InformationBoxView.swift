@@ -15,7 +15,11 @@ struct InformationBoxView : View {
     
     var body : some View {
         ZStack {
-            if (days <= 2) {
+            if (days < 0) {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.red).opacity(0.4)
+            }
+            else if (days <= 2) {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.red).opacity(0.2)
             } else if (days >= 3 && days <= 5){
@@ -52,7 +56,7 @@ struct InformationBoxView : View {
                         Text(String(days) + " days to expiration")
                             .font(.system(size: 10))
                     } else {
-                        Text(String(days) + " past expiration")
+                        Text(String(abs(days)) + " days past expiration")
                             .font(.system(size: 10))
                     }
                     

@@ -167,6 +167,10 @@ struct ApiAddItemView: View {
                             setCategory = "Other"
                         }
                         
+                        if (setQuantity == "") {
+                            setQuantity = "1"
+                        }
+                        
                         if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
                             
                             do {
@@ -214,7 +218,6 @@ struct ApiAddItemView: View {
             
             setGrocery = productResult.product_name ?? "Fetching product name..."
             
-            await inputImage?.loadFrom(URLAddress: productResult.imageURL ?? "localhost")
             
             if (productResult.status_verbose == "product not found") {
                 unableToFindProduct = true
@@ -225,43 +228,6 @@ struct ApiAddItemView: View {
         }
     }
 }
-
-//TODO: Make it work with UIImage
-// Used following solution: https://www.codingem.com/swift-load-image-from-url/
-extension UIImageView {
-    func loadFrom(URLAddress: String) {
-        guard let url = URL(string: URLAddress) else {
-            return
-        }
-        
-        DispatchQueue.main.async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                    self?.image = loadedImage
-                }
-            }
-        }
-    }
-}
-
-extension View {
-    func snapshot() -> UIImage {
-        let controller = UIHostingController(rootView: self)
-        let view = controller.view
-        
-        let targetSize = controller.view.intrinsicContentSize
-        view?.bounds = CGRect(origin: .zero, size: targetSize)
-        view?.backgroundColor = .clear
-        
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
-        
-        return renderer.image { _ in
-            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
-        }
-    }
-}
-
-
 
 
 

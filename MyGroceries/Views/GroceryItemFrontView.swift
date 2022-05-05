@@ -12,13 +12,17 @@ struct GroceryItemFrontView : View {
     }()
     var body : some View {
         ZStack {
-            if (days <= 2) {
+            if (days < 0 ) {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.red).opacity(0.4)
+            }
+            else if (days <= 2) {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.red).opacity(0.2)
             } else if (days >= 3 && days <= 5){
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.yellow).opacity(0.2)
-            } else {
+            } else{
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.green).opacity(0.2)
             }
@@ -44,7 +48,7 @@ struct GroceryItemFrontView : View {
                             }
                             .font(.system(size: 12))
                             .padding(2)
-                            .background(.white.opacity(0.5))
+                            .background(.white.opacity(0.8))
                             .cornerRadius(30)
                             .accentColor(.gray)
                             
@@ -60,7 +64,7 @@ struct GroceryItemFrontView : View {
                         Text(String(days) + " days to expiration")
                             .font(.system(size: 10))
                     } else {
-                        Text(String(days) + " past expiration")
+                        Text(String(abs(days)) + " days past expiration")
                             .font(.system(size: 10))
                     }
                     
