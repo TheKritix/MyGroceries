@@ -40,14 +40,11 @@ struct ApiAddItemView: View {
     
     @State var unableToFindProduct = false
     
-    
-    
     var body: some View {
         
         
         
         NavigationView {
-            TitleTextView(titleText: "Add Items to Grocery List")
             Form {
                 if (unableToFindProduct) {
                     Text("Unable to find product. Please add manually, or scan another item")
@@ -139,9 +136,9 @@ struct ApiAddItemView: View {
                                 .frame(width: 290, height: 50, alignment: .center)
                         }
                     }
+                    
                     AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
                         .frame(width: 150, height: 400, alignment: .center)
-                    let asyncImage = AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
                     Section {}
                     
                     Button (action: {
@@ -154,12 +151,24 @@ struct ApiAddItemView: View {
                         newGrocery.expirationDate = setExpirationDate
                         newGrocery.foodCategory = setCategory
                         
+                        guard let url = URL(string: productResult.imageURL!) else {
+                            print("Invalid URL")
+                            return
+                        }
                         
-                        newGrocery.image = asyncImage.snapshot().pngData();
+                        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+                            let uiimage = UIImage(data: (data!))
+                            newGrocery.image = uiimage?.pngData()
+                        }
+                        task.resume()
                         
                         
                         if (setCategory == "") {
                             setCategory = "Other"
+                        }
+                        
+                        if (setQuantity == "") {
+                            setQuantity = "1"
                         }
                         
                         if (!(setGrocery == "" || setQuantity == "" || setUnit == "Unit" || setCategory == "Category")) {
@@ -209,7 +218,6 @@ struct ApiAddItemView: View {
             
             setGrocery = productResult.product_name ?? "Fetching product name..."
             
-            await inputImage?.loadFrom(URLAddress: productResult.imageURL ?? "localhost")
             
             if (productResult.status_verbose == "product not found") {
                 unableToFindProduct = true
@@ -220,43 +228,6 @@ struct ApiAddItemView: View {
         }
     }
 }
-
-//TODO: Make it work with UIImage
-// Used following solution: https://www.codingem.com/swift-load-image-from-url/
-extension UIImageView {
-    func loadFrom(URLAddress: String) {
-        guard let url = URL(string: URLAddress) else {
-            return
-        }
-        
-        DispatchQueue.main.async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                    self?.image = loadedImage
-                }
-            }
-        }
-    }
-}
-
-extension View {
-    func snapshot() -> UIImage {
-        let controller = UIHostingController(rootView: self)
-        let view = controller.view
-        
-        let targetSize = controller.view.intrinsicContentSize
-        view?.bounds = CGRect(origin: .zero, size: targetSize)
-        view?.backgroundColor = .clear
-        
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
-        
-        return renderer.image { _ in
-            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
-        }
-    }
-}
-
-
 
 
 

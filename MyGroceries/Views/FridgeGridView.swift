@@ -38,12 +38,9 @@ struct FridgeGridView : View {
     
     var body : some View {
         VStack {
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
+            TitleTextView(titleText: "Fridge")
+                .padding()
+                .padding()
             
             ZStack {
                 Rectangle()
@@ -93,7 +90,7 @@ struct FridgeGridView : View {
                                     .opacity(0.15)
                                 
                                 ScrollView {
-                                    LazyVGrid(columns: columns, spacing: 4) {
+                                    LazyVGrid(columns: columns, spacing: 2) {
                                         ForEach(boughtItems, id: \.self) { item in
                                             
                                             HStack {
@@ -101,43 +98,47 @@ struct FridgeGridView : View {
                                                     GroceryItemView(boughtItem: item)
                                                     
                                                 }
-                                                
-                                            }
-                                            
-                                            .overlay(alignment: .topLeading) {
-                                                if isEditing {
-                                                    Button {
-                                                        withAnimation {
-                                                            do {
-                                                                if (item.quantity > 1) {
-                                                                    subtractFromQuantity(item: item)
+                                                .overlay(alignment: .topLeading) {
+                                                    if isEditing {
+                                                        Button {
+                                                            withAnimation {
+                                                                do {
+                                                                    if (item.quantity > 1) {
+                                                                        subtractFromQuantity(item: item)
+                                                                    }
+                                                                    
+                                                                    else {
+                                                                        moc.delete(item)
+                                                                    }
+                                                                    try moc.save()
+                                                                    
+                                                                } catch {
+                                                                    print("something went wrong with deleting grocery")
                                                                 }
                                                                 
-                                                                else {
-                                                                    moc.delete(item)
-                                                                }
-                                                                try moc.save()
-                                                                
-                                                            } catch {
-                                                                print("something went wrong with deleting grocery")
                                                             }
+                                                        } label: {
+                                                            Image(systemName: "minus.circle.fill")
+                                                                .font(.title)
+                                                                .foregroundStyle(.gray, .white)
+                                                                .opacity(0.8)
                                                             
-                                                        }
-                                                    } label: {
-                                                        Image(systemName: "minus.circle.fill")
-                                                            .font(.title)
-                                                            .foregroundStyle(.gray, .white)
-                                                            .opacity(0.8)
+                                                            
+                                                        }.offset(x: -7)
                                                         
                                                         
                                                     }
-                                                    .offset(x: -7, y: -7)
-                                                    
                                                 }
+                                                
+                                                
                                             }
+                                            
+                                           
                                             
                                             
                                         }
+                                        
+                                        
                                         
                                         
                                     }
@@ -145,7 +146,7 @@ struct FridgeGridView : View {
                                     
                                     
                                 }
-                                
+                                .padding(.top)
                                 
                             }
                             .frame(width: 360)
@@ -157,6 +158,7 @@ struct FridgeGridView : View {
                 
                 
             }
+            
         }
         
         

@@ -5,6 +5,10 @@ struct LandingPageFridgeView : View {
     
     var body : some View {
         
+        VStack {
+            TitleTextView(titleText: "")
+                .padding(20)
+        
         ZStack {
             RoundedRectangle(cornerRadius: 50)
                 .fill(.gray)
@@ -39,7 +43,7 @@ struct LandingPageFridgeView : View {
                 
             }
         }
-        
+        }
         
     }
     
