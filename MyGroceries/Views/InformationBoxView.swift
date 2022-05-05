@@ -37,7 +37,7 @@ struct InformationBoxView : View {
                 Spacer()
                 
                 
-                Text(String(days) + " days to expiration")
+
                     .font(.system(size: 10))
                 Spacer()
                 if (boughtItem?.purchaseDate != nil){
@@ -46,6 +46,8 @@ struct InformationBoxView : View {
                 }
                 Spacer()
                 if (boughtItem?.expirationDate != nil){
+                    Text("Expires on: \(dateFormatter.string(from: boughtItem?.expirationDate ?? Date()))")
+                        .font(.system(size: 10))
                     if days >= 0 {
                         Text(String(days) + " days to expiration")
                             .font(.system(size: 10))
