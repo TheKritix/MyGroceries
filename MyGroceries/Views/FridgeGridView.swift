@@ -40,6 +40,7 @@ struct FridgeGridView : View {
         VStack {
             TitleTextView(titleText: "Fridge")
                 .padding()
+                .padding()
             
             ZStack {
                 Rectangle()

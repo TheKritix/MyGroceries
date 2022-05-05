@@ -7,8 +7,7 @@ struct LandingPageFridgeView : View {
         
         VStack {
             TitleTextView(titleText: "")
-                .padding()
-                .foregroundColor(.white)
+                .padding(20)
         
         ZStack {
             RoundedRectangle(cornerRadius: 50)
