@@ -139,7 +139,6 @@ struct ApiAddItemView: View {
                     
                     AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
                         .frame(width: 150, height: 400, alignment: .center)
-                    let asyncImage = AsyncImage(url: URL(string: productResult.imageURL ?? "Loading..."))
                     Section {}
                     
                     Button (action: {
