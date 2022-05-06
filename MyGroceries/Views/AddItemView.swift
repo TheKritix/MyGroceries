@@ -142,23 +142,27 @@ struct AddItemView : View {
                 Button (action: {
                     
                     if (setGrocery != "") {
-                    let newGrocery = GroceryItem(context: moc)
-                    
-                    newGrocery.groceryType = setGrocery
-                    newGrocery.quantity = Int16(setQuantity) ?? 0
-                    newGrocery.unit = setUnit
-                    newGrocery.purchaseDate = setPurchaseDate
-                    newGrocery.expirationDate = setExpirationDate
-                    newGrocery.foodCategory = setCategory
-                    newGrocery.image = inputImage?.pngData()
-                    
-                    
-                    if (setCategory == "") {
-                        setCategory = "Other"
-                    }
-                    
-                    
-                    
+                        
+                        if (setCategory == "Category") {
+                            setCategory = "Other"
+                        }
+                        
+                        if (setQuantity == "") {
+                            setQuantity = "1"
+                        }
+                        else if (setQuantity == "0") {
+                            setQuantity = "1"
+                        }
+                        
+                        let newGrocery = GroceryItem(context: moc)
+                        
+                        newGrocery.groceryType = setGrocery
+                        newGrocery.quantity = Int16(setQuantity) ?? 0
+                        newGrocery.unit = setUnit
+                        newGrocery.purchaseDate = setPurchaseDate
+                        newGrocery.expirationDate = setExpirationDate
+                        newGrocery.foodCategory = setCategory
+                        newGrocery.image = inputImage?.pngData()
                         
                         do {
                             try moc.save()
