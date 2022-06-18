@@ -37,11 +37,8 @@ struct FridgeGridView : View {
     
     
     var body : some View {
+        NavigationView {
         VStack {
-            TitleTextView(titleText: "Fridge")
-                .padding()
-                .padding()
-            
             ZStack {
                 Rectangle()
                     .fill(.gray)
@@ -57,11 +54,7 @@ struct FridgeGridView : View {
                         Spacer()
                         VStack(alignment: .trailing) {
                             Button(action: {
-                                if isEditing {
-                                    isEditing = false
-                                } else {
-                                    isEditing = true
-                                }
+                                isEditing.toggle()
                             }){
                                 if isEditing {
                                     Text("Done")
@@ -91,6 +84,19 @@ struct FridgeGridView : View {
                                 
                                 ScrollView {
                                     LazyVGrid(columns: columns, spacing: 2) {
+                                        
+                                        NavigationLink {
+                                            AddItemToFridgeView()
+                                                .navigationBarTitleDisplayMode(.automatic)
+                                                .toolbar {
+                                                    ToolbarItem(placement: .principal) {
+                                                        TitleTextView(titleText: "Add Item")
+                                                    }
+                                                }
+                                        } label: {
+                                            AddGroceryBox()
+                                        }
+
                                         ForEach(boughtItems, id: \.self) { item in
                                             
                                             HStack {
@@ -133,7 +139,7 @@ struct FridgeGridView : View {
                                                 
                                             }
                                             
-                                           
+                                            
                                             
                                             
                                         }
@@ -160,12 +166,15 @@ struct FridgeGridView : View {
             }
             
         }
-        
-        
-        
-        
-        
+        .padding(.top)
+        .padding(.top)
+        .padding(.top)
+        .padding(.top)
+        .padding(.top)
+        .padding(.top)
+  
     }
+}
 }
 
 /*
